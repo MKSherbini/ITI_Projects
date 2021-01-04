@@ -1,0 +1,15 @@
+{
+
+        "BookStore" :{ "Book" :[{
+                "Category" : "science",
+    "InStock" : "false",
+
+        "Title" :"x",
+        "Author" :"x"
+                },{
+                "Category" : "fiction",
+
+        "Title" :"x",
+        "Author" :"x"
+                }] }}
+    

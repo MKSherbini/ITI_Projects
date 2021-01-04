@@ -1,0 +1,1 @@
+javac --module-source-path . -d out SortUtilMod/module-info.java SortUtilMod/SortUtilPak/SortUtilClass.java -Xlint:unchecked

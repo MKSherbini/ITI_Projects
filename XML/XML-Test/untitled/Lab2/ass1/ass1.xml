@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<root
+        xmlns="randomNS"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="randomNS ass1.xsd">
+
+<WeekDay>1</WeekDay>
+
+</root>

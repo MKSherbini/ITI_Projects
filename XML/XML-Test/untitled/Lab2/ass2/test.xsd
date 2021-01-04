@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+        xmlns:rnd="randomNS"
+        targetNamespace="randomNS"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="library" >
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="info" >
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="location" type="xs:string" />
+              <xs:element name="description" type="xs:string" />
+              <xs:element name="librarian" type="xs:string" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="books">
+          <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:element name="book" type="rnd:bookType"/>
+              <xs:element name="br" type="xs:string"/>
+            </xs:sequence>
+
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:attributeGroup name="bookAtrGroup">
+    <xs:attribute name="element" >
+      <xs:simpleType>
+        <xs:restriction base="xs:string" >
+          <xs:enumeration value="FIRE"/>
+          <xs:enumeration value="WATER"/>
+          <xs:enumeration value="EARTH"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+
+  <xs:group name="bookBRGroup">
+    <xs:sequence>
+      <xs:element name="book" type="rnd:bookType"/>
+      <xs:element name="br" type="xs:string"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="partGroup">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="chapters" >
+        <xs:complexType>
+          <xs:sequence >
+            <xs:element name="chapter" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="rnd:chapterGroup"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+<xs:group name="chapterGroup">
+  <xs:sequence >
+    <xs:element name="title" type="xs:string" />
+    <xs:element name="summary" type="xs:string" />
+    <xs:element name="sections">
+      <xs:complexType>
+        <xs:sequence >
+          <xs:group ref="rnd:sectionGroup" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+  </xs:sequence>
+</xs:group>
+
+ <xs:group name="sectionGroup">
+   <xs:sequence >
+     <xs:element name="section" type="xs:string" maxOccurs="unbounded"/>
+   </xs:sequence>
+ </xs:group>
+
+
+  <xs:complexType name="bookType">
+    <xs:all>
+      <xs:element name="info" >
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="title" type="xs:string" />
+            <xs:element name="isbn" type="xs:string" />
+            <xs:element name="author" type="xs:string" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="preface" type="xs:string" />
+      <xs:element name="parts" type="rnd:parts"/>
+    </xs:all>
+    <xs:attributeGroup ref="rnd:bookAtrGroup"/>
+  </xs:complexType>
+
+  <xs:complexType name="parts">
+    <xs:sequence >
+      <xs:element name="part" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:group ref="rnd:partGroup"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+        xmlns:rnd="randomNS"
+        targetNamespace="randomNS"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="BookStore">
+    <xs:complexType>
+        <xs:sequence >
+           <xs:element name="Book" minOccurs="1" maxOccurs="unbounded" >
+              <xs:complexType>
+                  <xs:sequence >
+                      <xs:element name="Title" type="xs:string"/>
+                      <xs:element name="Author" type="xs:string"/>
+                  </xs:sequence>
+                  <xs:attribute name="Category" default="fiction">
+                      <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                              <xs:enumeration value="science"/>
+                              <xs:enumeration value="fiction"/>
+                          </xs:restriction>
+                      </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="InStock" default="false">
+                      <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                              <xs:enumeration value="true"/>
+                              <xs:enumeration value="false"/>
+                          </xs:restriction>
+                      </xs:simpleType>
+                  </xs:attribute>
+
+              </xs:complexType>
+
+           </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+</xs:schema>
+
+

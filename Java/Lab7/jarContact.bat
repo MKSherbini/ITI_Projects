@@ -1,0 +1,1 @@
+javac --module-source-path . -d out ContactUtilMod/module-info.java ContactUtilMod/ContactUtilPak/ContactUtilClass.java

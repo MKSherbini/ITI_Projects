@@ -1,0 +1,22 @@
+<!ELEMENT library (libinfo,books)>
+<!ELEMENT libinfo (location,description,librarian)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT librarian (#PCDATA)>
+<!ELEMENT books ((book,br)+)>
+<!ELEMENT br EMPTY>
+<!ELEMENT book (bkinfo,preface,parts)>
+<!ELEMENT bkinfo (title,isbn,author)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT isbn (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT preface (#PCDATA)>
+<!ELEMENT parts (part+)>
+<!ELEMENT part (title,chapters)>
+<!ELEMENT chapters (chapter+)>
+<!ELEMENT chapter (title,summary,sections)>
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT sections (section+)>
+<!ELEMENT section (#PCDATA)>
+<!ATTLIST book element (FIRE|WATER|EARTH|AIR) #REQUIRED>
+<!ENTITY AuthorName SYSTEM "Author.ent">

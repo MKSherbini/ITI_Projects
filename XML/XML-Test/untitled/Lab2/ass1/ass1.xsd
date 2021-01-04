@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+        xmlns:rnd="randomNS"
+        targetNamespace="randomNS"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="root">
+
+    <xs:complexType>
+        <xs:sequence >
+           <xs:element name="WeekDay" >
+               <xs:simpleType>
+                   <xs:union memberTypes="rnd:weekNumbers rnd:weekNames"/>
+               </xs:simpleType>
+           </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+    <xs:simpleType name="weekNames">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Saturday"/>
+            <xs:enumeration value="Sunday"/>
+            <xs:enumeration value="Monday"/>
+            <xs:enumeration value="Tuesday"/>
+            <xs:enumeration value="Wednesday"/>
+            <xs:enumeration value="Thursday"/>
+            <xs:enumeration value="Friday"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="weekNumbers">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+
+

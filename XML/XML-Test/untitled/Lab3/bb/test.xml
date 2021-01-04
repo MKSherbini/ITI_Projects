@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<BookStore>
+
+    <Book Category="science" InStock="false">
+        <Title>x</Title>
+        <Author>x</Author>
+    </Book>
+
+    <Book Category="fiction">
+        <Title>x</Title>
+        <Author>x</Author>
+    </Book>
+
+</BookStore>

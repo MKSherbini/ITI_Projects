@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<BookStore
+        xmlns="randomNS"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="randomNS ass4.xsd">
+
+<Book Category="science" InStock="false">
+    <Title>x</Title>
+    <Author>x</Author>
+</Book>
+
+<Book Category="fiction">
+    <Title>x</Title>
+    <Author>x</Author>
+</Book>
+
+</BookStore>

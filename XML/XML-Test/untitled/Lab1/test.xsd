@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="library" type="libraryType">
+    <xs:annotation>
+      <xs:documentation>info vs X/Y info</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="libinfoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="location"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="xs:string" name="librarian"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bkinfoType">
+    <xs:sequence>
+      <xs:element name="title">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value=" Basic Magic: Fire Spells "/>
+            <xs:enumeration value=" Basic Magic: Water Spells "/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="isbn"/>
+      <xs:element name="author">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="  Great Magus &amp;Author; &amp;&amp; Great Magus Mist "/>
+            <xs:enumeration value="  Great Magus Zord &amp;&amp; Great Magus Mist "/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sectionsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="section"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="chapterType">
+    <xs:sequence>
+      <xs:element name="title">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="  Learning focus techniques "/>
+            <xs:enumeration value="  Understanding natural energy circulation "/>
+            <xs:enumeration value="  Visualising the energy "/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="summary"/>
+      <xs:element type="sectionsType" name="sections"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="chaptersType">
+    <xs:sequence>
+      <xs:element type="chapterType" name="chapter" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="partType">
+    <xs:sequence>
+      <xs:element name="title">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value=" Controlling magic energy "/>
+            <xs:enumeration value=" Manipulating magic energy into fire "/>
+            <xs:enumeration value=" Manipulating magic energy into water "/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="chaptersType" name="chapters"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="partsType">
+    <xs:sequence>
+      <xs:element type="partType" name="part" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bookType" mixed="true">
+    <xs:sequence>
+      <xs:element type="bkinfoType" name="bkinfo" minOccurs="0"/>
+      <xs:element name="preface" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value=" Intro into magic starting with basics and focusing on fire magic "/>
+            <xs:enumeration value=" Intro into magic starting with basics and focusing on water magic "/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="partsType" name="parts" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="element" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="booksType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="bookType" name="book"/>
+      <xs:element name="br">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:element type="bkinfoType" name="bkinfo" minOccurs="0"/>
+            <xs:element name="preface" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value=" Intro into magic starting with basics and focusing on fire magic "/>
+                  <xs:enumeration value=" Intro into magic starting with basics and focusing on water magic "/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element type="partsType" name="parts" minOccurs="0"/>
+          </xs:sequence>
+          <xs:attribute type="xs:string" name="element" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="libraryType">
+    <xs:sequence>
+      <xs:element type="libinfoType" name="libinfo"/>
+      <xs:element type="booksType" name="books"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

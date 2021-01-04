@@ -1,0 +1,88 @@
+library:
+  info:
+    location: Ancient Egypt
+    description: The ancient library of magic
+    librarian: Ali
+  books:
+    - element: fire
+      info:
+        title: 'Basic Magic: Fire Spells'
+        isbn: 978-3-16-148410-0
+        author: 'Great Magus Zord && Great Magus Mist '
+      preface: Intro into magic starting with basics and focusing on fire magic
+      parts:
+        - title: Controlling magic energy
+          chapters:
+            - title: Learning focus techniques
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Understanding natural energy circulation
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Visualising the energy
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+        - title: Manipulating magic energy into fire
+          chapters:
+            - title: Learning focus techniques
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Understanding natural energy circulation
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Visualising the energy
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+    - element: water
+      info:
+        title: 'Basic Magic: Water Spells'
+        isbn: 978-3-16-148410-0
+        author: 'Great Magus Zord && Great Magus Mist '
+      preface: Intro into magic starting with basics and focusing on fire magic
+      parts:
+        - title: Controlling magic energy
+          chapters:
+            - title: Learning focus techniques
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Understanding natural energy circulation
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Visualising the energy
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+        - title: Manipulating magic energy into water
+          chapters:
+            - title: Learning focus techniques
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Understanding natural energy circulation
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all
+            - title: Visualising the energy
+              summary: The focus begins from within
+              sections:
+                - Follow this stance and empty your mind, don't think about anything at all
+                - Follow this stance and empty your mind, don't think about anything at all

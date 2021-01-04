@@ -1,0 +1,1 @@
+jar -cef io.amin.Main target/ap.jar -C target/classes/ .

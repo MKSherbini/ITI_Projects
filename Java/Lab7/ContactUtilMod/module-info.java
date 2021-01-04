@@ -1,0 +1,3 @@
+module ContactUtilMod {
+	exports ContactUtilPak;
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<!DOCTYPE library SYSTEM "rules.dtd">
+
+<library>
+
+    <libinfo>
+        <location> Ancient Egypt </location>
+        <description> The ancient library of magic </description>
+        <librarian> Ali </librarian>
+    </libinfo>
+
+    <books>
+        <book element = "FIRE">
+            <bkinfo>
+                <title> Basic Magic: Fire Spells </title>
+                <isbn>
+                    <![CDATA[
+                        978-3-16-148410-0
+                    ]]> </isbn>
+                <author> <![CDATA[ Great Magus &AuthorName; && Great Magus Mist ]]></author>
+            </bkinfo>
+            <preface> Intro into magic starting with basics and focusing on fire magic </preface>
+            <parts>
+                <part>
+                    <title> Controlling magic energy </title>
+                    <chapters>
+                        <chapter>
+                            <title>  Learning focus techniques </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Understanding natural energy circulation </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Visualising the energy </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                    </chapters>
+                </part>
+                <part>
+                    <title> Manipulating magic energy into fire </title>
+                    <chapters>
+                        <chapter>
+                            <title>  Learning focus techniques </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Understanding natural energy circulation </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Visualising the energy </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                    </chapters>
+                </part>
+            </parts>
+        </book>
+        <br/>
+        <book element = "WATER">
+            <bkinfo>
+                <title> Basic Magic: Water Spells </title>
+                <isbn>
+                    <![CDATA[
+                        978-3-16-148410-0
+                    ]]> </isbn>
+                <author> <![CDATA[ Great Magus Zord && Great Magus Mist ]]></author>
+            </bkinfo>
+            <preface> Intro into magic starting with basics and focusing on water magic </preface>
+            <parts>
+                <part>
+                    <title> Controlling magic energy </title>
+                    <chapters>
+                        <chapter>
+                            <title>  Learning focus techniques </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Understanding natural energy circulation </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Visualising the energy </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                    </chapters>
+                </part>
+                <part>
+                    <title> Manipulating magic energy into water </title>
+                    <chapters>
+                        <chapter>
+                            <title>  Learning focus techniques </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Understanding natural energy circulation </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                        <chapter>
+                            <title>  Visualising the energy </title>
+                            <summary> The focus begins from within </summary>
+                            <sections>
+                                <section> Follow this stance and empty your mind, don't think about anything at all </section>
+                            </sections>
+                        </chapter>
+                    </chapters>
+                </part>
+            </parts>
+        </book>
+        <br />
+    </books>
+
+</library>

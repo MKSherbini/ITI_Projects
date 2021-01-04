@@ -1,0 +1,7 @@
+//CD[PRICE>10]/TITLE
+//CD[YEAR<1990]
+//CD[COUNTRY="UK"]/TITLE|//CD[COUNTRY="UK"]/PRICE
+//CD[YEAR<//CD[ARTIST="Dolly Parton"]/YEAR]/ARTIST
+//CD[ARTIST="Dolly Parton"]/preceding::ARTIST
+//CD[TITLE>//CD[ARTIST="Private Dancer"]/YEAR]/TITLE
+//CD[TITLE="Private Dancer"]/following::TITLE

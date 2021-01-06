@@ -17,7 +17,7 @@ public class DateLabel extends JFrame implements Runnable {
     Date date;
 
     void DynamicSetBounds(JLabel l) {
-        var f = m_dateLabel.getFont();
+        var f = l.getFont();
         var metrics = this.getFontMetrics(f);
         int h = metrics.getHeight();
         int w = metrics.stringWidth(l.getText()) + 2;

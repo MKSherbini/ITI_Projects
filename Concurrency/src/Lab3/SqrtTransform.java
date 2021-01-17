@@ -16,10 +16,10 @@ class SqrtTransform extends RecursiveAction {
     public static void main(String[] args) {
         System.out.println("par " + new ForkJoinPool().getParallelism());
         mark();
-        UsingFJP();
+        UsingDirect();
         System.out.println("Time " + mark());
         mark();
-        UsingDirect();
+        UsingFJP();
         System.out.println("Time " + mark());
     }
 

@@ -47,7 +47,7 @@ cmake-build-*/
 *.iws
 
 # IntelliJ
-out/
+**/out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -100,3 +100,4 @@ hs_err_pid*
 
 # Mine
 MEM
+**/target/*

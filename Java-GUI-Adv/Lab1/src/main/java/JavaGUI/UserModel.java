@@ -2,15 +2,15 @@ package JavaGUI;
 
 import javafx.scene.image.Image;
 
-public class User {
+public class UserModel {
     public Image img;
     public String name;
 
-    public User(String name) {
+    public UserModel(String name) {
         this.name = name;
     }
 
-    public User(String name, Image img) {
+    public UserModel(String name, Image img) {
         this.img = img;
         this.name = name;
     }

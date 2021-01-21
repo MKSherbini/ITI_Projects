@@ -1,0 +1,13 @@
+.label {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+    -fx-font-size: 30;
+}
+
+.rect {
+    -fx-background-color: linear-gradient(black, white, black);
+    /*-fx-border-color: #1081D7;*/
+    /*-fx-border-width:  5px;*/
+    /*-fx-border-style: solid;*/
+    /*-fx-effect: dropshadow(one-pass-box , black , 4,1,6,2);*/
+}

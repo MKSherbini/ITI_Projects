@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="430.0" style="-fx-background-color: linear-gradient( white, yellow);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaGUI.PrimaryController">
+   <children>
+      <Label layoutX="50.0" layoutY="53.0" prefHeight="51.0" prefWidth="165.0" text="JETS Chat Room" textFill="#b52813">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_UserName" layoutX="31.0" layoutY="127.0" prefHeight="25.0" prefWidth="195.0" />
+      <Button layoutX="77.0" layoutY="198.0" mnemonicParsing="false" onAction="#onClickYalla" style="-fx-background-color: #937232;" text="Yalla !!" textFill="WHITE" />
+      <Button layoutX="321.0" layoutY="147.0" mnemonicParsing="false" onAction="#onClickChoosePic" style="-fx-background-color: #937232;" text="Choose Pic" textFill="WHITE" />
+      <ImageView fx:id="img_Image" blendMode="MULTIPLY" fitHeight="115.0" fitWidth="98.0" layoutX="309.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@default.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

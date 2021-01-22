@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="470.0" style="-fx-background-color: #009999;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lab2.PrimaryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" style="-fx-background-color: #009999;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lab2.PrimaryController">
    <left>
-      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="296.0" prefWidth="286.0" BorderPane.alignment="CENTER">
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="359.0" prefWidth="265.0" BorderPane.alignment="CENTER">
          <content>
             <TreeView fx:id="treeView" prefHeight="305.0" prefWidth="230.0" />
          </content>
@@ -29,7 +31,16 @@
       </ListView>
    </center>
    <top>
-      <BorderPane prefHeight="63.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="78.0" prefWidth="519.0" BorderPane.alignment="CENTER">
+         <right>
+            <FontIcon fx:id="browseFileIcon" iconLiteral="mdi2f-folder-open" iconSize="31" onDragDetected="#onClickBrowse" onMouseClicked="#onClickBrowse" BorderPane.alignment="CENTER" />
+         </right>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
          <left>
             <Label text="File Browsing" BorderPane.alignment="CENTER">
                <font>
@@ -37,22 +48,29 @@
                </font>
             </Label>
          </left>
-         <right>
-            <FontIcon fx:id="browseFileIcon" iconLiteral="mdi2f-folder-open" iconSize="31" onDragDetected="#onClickBrowse" onMouseClicked="#onClickBrowse" BorderPane.alignment="CENTER" />
-         </right>
          <center>
             <TextField fx:id="directoryText" onKeyPressed="#onClickEnterBrowse" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets bottom="10.0" left="10.0" top="10.0" />
+                  <Insets left="10.0" />
                </BorderPane.margin>
             </TextField>
          </center>
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
+         <bottom>
+            <HBox prefHeight="0.0" prefWidth="430.0" spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Depth Limit">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="depthLimitCombo" onAction="#onClickDepthCombo" prefWidth="150.0" promptText="Unlimited">
+                     <HBox.margin>
+                        <Insets left="14.0" />
+                     </HBox.margin></ComboBox>
+                  <TextField fx:id="depthLimitText" onKeyPressed="#onClickEnterBrowse" prefHeight="26.0" prefWidth="115.0" visible="false" />
+               </children>
+            </HBox>
+         </bottom>
       </BorderPane>
    </top>
 </BorderPane>

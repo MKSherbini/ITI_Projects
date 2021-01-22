@@ -1,7 +1,10 @@
 package Lab2;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.apache.commons.io.FilenameUtils;
 
@@ -16,7 +19,8 @@ public class BrowserItemModel {
 
     public String m_name;
     public TYPE m_type;
-    public File m_parent;
+    public File m_parent; // is self if root
+    boolean m_isRoot;
 
     /**
      * @param m_parent file parent
@@ -26,6 +30,34 @@ public class BrowserItemModel {
         this.m_name = m_name;
         this.m_parent = m_parent;
 
+        setExtensionDynamic(m_name);
+    }
+
+    public BrowserItemModel(File dirFile) {
+        this.m_parent = dirFile.getParentFile();
+
+        if (m_parent == null) {
+            m_isRoot = true;
+            try {
+                this.m_name = Files.getFileStore(Paths.get(dirFile.toURI())).name();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            m_parent = dirFile;
+        } else {
+            this.m_name = dirFile.getName();
+        }
+
+        setExtensionDynamic(m_name);
+    }
+
+    public File getFileDir() {
+        if (!m_isRoot)
+            return new File(FilenameUtils.concat(m_parent.getAbsolutePath(), m_name));
+        return m_parent;
+    }
+
+    private void setExtensionDynamic(String m_name) {
         var file = getFileDir();
         System.out.println(m_name + " is a file?: " + file.isFile());
         if (file.isFile()) { // File
@@ -40,21 +72,9 @@ public class BrowserItemModel {
                     this.m_type = TYPE.VIDEO;
                 }
             }
-
         } else {
             this.m_type = TYPE.DIRECTORY;
         }
-
-    }
-
-    public File getFileDir() {
-        return new File(FilenameUtils.concat(m_parent.getAbsolutePath(), m_name));
-    }
-
-    public BrowserItemModel(File m_name) {
-        this.m_name = m_name.getName();
-        this.m_type = TYPE.DIRECTORY;
-        this.m_parent = m_name.getParentFile();
     }
 
     public String getIconCode() {
@@ -74,4 +94,12 @@ public class BrowserItemModel {
         }
     }
 
+    @Override
+    public String toString() {
+        return "BrowserItemModel{" +
+                "m_name='" + m_name + '\'' +
+                ", m_type=" + m_type +
+                ", m_parent=" + m_parent +
+                '}';
+    }
 }

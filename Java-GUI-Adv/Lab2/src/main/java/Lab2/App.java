@@ -23,6 +23,10 @@ public class App extends Application {
         scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
         stage.show();
+        stage.setMinWidth(stage.getWidth()); // 612 - 502
+        stage.setMinHeight(stage.getHeight()); // 589 - 477
+        stage.setHeight(600);
+        stage.setWidth(600);
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -34,15 +38,16 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static TreeItem<BrowserItemModel> genBrowserTree(File dir) {
-        if (!dir.exists()) return null;
+    public static TreeItem<BrowserItemModel> genBrowserTree(File dir, int depthLimit) {
+        if (dir.list() == null || depthLimit == 0) return new TreeItem<>(new BrowserItemModel(dir));
 
         var tree = new TreeItem<>(new BrowserItemModel(dir));
+
 
         for (String s : dir.list()) {
             var item = new BrowserItemModel(dir, s);
             if (item.m_type == BrowserItemModel.TYPE.DIRECTORY) {
-                tree.getChildren().add(genBrowserTree(item.getFileDir()));
+                tree.getChildren().add(genBrowserTree(item.getFileDir(), depthLimit - 1));
             } else {
                 tree.getChildren().add(new TreeItem<>(item));
             }

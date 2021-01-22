@@ -1,1 +1,1 @@
-mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml -DarchetypeVersion=0.0.5 -DgroupId=JavaGUI -DartifactId=Lab1 -Dversion=1.0.0
+mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml -DarchetypeVersion=0.0.5 -DgroupId=Lab2 -DartifactId=Lab2 -Dversion=1.0.0

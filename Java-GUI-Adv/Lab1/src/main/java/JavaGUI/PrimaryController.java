@@ -22,7 +22,8 @@ public class PrimaryController {
     private ImageView img_Image;
 
     public void onClickYalla(ActionEvent actionEvent) throws IOException {
-        App.switchToSecondary(new UserModel(txt_UserName.getText(), img_Image.getImage()));
+        if (txt_UserName.getText().length() > 0)
+            App.switchToSecondary(new UserModel(txt_UserName.getText(), img_Image.getImage()));
     }
 
     public void onClickChoosePic(ActionEvent actionEvent) {

@@ -73,8 +73,8 @@ public class App extends Application {
 
         setRoot(item);
         setResizable(true);
-//        mStage.setMinHeight(400);
-//        mStage.setMinWidth(400);
+        mStage.setMinHeight(400);
+        mStage.setMinWidth(400);
     }
 
     static void addMessage(Pane chatArea, MessageModel message) throws IOException {

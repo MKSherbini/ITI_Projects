@@ -9,16 +9,22 @@ import java.nio.file.Paths;
 import org.apache.commons.io.FilenameUtils;
 
 public class BrowserItemModel {
+    public boolean isFile() {
+        return m_type != TYPE.DIRECTORY;
+    }
+
     enum TYPE {
         FILE,
         IMAGE,
         MUSIC,
         VIDEO,
         DIRECTORY,
+        APP,
     }
 
     public String m_name;
     public TYPE m_type;
+    public File m_file;
     public File m_parent; // is self if root
     boolean m_isRoot;
 
@@ -29,6 +35,7 @@ public class BrowserItemModel {
     public BrowserItemModel(File m_parent, String m_name) {
         this.m_name = m_name;
         this.m_parent = m_parent;
+        this.m_file = getFileDir();
 
         setExtensionDynamic(m_name);
     }
@@ -36,18 +43,19 @@ public class BrowserItemModel {
     public BrowserItemModel(File dirFile) {
         this.m_parent = dirFile.getParentFile();
 
-        if (m_parent == null) {
-            m_isRoot = true;
+        if (this.m_parent == null) {
+            this.m_isRoot = true;
             try {
                 this.m_name = Files.getFileStore(Paths.get(dirFile.toURI())).name();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            m_parent = dirFile;
+            this.m_parent = dirFile;
+            this.m_file = dirFile;
         } else {
             this.m_name = dirFile.getName();
+            this.m_file = getFileDir();
         }
-
         setExtensionDynamic(m_name);
     }
 
@@ -63,19 +71,23 @@ public class BrowserItemModel {
         if (file.isFile()) { // File
             this.m_type = TYPE.FILE;
             String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+            System.out.println(m_name + " " + mimeType);
             if (mimeType != null) {
                 if (mimeType.startsWith("image")) {
                     this.m_type = TYPE.IMAGE;
-                } else if (mimeType.startsWith("music")) {
+                } else if (mimeType.startsWith("audio")) {
                     this.m_type = TYPE.MUSIC;
                 } else if (mimeType.startsWith("video")) {
                     this.m_type = TYPE.VIDEO;
+                } else if (mimeType.startsWith("application")) {
+                    this.m_type = TYPE.APP;
                 }
             }
         } else {
             this.m_type = TYPE.DIRECTORY;
         }
     }
+
 
     public String getIconCode() {
         switch (m_type) {
@@ -85,6 +97,8 @@ public class BrowserItemModel {
                 return "mdi2f-file-image";
             case MUSIC:
                 return "mdi2f-file-music";
+            case APP:
+                return "mdi2a-application";
             case VIDEO:
                 return "mdi2f-file-video";
             case DIRECTORY:
@@ -94,12 +108,16 @@ public class BrowserItemModel {
         }
     }
 
+//    @Override
+//    public String toString() {
+//        return "BrowserItemModel{" +
+//                "m_name='" + m_name + '\'' +
+//                ", m_type=" + m_type +
+//                ", m_parent=" + m_parent +
+//                '}';
+//    }
     @Override
-    public String toString() {
-        return "BrowserItemModel{" +
-                "m_name='" + m_name + '\'' +
-                ", m_type=" + m_type +
-                ", m_parent=" + m_parent +
-                '}';
+    public String toString() { // todo fix this shit
+        return "";
     }
 }

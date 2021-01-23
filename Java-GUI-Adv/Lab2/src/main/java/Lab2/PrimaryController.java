@@ -1,5 +1,7 @@
 package Lab2;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -23,7 +25,15 @@ public class PrimaryController implements Initializable {
             "Unlimited Depth",
             "Custom Limit",
     };
-    int m_selectedDepth;
+    DepthMode m_depthMode;
+
+    enum DepthMode {
+        DYNAMIC,
+        UNLIMITED,
+        CUSTOM,
+        PREDEFINED,
+    }
+
 //    Map<String, Integer> m_depthLevels = new HashMap<>();
 //
 //    {
@@ -60,7 +70,8 @@ public class PrimaryController implements Initializable {
             return;
         }
 
-        var tree = App.genBrowserTree(dir, getDepthLevel());
+//        var tree = App.genBrowserTree(dir, getDepthLevel());
+        var tree = createNodeClass(new BrowserItemModel(dir));
         treeView.setRoot(tree);
     }
 
@@ -80,34 +91,55 @@ public class PrimaryController implements Initializable {
             loadTree(new File(directoryText.getText()));
     }
 
-    void setDepthLevel(String level) {
-        depthLimitText.setVisible(false);
+    void setDepthMode(String level) {
         try {
-            m_selectedDepth = Integer.parseInt(level);
+            Integer.parseInt(level);
+            m_depthMode = DepthMode.PREDEFINED;
         } catch (NumberFormatException e) {
-            if (level == "Unlimited Depth") {
-                m_selectedDepth = -1;
-            } else {
-                depthLimitText.setVisible(true);
-            } //todo add dynamic
+            if (level.equals("Unlimited Depth")) {
+                m_depthMode = DepthMode.UNLIMITED;
+            } else if (level.equals("Dynamic")) {
+                m_depthMode = DepthMode.DYNAMIC;
+            } else if (level.equals("Custom Limit")) {
+                m_depthMode = DepthMode.CUSTOM;
+            }
         }
 
-        System.out.println(level + " : " + m_selectedDepth);
+        if (m_depthMode == DepthMode.CUSTOM) {
+            depthLimitText.setVisible(true);
+        } else {
+            depthLimitText.setVisible(false);
+        }
+
+//        System.out.println(level + " : " + m_selectedDepth);
     }
 
     int getDepthLevel() {
-        if (depthLimitText.isVisible()) {
-            try {
-                m_selectedDepth = Integer.parseInt(depthLimitText.getText());
-                if (m_selectedDepth < 0) {
+        var m_selectedDepth = 0;
+
+        switch (m_depthMode) {
+            case CUSTOM:
+                try {
+                    m_selectedDepth = Integer.parseInt(depthLimitText.getText());
+                    if (m_selectedDepth < 0) {
+                        showErrorTrust();
+                        m_selectedDepth = 0;
+                    }
+                } catch (NumberFormatException e) {
                     showErrorTrust();
-                    m_selectedDepth = 0;
                 }
-            } catch (NumberFormatException e) {
-                showErrorTrust();
-                m_selectedDepth = 0;
-            }
+                break;
+            case PREDEFINED:
+                m_selectedDepth = Integer.parseInt(depthLimitCombo.getSelectionModel().getSelectedItem());
+                break;
+            case UNLIMITED:
+                m_selectedDepth = -1;
+                break;
+            case DYNAMIC:
+                m_selectedDepth = 2;
+                break;
         }
+
         return m_selectedDepth;
     }
 
@@ -136,23 +168,23 @@ public class PrimaryController implements Initializable {
             }
         });
 
-        treeView.setCellFactory(param -> new TreeCell<>() {
-            @Override
-            protected void updateItem(BrowserItemModel model, boolean empty) {
-                super.updateItem(model, empty);
-                if (model == null || empty) {
-                    setGraphic(null);
-                } else {
-                    BrowserItemView itemView = new BrowserItemView(model);
-                    itemView.setOnMouseClicked(mouseEvent -> {
-                                directoryText.setText(model.getFileDir().getAbsolutePath());
-                                showOnListView(model.getFileDir());
-                            }
-                    );
-                    setGraphic(itemView);
-                }
-            }
-        });
+//        treeView.setCellFactory(param -> new TreeCell<>() {
+//            @Override
+//            protected void updateItem(BrowserItemModel model, boolean empty) {
+//                super.updateItem(model, empty);
+//                if (model == null || empty) {
+//                    setGraphic(null);
+//                } else {
+//                    BrowserItemView itemView = new BrowserItemView(model);
+//                    itemView.setOnMouseClicked(mouseEvent -> {
+//                                directoryText.setText(model.getFileDir().getAbsolutePath());
+//                                showOnListView(model.getFileDir());
+//                            }
+//                    );
+//                    setGraphic(itemView);
+//                }
+//            }
+//        });
 
 //        depthLimitCombo.setCellFactory(param -> new ListCell<>() {
 //            @Override
@@ -174,7 +206,7 @@ public class PrimaryController implements Initializable {
         depthLimitCombo.getSelectionModel().select(0);
 
 
-        setDepthLevel(depthLimitCombo.getSelectionModel().getSelectedItem());
+        setDepthMode(depthLimitCombo.getSelectionModel().getSelectedItem());
 
 //        var ftest = new File("D:\\");
 //        var test = new BrowserItemModel(ftest);
@@ -203,7 +235,79 @@ public class PrimaryController implements Initializable {
 
 
     public void onClickDepthCombo(ActionEvent actionEvent) {
-        setDepthLevel(depthLimitCombo.getSelectionModel().getSelectedItem());
+        setDepthMode(depthLimitCombo.getSelectionModel().getSelectedItem());
+    }
 
+
+    FileTreeItem createNodeClass(BrowserItemModel f) {
+        return new FileTreeItem(f, (model) -> {
+            directoryText.setText(model.getFileDir().getAbsolutePath());
+            showOnListView(model.getFileDir());
+        });
+    }
+
+    // This method creates a TreeItem to represent the given File. It does this
+    // by overriding the TreeItem.getChildren() and TreeItem.isLeaf() methods
+    // anonymously, but this could be better abstracted by creating a
+    // 'FileTreeItem' subclass of TreeItem. However, this is left as an exercise
+    // for the reader.
+    private TreeItem<BrowserItemModel> createNode(final BrowserItemModel f) {
+        return new TreeItem<BrowserItemModel>(f) {
+            // We cache whether the File is a leaf or not. A File is a leaf if
+            // it is not a directory and does not have any files contained within
+            // it. We cache this as isLeaf() is called often, and doing the
+            // actual check on File is expensive.
+            private boolean isLeaf;
+
+            // We do the children and leaf testing only once, and then set these
+            // booleans to false so that we do not check again during this
+            // run. A more complete implementation may need to handle more
+            // dynamic file system situations (such as where a folder has files
+            // added after the TreeView is shown). Again, this is left as an
+            // exercise for the reader.
+            private boolean isFirstTimeChildren = true;
+            private boolean isFirstTimeLeaf = true;
+
+            @Override
+            public ObservableList<TreeItem<BrowserItemModel>> getChildren() {
+                if (isFirstTimeChildren) {
+                    isFirstTimeChildren = false;
+
+                    // First getChildren() call, so we actually go off and
+                    // determine the children of the File contained in this TreeItem.
+                    super.getChildren().setAll(buildChildren(this));
+                }
+                return super.getChildren();
+            }
+
+            @Override
+            public boolean isLeaf() {
+                if (isFirstTimeLeaf) {
+                    isFirstTimeLeaf = false;
+                    BrowserItemModel f = (BrowserItemModel) getValue();
+                    isLeaf = f.isFile();
+                }
+
+                return isLeaf;
+            }
+
+            private ObservableList<TreeItem<BrowserItemModel>> buildChildren(TreeItem<BrowserItemModel> TreeItem) {
+                BrowserItemModel f = TreeItem.getValue();
+                if (f != null && f.m_file.isDirectory()) {
+                    File[] files = f.m_file.listFiles();
+                    if (files != null) {
+                        ObservableList<TreeItem<BrowserItemModel>> children = FXCollections.observableArrayList();
+
+                        for (File childFile : files) {
+                            children.add(createNode(new BrowserItemModel(childFile)));
+                        }
+
+                        return children;
+                    }
+                }
+
+                return FXCollections.emptyObservableList();
+            }
+        };
     }
 }

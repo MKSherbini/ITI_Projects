@@ -39,12 +39,12 @@ public class App extends Application {
     }
 
     public static TreeItem<BrowserItemModel> genBrowserTree(File dir, int depthLimit) {
-        if (dir.list() == null || depthLimit == 0) return new TreeItem<>(new BrowserItemModel(dir));
+        var dirList = dir.list();
+        if (dirList == null || depthLimit == 0) return new TreeItem<>(new BrowserItemModel(dir));
 
         var tree = new TreeItem<>(new BrowserItemModel(dir));
 
-
-        for (String s : dir.list()) {
+        for (String s : dirList) {
             var item = new BrowserItemModel(dir, s);
             if (item.m_type == BrowserItemModel.TYPE.DIRECTORY) {
                 tree.getChildren().add(genBrowserTree(item.getFileDir(), depthLimit - 1));

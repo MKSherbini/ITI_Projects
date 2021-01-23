@@ -27,5 +27,33 @@
     /*-fx-background-insets: 0, 1;*/
     -fx-padding: 50;
 }
+.custom-text-field {
+    -fx-background-color:
+            #FFFFFF,
+            #FFFFFF;
+    -fx-background-insets: 0, 2;
+    -fx-prompt-text-fill: #B5651D;
+    -fx-border-radius: 10;
+    -fx-text-fill: #A52A2A;
+}
+
+.custom-text-field:focused {
+    -fx-background-color:
+            #B5651D,
+            #FFFFFF;
+    -fx-prompt-text-fill: white;
+}
+
+.custom-text-field:hover {
+    -fx-background-color:
+            #909090,
+            #FFFFFF;
+}
+
+.custom-text-field:focused:hover {
+    -fx-background-color:
+            #B5651D,
+            #FFFFFF;
+}
 
 

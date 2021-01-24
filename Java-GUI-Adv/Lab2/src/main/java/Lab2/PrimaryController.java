@@ -168,6 +168,7 @@ public class PrimaryController implements Initializable {
             }
         });
 
+
 //        treeView.setCellFactory(param -> new TreeCell<>() {
 //            @Override
 //            protected void updateItem(BrowserItemModel model, boolean empty) {
@@ -175,13 +176,15 @@ public class PrimaryController implements Initializable {
 //                if (model == null || empty) {
 //                    setGraphic(null);
 //                } else {
-//                    BrowserItemView itemView = new BrowserItemView(model);
-//                    itemView.setOnMouseClicked(mouseEvent -> {
-//                                directoryText.setText(model.getFileDir().getAbsolutePath());
-//                                showOnListView(model.getFileDir());
-//                            }
-//                    );
-//                    setGraphic(itemView);
+//                    setGraphic(getGraphic());
+//                    setText("");
+////                    BrowserItemView itemView = new BrowserItemView(model);
+////                    itemView.setOnMouseClicked(mouseEvent -> {
+////                                directoryText.setText(model.getFileDir().getAbsolutePath());
+////                                showOnListView(model.getFileDir());
+////                            }
+////                    );
+////                    setGraphic(itemView);
 //                }
 //            }
 //        });

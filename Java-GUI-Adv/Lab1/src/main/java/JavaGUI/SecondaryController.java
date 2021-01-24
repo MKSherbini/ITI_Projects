@@ -24,7 +24,7 @@ public class SecondaryController implements Initializable {
 
 
     public void onInputConfirm(KeyEvent keyEvent) throws IOException {
-        if (keyEvent.getCode() == KeyCode.ENTER) {
+        if (keyEvent.getCode() == KeyCode.ENTER && tf_Input.getText().length() > 0) {
             App.addMessage(pane_ChatArea, new MessageModel(userModel, tf_Input.getText()));
             tf_Input.clear();
         }

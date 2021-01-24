@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.SVGPath?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="94.0" prefWidth="503.0" styleClass="background-image" stylesheets="@Skull.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lab3.PrimaryController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="269.0" fitWidth="684.0" pickOnBounds="true" visible="false">
+         <image>
+            <Image url="@background.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="36.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="40.0" />
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+         <center>
+            <SVGPath fx:id="svgPath" content="M380.52.5h152s66,6,86.67,85.33-78,114.67-78,114.67H380.52L238.52.5h-154S-.82,19.17.52,97.5s71.33,103.67,79.33,103,157.33,0,157.33,0Z" fill="TRANSPARENT" opacity="0.56" stroke="#5a98bc" strokeWidth="50.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

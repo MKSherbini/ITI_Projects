@@ -3,6 +3,8 @@ package Lab2;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -70,8 +72,8 @@ public class PrimaryController implements Initializable {
             return;
         }
 
-//        var tree = App.genBrowserTree(dir, getDepthLevel());
-        var tree = createNodeClass(new BrowserItemModel(dir));
+        var tree = App.genBrowserTree(dir, getDepthLevel());
+//        var tree = createNodeClass(new BrowserItemModel(dir));
         treeView.setRoot(tree);
     }
 
@@ -169,25 +171,68 @@ public class PrimaryController implements Initializable {
         });
 
 
-//        treeView.setCellFactory(param -> new TreeCell<>() {
-//            @Override
-//            protected void updateItem(BrowserItemModel model, boolean empty) {
-//                super.updateItem(model, empty);
-//                if (model == null || empty) {
-//                    setGraphic(null);
-//                } else {
+        treeView.setCellFactory(param -> new TreeCell<>() {
+            BrowserItemView itemView;
+
+            @Override
+            protected void updateItem(BrowserItemModel model, boolean empty) { // todo fix this shit
+                super.updateItem(model, empty);
+                if (model == null || empty) {
+                    setGraphic(null);
+                } else {
+                    itemView = new BrowserItemView(model); // what about the cellfactory?
+                    setGraphic(itemView);
+
+                    this.addEventHandler(TreeItem.branchExpandedEvent(), new EventHandler() {
+
+                        @Override
+                        public void handle(Event e) {
+                            System.out.println("branchExpandedEvent");
+
+                            FileTreeItem source = (FileTreeItem) e.getSource();
+                            if (!source.isLeaf() && source.isExpanded() && itemView == source.itemView) { // for open close folder
+                                itemView.setFolderIconOpen();
+                                setGraphic(itemView);
+                                System.out.println("Open folder icon");
+                            }
+
+                            if (source.getChildren().isEmpty()) {
+                                if (model.m_file.isDirectory()) {
+                                    File[] files = model.m_file.listFiles();
+                                    if (files != null) {
+                                        for (File childFile : files) {
+                                            source.getChildren().add(new TreeItem<>(new BrowserItemModel(childFile)));
+                                        }
+                                    }
+                                }
+                            } else {
+                                //if you want to implement rescanning a directory for changes this would be the place to do it
+                            }
+                        }
+                    });
+                    this.addEventHandler(TreeItem.branchCollapsedEvent(), new EventHandler() {
+                        @Override
+                        public void handle(Event e) {
+                            FileTreeItem source = (FileTreeItem) e.getSource(); // close folder here
+                            if (!source.isLeaf() && !source.isExpanded() && itemView == source.itemView) { // why dafuq should I check this
+                                itemView.setFolderIconClose();
+                                System.out.println("Close folder icon");
+                                setGraphic(itemView);
+                            }
+                        }
+                    });
 //                    setGraphic(getGraphic());
-//                    setText("");
-////                    BrowserItemView itemView = new BrowserItemView(model);
-////                    itemView.setOnMouseClicked(mouseEvent -> {
-////                                directoryText.setText(model.getFileDir().getAbsolutePath());
-////                                showOnListView(model.getFileDir());
-////                            }
-////                    );
-////                    setGraphic(itemView);
-//                }
-//            }
-//        });
+//                    setText(model.m_name);
+//                    BrowserItemView itemView = new BrowserItemView(model);
+//                    itemView.setOnMouseClicked(mouseEvent -> {
+//                                directoryText.setText(model.getFileDir().getAbsolutePath());
+//                                showOnListView(model.getFileDir());
+//                            }
+//                    );
+//                    setGraphic(itemView);
+                }
+            }
+        });
 
 //        depthLimitCombo.setCellFactory(param -> new ListCell<>() {
 //            @Override

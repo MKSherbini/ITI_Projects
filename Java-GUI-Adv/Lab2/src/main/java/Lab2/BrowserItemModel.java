@@ -108,16 +108,16 @@ public class BrowserItemModel {
         }
     }
 
-//    @Override
-//    public String toString() {
-//        return "BrowserItemModel{" +
-//                "m_name='" + m_name + '\'' +
-//                ", m_type=" + m_type +
-//                ", m_parent=" + m_parent +
-//                '}';
-//    }
     @Override
-    public String toString() { // todo fix this shit
-        return "";
+    public String toString() {
+        return "BrowserItemModel{" +
+                "m_name='" + m_name + '\'' +
+                ", m_type=" + m_type +
+                ", m_parent=" + m_parent +
+                '}';
     }
+//    @Override
+//    public String toString() { // todo fix this shit
+//        return "";
+//    }
 }

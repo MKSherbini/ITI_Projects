@@ -1,1 +1,4 @@
-mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml -DarchetypeVersion=0.0.5 -DgroupId=GUIAdvJava -DartifactId=Lab3 -Dversion=1.0.0
+mvn archetype:create-from-project
+mvn install
+mvn archetype:generate -DinteractiveMode=false -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml -DarchetypeVersion=0.0.5 -DgroupId=GUIAdvJava -DartifactId=Labx -Dversion=1.0.0
+mvn archetype:generate -DinteractiveMode=false -DarchetypeGroupId=eg.gov.iti.jets -DarchetypeArtifactId=MVC-Demo-archetype -DgroupId=GUIAdvJava -DartifactId=Laby -Dversion=1.0.0

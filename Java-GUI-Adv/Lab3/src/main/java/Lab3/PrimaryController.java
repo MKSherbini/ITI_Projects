@@ -3,14 +3,14 @@ package Lab3;
 import java.io.File;
 import java.io.SyncFailedException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.TimerTask;
+import java.util.*;
 
 import javafx.animation.Interpolator;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -129,7 +129,10 @@ public class PrimaryController implements Initializable {
 
     //    List<PathTransition> pts = new ArrayList<>();
     List<Node> racers = new ArrayList<>();
+    List<Long> racersCol = new ArrayList<>();
+    Long colThreshold = 1000L;
     PathTransition badPT;
+    List<SimpleDoubleProperty> binds = new ArrayList<>();
 
     private void doSMT(Node target, double duration, int rate) {
         PathTransition pt = new PathTransition();
@@ -143,8 +146,13 @@ public class PrimaryController implements Initializable {
         pt.setRate(rate);
         pt.play();
 
-        target.layoutXProperty().bindBidirectional(svgPath.layoutXProperty());
-        target.layoutYProperty().bindBidirectional(svgPath.layoutYProperty());
+//        target.layoutXProperty().bindBidirectional(svgPath.layoutXProperty());
+//        target.layoutYProperty().bindBidirectional(svgPath.layoutYProperty());
+//        svgPath.layoutXProperty().bind(target.layoutXProperty());
+//        target.layoutYProperty().bind(svgPath.layoutYProperty());
+
+        bindIndirect(target.layoutXProperty(), svgPath.layoutXProperty());
+        bindIndirect(target.layoutYProperty(), svgPath.layoutYProperty());
 
         Runnable reverse = () -> {
             target.setScaleX(-1 * target.getScaleX());
@@ -155,22 +163,49 @@ public class PrimaryController implements Initializable {
             reverse.run();
         });
 
-//        Runnable eventReg = () -> {
-//            target.boundsInParentProperty().addListener(((observableValue, bounds, boundsNew) -> {
+        Runnable eventReg = () -> {
+            target.translateXProperty().addListener(((observableValue, oldX, newX) -> {
+                System.out.println("BoundsListener");
+                int i = 0;
+                var now = new Date().getTime();
+                for (Node racer : racers) {
+                    var b = target.getBoundsInParent();
+                    var b2 = racer.getBoundsInParent();
+                    if (b != b2 && b.intersects(b2) && (now - racersCol.get(i) > colThreshold)) {
+                        reverse.run();
+                        racersCol.set(i, new Date().getTime());
+                    }
+                    i++;
+                }
+            }));
+//            target.translateYProperty().addListener(((observableValue, oldX, newX) -> {
 //                System.out.println("BoundsListener");
 //                for (Node racer : racers) {
-//                    var b = racer.getBoundsInParent();
-//                    if (b != bounds && b != boundsNew && b.intersects(boundsNew)) {
+//                    var b = target.getBoundsInParent();
+//                    var b2 = racer.getBoundsInParent();
+//                    if (b != b2 && b.intersects(b2)) {
 //                        reverse.run();
 //                    }
-//
 //                }
 //            }));
-//        };
+        };
+        eventReg.run();
 //        DelayedRun(eventReg, 1000);
 
         racers.add(target);
+        racersCol.add(new Date().getTime());
         //        pts.add(pt);
+    }
+
+    private void bindIndirect(DoubleProperty updateTarget, DoubleProperty updatedBy) {
+        var temp = new SimpleDoubleProperty();
+        updateTarget.bindBidirectional(temp);
+        temp.bind(updatedBy);
+        binds.add(temp);
+    }
+
+    void bindIndirect() {
+
     }
 
     public void onRectClicked(MouseEvent mouseEvent) {

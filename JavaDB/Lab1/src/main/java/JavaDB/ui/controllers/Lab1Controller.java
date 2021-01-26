@@ -2,13 +2,11 @@ package JavaDB.ui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.*;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static JavaDB.Lab11.loadDSFile;
 
@@ -32,10 +30,13 @@ public class Lab1Controller implements Initializable {
     Connection con;
     Statement stmt;
     ResultSet rs;
+    Set<Integer> idsSet = new TreeSet<>();
+
     String emailRgx = "^[A-Za-z0-9._-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}$";
     String phoneRgx = "^^(\\+2)?\\d{11}$";
     private int maxNameLength = 10;
     private int minNameLength = 1;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,9 +55,24 @@ public class Lab1Controller implements Initializable {
     }
 
     void updateRS() throws SQLException {
+        int currIdxPos = -1;
+        int currIdxVal = -1;
+        if (rs != null && !rs.isClosed()) {
+            currIdxVal = rs.getInt(1);
+            rs.close();
+        }
+
         String queryString = new String("select * from employee");
         rs = stmt.executeQuery(queryString);
-        onClickFirst(null);
+        for (int i = 1; rs.next(); i++) {
+            if (rs.getInt(1) == currIdxVal)
+                currIdxPos = i;
+            idsSet.add(rs.getInt(1));
+        }
+        if (currIdxPos == -1)
+            onClickFirst(null);
+        else
+            rs.absolute(currIdxPos);
     }
 
     public void onClickNew(ActionEvent actionEvent) {
@@ -66,27 +82,20 @@ public class Lab1Controller implements Initializable {
                 return;
             }
             if (!validFields()) {
-                updateNewbtn(false);
+//                updateNewbtn(false);
+//                setTextFields();
                 return;
             }
-            var p =
-                    con.prepareStatement("insert  into employee (Phone_Number,Email,L_Name,M_Name,F_Name,ID) "
-                                    + "values (?,?,?,?,?,?)",
-                            ResultSet.TYPE_SCROLL_SENSITIVE,
-                            ResultSet.CONCUR_UPDATABLE);
-            p.setString(1, txt_phone.getText());
-            p.setString(2, txt_email.getText());
-            p.setString(3, txt_lname.getText());
-            p.setString(4, txt_mname.getText());
-            p.setString(5, txt_fname.getText());
-            p.setString(6, txt_id.getText());
-            p.executeUpdate();
-            updateRS();
+            rs.moveToInsertRow();
+            rsUpdateRowFromGui();
+            rs.insertRow();
+//            rs.moveToCurrentRow();
+//            rs.next(); // todo is this rly necessary
             updateNewbtn(false);
+            updateRS();
             enableDisableBtns();
         } catch (SQLException throwables) {
             displayErrorAlert(throwables);
-
         }
     }
 
@@ -118,11 +127,7 @@ public class Lab1Controller implements Initializable {
             if (!validFields()) {
                 return;
             }
-            rs.updateString("Phone_Number", txt_phone.getText());
-            rs.updateString("Email", txt_email.getText());
-            rs.updateString("L_Name", txt_lname.getText());
-            rs.updateString("M_Name", txt_mname.getText());
-            rs.updateString("F_Name", txt_fname.getText());
+            rsUpdateRowFromGui();
             rs.updateRow();
             enableDisableBtns();
         } catch (SQLException throwables) {
@@ -130,8 +135,18 @@ public class Lab1Controller implements Initializable {
         }
     }
 
+    void rsUpdateRowFromGui() throws SQLException {
+        rs.updateString("Phone_Number", txt_phone.getText());
+        rs.updateString("Email", txt_email.getText());
+        rs.updateString("L_Name", txt_lname.getText());
+        rs.updateString("M_Name", txt_mname.getText());
+        rs.updateString("F_Name", txt_fname.getText());
+        rs.updateString("ID", txt_id.getText());
+    }
+
     public void onClickDelete(ActionEvent actionEvent) {
         try {
+            idsSet.remove(rs.getInt(1));
             rs.deleteRow();
             setTextFields();
             enableDisableBtns();
@@ -183,8 +198,8 @@ public class Lab1Controller implements Initializable {
     }
 
     void enableDisableBtns() throws SQLException {
-        btn_next.setDisable(rs.isLast());
-        btn_prev.setDisable(rs.isFirst());
+        btn_next.setDisable(rs.isLast() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_prev.setDisable(rs.isFirst() || rs.isAfterLast() || rs.isBeforeFirst());
         btn_delete.setDisable(rs.isAfterLast() || rs.isBeforeFirst());
         btn_update.setDisable(rs.isAfterLast() || rs.isBeforeFirst());
     }
@@ -195,7 +210,6 @@ public class Lab1Controller implements Initializable {
         alert.setHeaderText("An error has occurred");
         alert.setContentText(e.getMessage());
         alert.show();
-        clearTextFields();
     }
 
     public void displayErrorAlert(String e) {
@@ -203,11 +217,41 @@ public class Lab1Controller implements Initializable {
         alert.setTitle("Error");
         alert.setHeaderText("An error has occurred");
         alert.setContentText(e);
-        alert.show();
-        clearTextFields();
+        alert.showAndWait();
     }
 
     boolean validFields() {
+        int id = -1;
+        boolean invalidIdString = false;
+        try {
+            id = Integer.parseInt(txt_id.getText());
+        } catch (NumberFormatException e) {
+            invalidIdString = true;
+        }
+        if (id <= 0 || invalidIdString)
+            displayErrorAlert("Invalid number for ID");
+
+        if (idsSet.contains(id)) {
+            invalidIdString = true;
+            displayErrorAlert("ID was used before, can't use it again");
+        }
+        if (invalidIdString) {
+            Dialog<ButtonType> d = new Dialog<>();
+            d.setTitle("Kind Programmer Choice");
+            d.setContentText("Invalid ID, use autoincrement instead?");
+            d.getDialogPane().getButtonTypes().add(ButtonType.YES);
+            d.getDialogPane().getButtonTypes().add(ButtonType.NO);
+            Optional<ButtonType> res = d.showAndWait();
+            if (res.isPresent()) {
+                if (res.get() == ButtonType.YES) {
+                    txt_id.setText(String.valueOf(idsSet.stream().max(Integer::compareTo).get() + 1));
+                } else if (res.get() == ButtonType.NO) {
+                    return false;
+                }
+            }
+        }
+
+
         int len = Math.max(txt_fname.getText().length(), txt_lname.getText().length());
         len = Math.max(len, txt_mname.getText().length());
         if (len > maxNameLength) {
@@ -245,6 +289,8 @@ public class Lab1Controller implements Initializable {
 
     private void setTextFields() {
         try {
+            if (rs.isBeforeFirst())
+                rs.first();
             txt_phone.setText(rs.getString("Phone_Number"));
             txt_email.setText(rs.getString("Email"));
             txt_lname.setText(rs.getString("L_Name"));
@@ -252,9 +298,7 @@ public class Lab1Controller implements Initializable {
             txt_fname.setText(rs.getString("F_Name"));
             txt_id.setText(rs.getString("ID"));
         } catch (SQLException throwables) {
-//            throwables.printStackTrace();
             displayErrorAlert(throwables);
-
         }
     }
 }

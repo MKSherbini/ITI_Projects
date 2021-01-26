@@ -130,7 +130,7 @@
                 <configuration>
                     <launcher>hellofx</launcher>
                     <jlinkImageName>hello</jlinkImageName>
-                    <mainClass>${project.groupId}.Main</mainClass>
+                    <mainClass>JavaDB/${project.groupId}.Main</mainClass>
                 </configuration>
             </plugin>
 

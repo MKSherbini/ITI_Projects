@@ -1,4 +1,4 @@
-module MVC.Demo {
+module JavaDB {
     requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;

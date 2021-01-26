@@ -70,8 +70,8 @@ public class Main extends Application {
 
 
 /*
-    gui te3gebo
-    deactivate btns
-    better msgs
-    validation
+      gui te3gebo
+    x deactivate btns
+    x better msgs
+    x validation
  */

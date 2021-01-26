@@ -4,122 +4,125 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaDB.ui.controllers.Lab1Controller">
+
+<AnchorPane prefHeight="331.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaDB.ui.controllers.Lab1Controller">
    <children>
-      <BorderPane>
-         <center>
-            <TextField fx:id="txt_id" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="100.0" />
-               </BorderPane.margin>
-            </TextField>
-         </center>
-         <left>
-            <Label text="ID" BorderPane.alignment="CENTER" />
-         </left>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
-      </BorderPane>
-      <BorderPane>
-         <center>
-            <TextField fx:id="txt_fname" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="57.0" />
-               </BorderPane.margin>
-            </TextField>
-         </center>
-         <left>
-            <Label text="First Name" BorderPane.alignment="CENTER_RIGHT" />
-         </left>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </BorderPane>
-      <BorderPane>
-         <center>
-            <TextField fx:id="txt_mname" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="43.0" />
-               </BorderPane.margin>
-            </TextField>
-         </center>
-         <left>
-            <Label text="Middle Name" BorderPane.alignment="CENTER_RIGHT" />
-         </left>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </BorderPane>
-      <BorderPane>
-         <center>
-            <TextField fx:id="txt_lname" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="57.0" />
-               </BorderPane.margin>
-            </TextField>
-         </center>
-         <left>
-            <Label text="Last Name" BorderPane.alignment="CENTER_RIGHT" />
-         </left>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </BorderPane>
-      <BorderPane>
-         <center>
-            <TextField fx:id="txt_email" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="83.0" />
-               </BorderPane.margin>
-            </TextField>
-         </center>
-         <left>
-            <Label text="Email" BorderPane.alignment="CENTER_RIGHT" />
-         </left>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </BorderPane>
-      <BorderPane>
-         <center>
-            <TextField fx:id="txt_phone" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="76.0" />
-               </BorderPane.margin>
-            </TextField>
-         </center>
-         <left>
-            <Label text="Phone" BorderPane.alignment="CENTER_RIGHT" />
-         </left>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </BorderPane>
-      <BorderPane>
-         <center>
-            <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="btn_new" mnemonicParsing="false" onAction="#onClickNew" text="New" />
-                  <Button fx:id="btn_update" mnemonicParsing="false" onAction="#onClickUpdate" text="Update" />
-                  <Button fx:id="btn_delete" mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
-                  <Button fx:id="btn_first" mnemonicParsing="false" onAction="#onClickFirst" text="First" />
-                  <Button fx:id="btn_prev" mnemonicParsing="false" onAction="#onClickPrev" text="Prev" />
-                  <Button fx:id="btn_next" mnemonicParsing="false" onAction="#onClickNext" text="Next" />
-                  <Button fx:id="btn_last" mnemonicParsing="false" onAction="#onClickLast" text="Last" />
-               </children>
-               <BorderPane.margin>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane>
+               <center>
+                  <TextField fx:id="txt_id" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="100.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <left>
+                  <Label text="ID" BorderPane.alignment="CENTER" />
+               </left>
+               <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </BorderPane.margin>
-            </HBox>
-         </center>
-      </BorderPane>
+               </padding>
+            </BorderPane>
+            <BorderPane>
+               <center>
+                  <TextField fx:id="txt_fname" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="57.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <left>
+                  <Label text="First Name" BorderPane.alignment="CENTER_RIGHT" />
+               </left>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane>
+               <center>
+                  <TextField fx:id="txt_mname" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="43.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <left>
+                  <Label text="Middle Name" BorderPane.alignment="CENTER_RIGHT" />
+               </left>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane>
+               <center>
+                  <TextField fx:id="txt_lname" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="57.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <left>
+                  <Label text="Last Name" BorderPane.alignment="CENTER_RIGHT" />
+               </left>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane>
+               <center>
+                  <TextField fx:id="txt_email" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="83.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <left>
+                  <Label text="Email" BorderPane.alignment="CENTER_RIGHT" />
+               </left>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane>
+               <center>
+                  <TextField fx:id="txt_phone" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="76.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <left>
+                  <Label text="Phone" BorderPane.alignment="CENTER_RIGHT" />
+               </left>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane prefWidth="386.0">
+               <center>
+                  <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="btn_new" mnemonicParsing="false" onAction="#onClickNew" text="New" />
+                        <Button fx:id="btn_update" mnemonicParsing="false" onAction="#onClickUpdate" text="Update" />
+                        <Button fx:id="btn_delete" mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
+                        <Button fx:id="btn_first" mnemonicParsing="false" onAction="#onClickFirst" text="First" />
+                        <Button fx:id="btn_prev" mnemonicParsing="false" onAction="#onClickPrev" text="Prev" />
+                        <Button fx:id="btn_next" mnemonicParsing="false" onAction="#onClickNext" text="Next" />
+                        <Button fx:id="btn_last" mnemonicParsing="false" onAction="#onClickLast" text="Last" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </BorderPane.margin>
+                  </HBox>
+               </center>
+            </BorderPane>
+         </children>
+      </VBox>
    </children>
-</VBox>
+</AnchorPane>

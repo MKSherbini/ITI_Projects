@@ -1,0 +1,31 @@
+.button {
+    -fx-background-color: #05122A;
+    -fx-background-radius: 1em;
+    -fx-text-fill: white;
+}
+
+.back-ground {
+    /*-fx-background-color:  linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);*/
+    -fx-background-color: linear-gradient(to right top, #05122a, #061d37, #062844, #043351, #003f5e);
+    /*-fx-background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);*/
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-background-color: #05122A;
+}
+
+.text-field {
+    -fx-text-fill: white;
+    -fx-background-color: #05122A;
+}
+
+{
+    -fx-color-label-visible: #05122a;
+    -fx-color-label-visible: #003f5e;
+    -fx-color-label-visible: #007181;
+    -fx-color-label-visible: #00a488;
+    -fx-color-label-visible: #7ed37a;
+    -fx-color-label-visible: #f9f871;
+    -fx-color-label-visible: #4f8ff8;
+}

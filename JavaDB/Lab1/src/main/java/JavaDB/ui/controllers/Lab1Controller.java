@@ -301,4 +301,8 @@ public class Lab1Controller implements Initializable {
             displayErrorAlert(throwables);
         }
     }
+
+    public void tester(ActionEvent actionEvent) {
+        displayErrorAlert("omg");
+    }
 }

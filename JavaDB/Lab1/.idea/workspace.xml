@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bc1885c-3a2e-44a4-a9e2-21b31856f085" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jfoenix_jfoenix_9_0_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/views/test.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaDB/ui/controllers/Lab1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaDB/ui/controllers/Lab1Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JavaDB/views/lab1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/views/lab1.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,19 +53,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Lab1 [clean,javafx:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -111,6 +93,7 @@
       <workItem from="1611660051327" duration="138000" />
       <workItem from="1611660224461" duration="10252000" />
       <workItem from="1611677016466" duration="4318000" />
+      <workItem from="1611693498398" duration="1689000" />
     </task>
     <servers />
   </component>

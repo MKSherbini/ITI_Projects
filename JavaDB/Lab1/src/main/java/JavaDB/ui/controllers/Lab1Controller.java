@@ -94,6 +94,7 @@ public class Lab1Controller implements Initializable {
             updateNewbtn(false);
             updateRS();
             enableDisableBtns();
+            displayInfoAlert("New row inserted");
         } catch (SQLException throwables) {
             displayErrorAlert(throwables);
         }
@@ -124,12 +125,13 @@ public class Lab1Controller implements Initializable {
 
     public void onClickUpdate(ActionEvent actionEvent) {
         try {
-            if (!validFields()) {
+            if (!validFields(false)) {
                 return;
             }
             rsUpdateRowFromGui();
             rs.updateRow();
             enableDisableBtns();
+            displayInfoAlert("Row updated");
         } catch (SQLException throwables) {
             displayErrorAlert(throwables);
         }
@@ -150,6 +152,7 @@ public class Lab1Controller implements Initializable {
             rs.deleteRow();
             setTextFields();
             enableDisableBtns();
+            displayInfoAlert("Row deleted");
         } catch (SQLException throwables) {
             displayErrorAlert(throwables);
         }
@@ -199,7 +202,9 @@ public class Lab1Controller implements Initializable {
 
     void enableDisableBtns() throws SQLException {
         btn_next.setDisable(rs.isLast() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_last.setDisable(rs.isLast() || rs.isAfterLast() || rs.isBeforeFirst());
         btn_prev.setDisable(rs.isFirst() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_first.setDisable(rs.isFirst() || rs.isAfterLast() || rs.isBeforeFirst());
         btn_delete.setDisable(rs.isAfterLast() || rs.isBeforeFirst());
         btn_update.setDisable(rs.isAfterLast() || rs.isBeforeFirst());
     }
@@ -220,33 +225,49 @@ public class Lab1Controller implements Initializable {
         alert.showAndWait();
     }
 
-    boolean validFields() {
-        int id = -1;
-        boolean invalidIdString = false;
-        try {
-            id = Integer.parseInt(txt_id.getText());
-        } catch (NumberFormatException e) {
-            invalidIdString = true;
-        }
-        if (id <= 0 || invalidIdString)
-            displayErrorAlert("Invalid number for ID");
+    public void displayInfoAlert(String e) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Info");
+        alert.setHeaderText("Success");
+        alert.setContentText(e);
+        alert.showAndWait();
+    }
 
-        if (idsSet.contains(id)) {
-            invalidIdString = true;
-            displayErrorAlert("ID was used before, can't use it again");
-        }
-        if (invalidIdString) {
-            Dialog<ButtonType> d = new Dialog<>();
-            d.setTitle("Kind Programmer Choice");
-            d.setContentText("Invalid ID, use autoincrement instead?");
-            d.getDialogPane().getButtonTypes().add(ButtonType.YES);
-            d.getDialogPane().getButtonTypes().add(ButtonType.NO);
-            Optional<ButtonType> res = d.showAndWait();
-            if (res.isPresent()) {
-                if (res.get() == ButtonType.YES) {
-                    txt_id.setText(String.valueOf(idsSet.stream().max(Integer::compareTo).get() + 1));
-                } else if (res.get() == ButtonType.NO) {
-                    return false;
+    boolean validFields() {
+        return validFields(true);
+    }
+
+    boolean validFields(boolean validateId) {
+        if (validateId) {
+
+            int id = -1;
+            boolean invalidIdString = false;
+            try {
+                id = Integer.parseInt(txt_id.getText());
+            } catch (NumberFormatException e) {
+                invalidIdString = true;
+            }
+            if (id <= 0 || invalidIdString) {
+                displayErrorAlert("Invalid number for ID");
+            }
+
+            if (idsSet.contains(id)) {
+                invalidIdString = true;
+                displayErrorAlert("ID was used before, can't use it again");
+            }
+            if (invalidIdString) {
+                Dialog<ButtonType> d = new Dialog<>();
+                d.setTitle("Kind Programmer Choice");
+                d.setContentText("Invalid ID, use autoincrement instead?");
+                d.getDialogPane().getButtonTypes().add(ButtonType.YES);
+                d.getDialogPane().getButtonTypes().add(ButtonType.NO);
+                Optional<ButtonType> res = d.showAndWait();
+                if (res.isPresent()) {
+                    if (res.get() == ButtonType.YES) {
+                        txt_id.setText(String.valueOf(idsSet.stream().max(Integer::compareTo).get() + 1));
+                    } else if (res.get() == ButtonType.NO) {
+                        return false;
+                    }
                 }
             }
         }

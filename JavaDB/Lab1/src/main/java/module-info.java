@@ -14,6 +14,7 @@ module JavaDB {
     requires java.sql;
     requires mysql.connector.java;
     requires java.naming;
+    requires org.apache.commons.lang3;
 
     exports JavaDB;
     opens JavaDB.ui.controllers;

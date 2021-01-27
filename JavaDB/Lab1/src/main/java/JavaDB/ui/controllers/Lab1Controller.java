@@ -3,6 +3,7 @@ package JavaDB.ui.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.w3c.dom.ranges.Range;
 
 import java.net.URL;
 import java.sql.*;
@@ -144,6 +145,8 @@ public class Lab1Controller implements Initializable {
             if (!validFields(false)) {
                 return;
             }
+            if (!displayChoice("Update? Sure?"))
+                return;
             rsUpdateRowFromGui();
             rs.updateRow();
             enableDisableBtns();
@@ -164,6 +167,8 @@ public class Lab1Controller implements Initializable {
 
     public void onClickDelete(ActionEvent actionEvent) {
         try {
+            if (!displayChoice("Delete? Sure?"))
+                return;
             idsSet.remove(rs.getInt(1));
             rs.deleteRow();
             setTextFields();
@@ -253,56 +258,42 @@ public class Lab1Controller implements Initializable {
         alert.showAndWait();
     }
 
+    boolean displayChoice(String e) {
+        Dialog<ButtonType> d = new Dialog<>();
+        d.setTitle("Kind Programmer's Choice");
+        d.setContentText(e);
+        d.getDialogPane().getButtonTypes().add(ButtonType.YES);
+        d.getDialogPane().getButtonTypes().add(ButtonType.NO);
+        Optional<ButtonType> res = d.showAndWait();
+        if (res.isPresent()) {
+            if (res.get() == ButtonType.YES) {
+                return true;
+            } else if (res.get() == ButtonType.NO) {
+                return false;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+
     boolean validFields() {
         return validFields(true);
     }
 
+
     boolean validFields(boolean validateId) {
         if (validateId) {
-            int id = -1;
-            boolean invalidIdString = false;
-            try {
-                id = Integer.parseInt(txt_id.getText());
-            } catch (NumberFormatException e) {
-                invalidIdString = true;
-            }
-            if (id <= 0 || invalidIdString) {
-                displayErrorAlert("Invalid number for ID");
-            }
-            if (idsSet.contains(id)) {
-                invalidIdString = true;
-                displayErrorAlert("ID was used before, can't use it again");
-            }
-            if (invalidIdString) {
-                Dialog<ButtonType> d = new Dialog<>();
-                d.setTitle("Kind Programmer's Choice");
-                d.setContentText("Invalid ID, use autoincrement instead?");
-                d.getDialogPane().getButtonTypes().add(ButtonType.YES);
-                d.getDialogPane().getButtonTypes().add(ButtonType.NO);
-                Optional<ButtonType> res = d.showAndWait();
-                if (res.isPresent()) {
-                    if (res.get() == ButtonType.YES) {
-                        txt_id.setText(String.valueOf(idsSet.stream().max(Integer::compareTo).get() + 1));
-                    } else if (res.get() == ButtonType.NO) {
-                        return false;
-                    }
-                }
-            }
+            if (!isValidID()) return false;
         }
 
-        int len = Math.max(txt_fname.getText().length(), txt_lname.getText().length());
-        len = Math.max(len, txt_mname.getText().length());
-        if (len > maxNameLength) {
-            displayErrorAlert("Max name fields length is " + maxNameLength + " Chars");
+        if (!isValidTxtName("First name", txt_fname))
             return false;
-        }
+        if (!isValidTxtName("Middle name", txt_mname))
+            return false;
+        if (!isValidTxtName("Last name", txt_lname))
+            return false;
 
-        len = Math.min(txt_fname.getText().length(), txt_lname.getText().length());
-        len = Math.min(len, txt_mname.getText().length());
-        if (len < minNameLength) {
-            displayErrorAlert("Min name fields length is " + minNameLength + " Chars");
-            return false;
-        }
 
         if (!txt_email.getText().matches(emailRgx)) {
             displayErrorAlert("Bad Email Format");
@@ -312,6 +303,46 @@ public class Lab1Controller implements Initializable {
         if (!txt_phone.getText().matches(phoneRgx)) {
             displayErrorAlert("Bad Phone Format");
             return false;
+        }
+        return true;
+    }
+
+    private boolean isValidTxtName(String lb, TextField txt) {
+        boolean valid = org.apache.commons.lang3.Range.between(minNameLength, maxNameLength).contains(txt.getLength());
+        if (valid) {
+            return true;
+        } else {
+            displayErrorAlert(String.format("Field %s should have between %s and %s Chars", lb, minNameLength, maxNameLength));
+            return false;
+        }
+    }
+
+    private boolean isValidID() {
+        int id = -1;
+        boolean invalidIdString = false;
+        try {
+            id = Integer.parseInt(txt_id.getText());
+        } catch (NumberFormatException e) {
+            invalidIdString = true;
+        }
+        if (invalidIdString) {
+            displayErrorAlert("Invalid number format for ID");
+        }
+        if (id <= 0) {
+            invalidIdString = true;
+            displayErrorAlert("Invalid negative number for ID");
+        }
+        if (idsSet.contains(id)) {
+            invalidIdString = true;
+            displayErrorAlert("ID was used before, can't use it again");
+        }
+        if (invalidIdString) {
+            if (displayChoice("Invalid ID, use autoincrement instead?")) {
+                txt_id.setText(String.valueOf(idsSet.stream().max(Integer::compareTo).get() + 1));
+                return true;
+            } else {
+                return false;
+            }
         }
         return true;
     }

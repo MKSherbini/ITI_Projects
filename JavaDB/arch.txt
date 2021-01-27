@@ -1,4 +1,4 @@
 mvn archetype:create-from-project
 mvn install
 mvn archetype:generate -DinteractiveMode=false -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=javafx-archetype-fxml -DarchetypeVersion=0.0.5 -DgroupId=JavaDB -DartifactId=Lab1 -Dversion=1.0.0
-mvn archetype:generate -DinteractiveMode=false -DarchetypeGroupId=eg.gov.iti.jets -DarchetypeArtifactId=MVC-Demo-archetype -DgroupId=JavaDB -DartifactId=Lab1 -Dversion=1.0.0
+mvn archetype:generate -DinteractiveMode=false -DarchetypeGroupId=eg.gov.iti.jets -DarchetypeArtifactId=MVC-Demo-archetype -DgroupId=JavaDB -DartifactId=Lab3 -Dversion=1.0.0

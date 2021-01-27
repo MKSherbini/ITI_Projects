@@ -33,14 +33,22 @@ public class Lab1Controller implements Initializable {
     Set<Integer> idsSet = new TreeSet<>();
 
     String emailRgx = "^[A-Za-z0-9._-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}$";
-    String phoneRgx = "^^(\\+2)?\\d{11}$";
+    String phoneRgx = "^(\\+2)?01\\d{9}$";
     private int maxNameLength = 10;
     private int minNameLength = 1;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//                if (!t1.matches(String.format("[A-Za-z]{%s,%s}", minNameLength, maxNameLength))) { }
+        setTxtMaxLength(txt_fname, maxNameLength);
+        setTxtMaxLength(txt_mname, maxNameLength);
+        setTxtMaxLength(txt_lname, maxNameLength);
+        setTxtMaxLength(txt_id, 15);
+        setTxtMaxLength(txt_email, 15);
+        setTxtMaxLength(txt_email, 13);
         txt_id.setDisable(true);
+
         try {
             con = loadDSFile().getConnection();
             stmt = con.createStatement(
@@ -52,6 +60,12 @@ public class Lab1Controller implements Initializable {
         } catch (SQLException throwables) {
             displayErrorAlert(throwables);
         }
+    }
+
+    void setTxtMaxLength(TextField txt, int maxLength) {
+        txt.textProperty().addListener((observableValue, s, t1) -> {
+            if (t1.length() > maxLength) txt.setText(txt.getText().substring(0, maxLength));
+        });
     }
 
     void updateRS() throws SQLException {
@@ -69,7 +83,9 @@ public class Lab1Controller implements Initializable {
                 currIdxPos = i;
             idsSet.add(rs.getInt(1));
         }
-        if (currIdxPos == -1)
+        if (idsSet.isEmpty())
+            displayInfoAlert("Database is empty");
+        else if (currIdxPos == -1)
             onClickFirst(null);
         else
             rs.absolute(currIdxPos);
@@ -153,6 +169,10 @@ public class Lab1Controller implements Initializable {
             setTextFields();
             enableDisableBtns();
             displayInfoAlert("Row deleted");
+            if (idsSet.isEmpty()) {
+                clearTextFields();
+                displayInfoAlert("Database is empty");
+            }
         } catch (SQLException throwables) {
             displayErrorAlert(throwables);
         }
@@ -201,12 +221,12 @@ public class Lab1Controller implements Initializable {
     }
 
     void enableDisableBtns() throws SQLException {
-        btn_next.setDisable(rs.isLast() || rs.isAfterLast() || rs.isBeforeFirst());
-        btn_last.setDisable(rs.isLast() || rs.isAfterLast() || rs.isBeforeFirst());
-        btn_prev.setDisable(rs.isFirst() || rs.isAfterLast() || rs.isBeforeFirst());
-        btn_first.setDisable(rs.isFirst() || rs.isAfterLast() || rs.isBeforeFirst());
-        btn_delete.setDisable(rs.isAfterLast() || rs.isBeforeFirst());
-        btn_update.setDisable(rs.isAfterLast() || rs.isBeforeFirst());
+        btn_next.setDisable(idsSet.isEmpty() || rs.isLast() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_last.setDisable(idsSet.isEmpty() || rs.isLast() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_prev.setDisable(idsSet.isEmpty() || rs.isFirst() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_first.setDisable(idsSet.isEmpty() || rs.isFirst() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_delete.setDisable(idsSet.isEmpty() || rs.isAfterLast() || rs.isBeforeFirst());
+        btn_update.setDisable(idsSet.isEmpty() || rs.isAfterLast() || rs.isBeforeFirst());
     }
 
     public void displayErrorAlert(SQLException e) {
@@ -239,7 +259,6 @@ public class Lab1Controller implements Initializable {
 
     boolean validFields(boolean validateId) {
         if (validateId) {
-
             int id = -1;
             boolean invalidIdString = false;
             try {
@@ -250,14 +269,13 @@ public class Lab1Controller implements Initializable {
             if (id <= 0 || invalidIdString) {
                 displayErrorAlert("Invalid number for ID");
             }
-
             if (idsSet.contains(id)) {
                 invalidIdString = true;
                 displayErrorAlert("ID was used before, can't use it again");
             }
             if (invalidIdString) {
                 Dialog<ButtonType> d = new Dialog<>();
-                d.setTitle("Kind Programmer Choice");
+                d.setTitle("Kind Programmer's Choice");
                 d.setContentText("Invalid ID, use autoincrement instead?");
                 d.getDialogPane().getButtonTypes().add(ButtonType.YES);
                 d.getDialogPane().getButtonTypes().add(ButtonType.NO);
@@ -271,7 +289,6 @@ public class Lab1Controller implements Initializable {
                 }
             }
         }
-
 
         int len = Math.max(txt_fname.getText().length(), txt_lname.getText().length());
         len = Math.max(len, txt_mname.getText().length());
@@ -310,6 +327,7 @@ public class Lab1Controller implements Initializable {
 
     private void setTextFields() {
         try {
+            if (idsSet.isEmpty()) return;
             if (rs.isBeforeFirst())
                 rs.first();
             txt_phone.setText(rs.getString("Phone_Number"));

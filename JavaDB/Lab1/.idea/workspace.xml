@@ -5,9 +5,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bc1885c-3a2e-44a4-a9e2-21b31856f085" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/FlatBee.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/dark.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/avatarPane.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/glisten.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/glisten_android.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/glisten_android_tablet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/glisten_ios.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/glisten_ios_notch.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/glisten_ios_tablet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/glisten_tablet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/responsive-default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/responsive-medium.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/responsive-small.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_amber.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_blue_grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_brown.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_cyan.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_deep_orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_deep_purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_indigo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_light_blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_light_green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_lime.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_teal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/swatch_yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/theme_dark.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/glisten/theme_light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/modena_dark.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__com_jfoenix_jfoenix_9_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__eu_hansolo_tilesfx_11_47.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_controlsfx_controlsfx_11_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_kordamp_bootstrapfx_bootstrapfx_core_0_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_kordamp_ikonli_ikonli_core_12_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_kordamp_ikonli_ikonli_fontawesome5_pack_12_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_kordamp_ikonli_ikonli_javafx_12_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_kordamp_ikonli_ikonli_materialdesign2_pack_12_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_base_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_base_win_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_controls_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_controls_win_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_fxml_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_graphics_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_media_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_media_win_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_swing_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_swing_win_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_web_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/libraries/Maven__org_openjfx_javafx_web_win_15_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/Lab3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/src/main/resources/JavaDB/views/primary.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab3/webrowset.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaDB/ui/controllers/Lab1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaDB/ui/controllers/Lab1Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/styles/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/JavaDB/views/lab1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JavaDB/views/lab1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arch.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../arch.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +90,7 @@
       <list>
         <option value="Class" />
         <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -41,6 +113,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
@@ -93,7 +166,13 @@
       <workItem from="1611660051327" duration="138000" />
       <workItem from="1611660224461" duration="10252000" />
       <workItem from="1611677016466" duration="4318000" />
-      <workItem from="1611693498398" duration="1689000" />
+      <workItem from="1611693498398" duration="1771000" />
+      <workItem from="1611695416388" duration="112000" />
+      <workItem from="1611698327435" duration="2038000" />
+      <workItem from="1611701818419" duration="10527000" />
+      <workItem from="1611714205311" duration="2137000" />
+      <workItem from="1611718360000" duration="1681000" />
+      <workItem from="1611722672766" duration="2516000" />
     </task>
     <servers />
   </component>

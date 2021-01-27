@@ -2,13 +2,58 @@
     -fx-background-color: #05122A;
     -fx-background-radius: 1em;
     -fx-text-fill: white;
-
+    -fx-border-color: #00a488;
+    -fx-border-radius: 1em;
+    /*-fx-skin: "com.gluonhq.impl.charm.glisten.control.skin.GlistenButtonSkin";*/
+    /*-fx-background-color: -primary-swatch-500;*/
+    /*-fx-text-fill: ladder(-primary-swatch-500, -text-dark 49%, -text-light 50%);*/
 }
 
-.back-ground {
+/*.button, .toggle-button {*/
+/*    -fx-skin: "com.gluonhq.impl.charm.glisten.control.skin.GlistenButtonSkin";*/
+/*    -fx-font-weight: normal;*/
+/*    -fx-font-size: 1em;*/
+/*    !*-fx-background-radius: 0;*!*/
+/*    -fx-alignment: center;*/
+/*    -fx-effect: -elevation-z1;*/
+/*    -fx-background-color: -primary-swatch-500;*/
+/*    -fx-text-fill: ladder(-primary-swatch-500, -text-dark 49%, -text-light 50%);*/
+/*    -fx-min-width: 14.08mm;*/
+/*    -fx-min-height: 5.76mm;*/
+/*    -fx-padding: 1.92mm;*/
+/*}*/
+
+/*.date-picker-popup > * > .spinner > .button {*/
+/*    -fx-skin: "javafx.scene.control.skin.ButtonSkin";*/
+/*}*/
+
+/*.button:hover, .toggle-button:hover {*/
+/*    -fx-background-color: -primary-swatch-600;*/
+/*}*/
+
+/*.button:pressed, .toggle-button:pressed {*/
+/*    -fx-background-color: -primary-swatch-700;*/
+/*    -fx-effect: -elevation-z2;*/
+/*}*/
+
+/*.button:disabled, .toggle-button:disabled {*/
+/*    -fx-background-color: -background-disabled;*/
+/*    -fx-text-fill: ladder(-background-disabled, -text-disabled-light 49%, -text-disabled-dark 50%);*/
+/*    -fx-effect: null;*/
+/*}*/
+
+
+.root {
     /*-fx-background-color:  linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);*/
-    -fx-background-color: linear-gradient(to right top, #05122a, #061d37, #062844, #043351, #003f5e);
+    -fx-background-color: linear-gradient(to right, #05122a, #061d37, #062844, #043351, #003f5e);
     /*-fx-background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);*/
+}
+
+.backShadow {
+    /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);*/
+    /*-fx-padding: 10;*/
+    -fx-background-color: white;
+    -fx-background-radius: 5;
 }
 
 .label {
@@ -21,12 +66,117 @@
     -fx-background-color: #05122A;
 }
 
+
 {
-    -fx-color-label-visible: #05122a;
-    -fx-color-label-visible: #003f5e;
-    -fx-color-label-visible: #007181;
-    -fx-color-label-visible: #00a488;
-    -fx-color-label-visible: #7ed37a;
-    -fx-color-label-visible: #f9f871;
-    -fx-color-label-visible: #4f8ff8;
+    -fx-color-label-visible: #05122a
+;
+}
+{
+    -fx-color-label-visible: #003f5e
+;
+}
+{
+    -fx-color-label-visible: #007181
+;
+}
+{
+    -fx-color-label-visible: #00a488
+;
+}
+{
+    -fx-color-label-visible: #7ed37a
+;
+}
+{
+    -fx-color-label-visible: #f9f871
+;
+}
+{
+    -fx-color-label-visible: #4f8ff8
+;
+}
+
+
+/* Color Theme Swatches in Hex */
+.Blue-Sky-1-hex {
+    color: #16193B;
+}
+
+.Blue-Sky-2-hex {
+    color: #35478C;
+}
+
+.Blue-Sky-3-hex {
+    color: #4E7AC7;
+}
+
+.Blue-Sky-4-hex {
+    color: #7FB2F0;
+}
+
+.Blue-Sky-5-hex {
+    color: #ADD5F7;
+}
+
+/* Color Theme Swatches in Hex */
+.Bloggy-Gradient-Blues-1-hex {
+    color: #E1E6FA;
+}
+
+.Bloggy-Gradient-Blues-2-hex {
+    color: #C4D7ED;
+}
+
+.Bloggy-Gradient-Blues-3-hex {
+    color: #ABC8E2;
+}
+
+.Bloggy-Gradient-Blues-4-hex {
+    color: #375D81;
+}
+
+.Bloggy-Gradient-Blues-5-hex {
+    color: #183152;
+}
+
+/* Color Theme Swatches in Hex */
+.lollapalooza-1-hex {
+    color: #002635;
+}
+
+.lollapalooza-2-hex {
+    color: #013440;
+}
+
+.lollapalooza-3-hex {
+    color: #AB1A25;
+}
+
+.lollapalooza-4-hex {
+    color: #D97925;
+}
+
+.lollapalooza-5-hex {
+    color: #EFE7BE;
+}
+
+/* Color Theme Swatches in Hex */
+.Glowing-Blue-1-hex {
+    color: #230A59;
+}
+
+.Glowing-Blue-2-hex {
+    color: #3E38F2;
+}
+
+.Glowing-Blue-3-hex {
+    color: #0029FA;
+}
+
+.Glowing-Blue-4-hex {
+    color: #5C73F2;
+}
+
+.Glowing-Blue-5-hex {
+    color: #829FD9;
 }

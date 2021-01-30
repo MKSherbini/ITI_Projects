@@ -1,0 +1,23 @@
+<menus>
+    <menu name="File">
+        <menuitem>New</menuitem>
+        <menuitem>Open</menuitem>
+        <menuitem>Save</menuitem>
+        <seperator></seperator>
+        <menuitem>Exit</menuitem>
+    </menu>
+    <menu name="Edit">
+        <menuitem>Undo</menuitem>
+        <menuitem>Redo</menuitem>
+        <seperator></seperator>
+        <menuitem>Cut</menuitem>
+        <menuitem>Copy</menuitem>
+        <menuitem>Paste</menuitem>
+        <menuitem>Delete</menuitem>
+        <seperator></seperator>
+        <menuitem>Select All</menuitem>
+    </menu>
+    <menu name="Help">
+        <menuitem>About</menuitem>
+    </menu>
+</menus>

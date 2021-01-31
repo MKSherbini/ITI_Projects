@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student-class>
+    <addresses>
+        <address>
+            <no>33</no>
+            <country>eg</country>
+            <region>benha</region>
+        </address>
+        <address>
+            <no>22</no>
+            <country>ancient eg</country>
+            <region>pyramids</region>
+        </address>
+    </addresses>
+    <age>25</age>
+    <id>123</id>
+    <name>amin</name>
+</student-class>

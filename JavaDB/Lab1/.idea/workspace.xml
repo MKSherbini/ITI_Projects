@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2bc1885c-3a2e-44a4-a9e2-21b31856f085" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/java/XMLProcessing/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/java/XMLProcessing/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/resources/XMLProcessing/test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/resources/XMLProcessing/test.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,17 +55,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Lab1 [clean,javafx:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -116,6 +107,7 @@
       <workItem from="1611840020983" duration="940000" />
       <workItem from="1612023761497" duration="400000" />
       <workItem from="1612057477247" duration="733000" />
+      <workItem from="1612084521578" duration="783000" />
     </task>
     <servers />
   </component>

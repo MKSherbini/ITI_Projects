@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 
 
+
 /**
  * JavaFX App
  */
@@ -58,8 +59,8 @@ public class App extends Application {
 //        Platform.exit();
 
 //        pane.setTop(mainBar);
-        pane.setTop(readDom());
-//        pane.setTop(readSax());
+//        pane.setTop(readDom());
+        pane.setTop(readSax());
         pane.setCenter(body);
 
         var scene = new Scene(pane, 640, 480);
@@ -76,8 +77,8 @@ public class App extends Application {
             handler = new MenuSax();
             saxParser.parse(new File(getClass().getResource("/XMLProcessing/test.xml").getPath()), handler);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
-            System.out.println("fail");
+//            e.printStackTrace();
+            displayErrorAlert();
             return new MenuBar();
         }
         System.out.println("success");
@@ -93,7 +94,8 @@ public class App extends Application {
             docFactory.setIgnoringElementContentWhitespace(true);
             doc = docFactory.newDocumentBuilder().parse(xmlFile);
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            displayErrorAlert();
             return new MenuBar();
         }
         Element root = doc.getDocumentElement();
@@ -151,6 +153,14 @@ public class App extends Application {
                     break;
             }
         }
+    }
+
+    public void displayErrorAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("An error has occurred");
+        alert.setContentText("Wrong xml file format");
+        alert.showAndWait();
     }
 
 //    void recurse(MenuBar menuBar, Element root, CustomMenu menuNode) {

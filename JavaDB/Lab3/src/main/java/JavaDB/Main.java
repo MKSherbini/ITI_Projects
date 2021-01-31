@@ -31,7 +31,7 @@ public class Main extends Application {
 //        primaryStage.show();
 
 
-//        Lab1();
+        Lab1();
 //        Lab2();
 //        Lab3();
 //        Lab4();

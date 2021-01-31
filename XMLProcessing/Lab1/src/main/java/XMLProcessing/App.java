@@ -27,28 +27,28 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         var pane = new BorderPane();
-        var mainBar = new MenuBar();
-
-        mainBar.getMenus().addAll(
-                new CustomMenu("File")
-                        .addItem("New")
-                        .addItem("Open")
-                        .addItem("Save")
-                        .addSeperator()
-                        .addItem("Exit"),
-                new CustomMenu("Edit")
-                        .addItem("Undo")
-                        .addItem("Redo")
-                        .addSeperator()
-                        .addItem("Cut")
-                        .addItem("Copy")
-                        .addItem("Paste")
-                        .addItem("Delete")
-                        .addSeperator()
-                        .addItem("Select All"),
-                new CustomMenu("Help")
-                        .addItem("About")
-        );
+//        var mainBar = new MenuBar();
+//
+//        mainBar.getMenus().addAll(
+//                new CustomMenu("File")
+//                        .addItem("New")
+//                        .addItem("Open")
+//                        .addItem("Save")
+//                        .addSeperator()
+//                        .addItem("Exit"),
+//                new CustomMenu("Edit")
+//                        .addItem("Undo")
+//                        .addItem("Redo")
+//                        .addSeperator()
+//                        .addItem("Cut")
+//                        .addItem("Copy")
+//                        .addItem("Paste")
+//                        .addItem("Delete")
+//                        .addSeperator()
+//                        .addItem("Select All"),
+//                new CustomMenu("Help")
+//                        .addItem("About")
+//        );
 
         var body = new TextArea();
 
@@ -97,26 +97,89 @@ public class App extends Application {
             return new MenuBar();
         }
         Element root = doc.getDocumentElement();
+
         var children = root.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
             if (children.item(i).getNodeType() != Node.ELEMENT_NODE) continue;
             var menu = (Element) children.item(i);
-
             var menuNode = new CustomMenu(menu.getAttribute("name"));
-            var menuItems = menu.getChildNodes();
-            for (int j = 0; j < menuItems.getLength(); j++) {
-                if (menuItems.item(j).getNodeType() != Node.ELEMENT_NODE) continue;
-                var menuItem = (Element) menuItems.item(j);
-                if (menuItem.getNodeName() == "seperator") {
-                    menuNode.addSeperator();
-                } else {
-                    menuNode.addItem(menuItem.getTextContent());
-                }
-            }
+            recurse(menu, menuNode);
             menuBar.getMenus().add(menuNode);
+
         }
+//        var children = root.getChildNodes();
+//        for (int i = 0; i < children.getLength(); i++) {
+//            if (children.item(i).getNodeType() != Node.ELEMENT_NODE) continue;
+//            var menu = (Element) children.item(i);
+//            var menuNode = new CustomMenu(menu.getAttribute("name"));
+//
+//            var menuItems = menu.getChildNodes();
+//            for (int j = 0; j < menuItems.getLength(); j++) {
+//                if (menuItems.item(j).getNodeType() != Node.ELEMENT_NODE) continue;
+//                var menuItem = (Element) menuItems.item(j);
+//                if (menuItem.getNodeName() == "seperator") {
+//                    menuNode.addSeperator();
+//                } else {
+//                    menuNode.addItem(menuItem.getTextContent());
+//                }
+//            }
+//            menuBar.getMenus().add(menuNode);
+//        }
+
         return menuBar;
     }
+
+    private void recurse(Element nodeXML, CustomMenu menuNode) {
+        var children = nodeXML.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            if (children.item(i).getNodeType() != Node.ELEMENT_NODE) continue;
+            var node = (Element) children.item(i);
+
+            switch (node.getTagName()) {
+                case "menu":
+                    var newMenu = new CustomMenu(node.getAttribute("name"));
+                    menuNode.addMenu(newMenu);
+                    recurse(node, newMenu);
+                    break;
+                case "menuitem":
+                    menuNode.addItem(node.getTextContent());
+                    System.out.println("menuitem " + node.getTextContent());
+                    break;
+                case "seperator":
+                    menuNode.addSeperator();
+                    System.out.println("seperator ");
+                    break;
+            }
+        }
+    }
+
+//    void recurse(MenuBar menuBar, Element root, CustomMenu menuNode) {
+//        System.out.println("enter " + root.getTagName());
+//        var children = root.getChildNodes();
+//        for (int i = 0; i < children.getLength(); i++) {
+//            if (children.item(i).getNodeType() != Node.ELEMENT_NODE) continue;
+//            var node = (Element) children.item(i);
+//
+//            switch (node.getTagName()) {
+//                case "menu":
+//                    if (menuNode != null)
+//                        menuBar.getMenus().add(menuNode);
+//                    System.out.println("node " + node.getAttribute("name"));
+//                    recurse(menuBar, node, new CustomMenu(node.getAttribute("name")));
+//                    break;
+//                case "menuitem":
+//                    menuNode.addItem(node.getTextContent());
+//                    System.out.println("menuitem " + node.getTextContent());
+//                    break;
+//                case "seperator":
+//                    menuNode.addSeperator();
+//                    System.out.println("seperator ");
+//
+//                    break;
+//            }
+//        }
+//        System.out.println("exit " + root.getTagName());
+//    }
 
     public static void main(String[] args) {
         launch();

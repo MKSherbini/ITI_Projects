@@ -21,6 +21,11 @@ public class CustomMenu extends Menu { // or builder?
         return this;
     }
 
+    public CustomMenu addMenu(CustomMenu menu) {
+        getItems().add(menu);
+        return this;
+    }
+
     public CustomMenu addItem(String name) {
         addItem(name, null, null);
         return this;

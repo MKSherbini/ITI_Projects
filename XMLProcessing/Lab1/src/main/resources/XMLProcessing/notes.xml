@@ -1,0 +1,20 @@
+<notes>
+    <note type="advice">
+        <from>amin</from>
+        <to>student1</to>
+        <body>msg1</body>
+    </note>
+
+    <note type="reminder">
+        <from>amin</from>
+        <to>student2</to>
+        <body>msg2</body>
+    </note>
+
+    <note type="tip">
+        <from>amin</from>
+        <to>student3</to>
+        <body>msg3</body>
+    </note>
+
+</notes>

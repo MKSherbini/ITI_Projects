@@ -3,7 +3,7 @@ package XMLProcessing;
 import javax.json.bind.annotation.JsonbNillable;
 import javax.json.bind.annotation.JsonbProperty;
 
-@JsonbNillable
+//@JsonbNillable
 public class Dog {
     public String name;
     public int age;

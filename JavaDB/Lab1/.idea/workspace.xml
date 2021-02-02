@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bc1885c-3a2e-44a4-a9e2-21b31856f085" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/Lab2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/person.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/code/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/code/models/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/code/models/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/code/models/schema1.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/schema/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/schema/models/AddressType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/schema/models/ObjectFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/XMLProcessing/schema/models/PersonType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/src/main/resources/person.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab2/student.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/resources/XMLProcessing/test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/resources/XMLProcessing/test.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +108,8 @@
       <workItem from="1612057477247" duration="733000" />
       <workItem from="1612084521578" duration="783000" />
       <workItem from="1612124563993" duration="937000" />
+      <workItem from="1612141797718" duration="973000" />
+      <workItem from="1612173482740" duration="1950000" />
     </task>
     <servers />
   </component>

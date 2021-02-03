@@ -17,14 +17,13 @@ public class FileClient {
 //                String fileName = scanner.nextLine();
 //                if (fileName.equalsIgnoreCase("bye")) break;
             BufferedReader fileReader = new BufferedReader(new FileReader(FileClient.class.getResource("/" + fileName).getPath()));
+            serverWriter.println(fileName);
             while (fileReader.ready()) {
-                serverWriter.println(fileName);
-                while (fileReader.ready()) {
-                    serverWriter.println(fileReader.readLine());
-                }
+                serverWriter.println(fileReader.readLine());
+                Thread.sleep(200);
             }
             serverWriter.println("bye");
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

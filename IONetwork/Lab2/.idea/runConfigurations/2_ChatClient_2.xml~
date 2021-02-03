@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ChatClient 2" type="Application" factoryName="Application" singleton="false">
+    <option name="MAIN_CLASS_NAME" value="IONetwork.ChatClient" />
+    <module name="Lab2" />
+    <extension name="GrepConsole" selectedProfileId="1612373043338" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

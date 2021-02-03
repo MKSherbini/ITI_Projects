@@ -29,7 +29,7 @@ public class App extends Application {
 
     File file;
     TextArea body;
-    boolean dirty;
+    boolean dirty = true;
 
     @Override
     public void start(Stage stage) {
@@ -132,7 +132,6 @@ public class App extends Application {
 //            readFileChars(file);
             readFileBytes(file);
         }
-        dirty = true;
     }
 
     void readFileBytes(File file) {
@@ -197,7 +196,14 @@ public class App extends Application {
         }
 
         if (file == null) {
-            file = fileChooser.showOpenDialog(null);
+            file = fileChooser.showSaveDialog(null);
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "File: " + file);

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="326.0" prefWidth="325.0" style="-fx-background-color: linear-gradient(white,yellow);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaGUI.SecondaryController">
+   <bottom>
+      <TextField fx:id="tf_Input" onKeyPressed="#onInputConfirm" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin></TextField>
+   </bottom>
+   <top>
+      <BorderPane prefHeight="75.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <left>
+            <ImageView fx:id="img_DefaultImage" fitHeight="84.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@default.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets left="20.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </left>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <center>
+            <Label fx:id="lb_DefaultName" alignment="CENTER" contentDisplay="CENTER" maxHeight="Infinity" maxWidth="1.7976931348623157E308" text="Default" wrapText="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </BorderPane.margin>
+            </Label>
+         </center>
+         <BorderPane.margin>
+            <Insets bottom="10.0" />
+         </BorderPane.margin>
+      </BorderPane>
+   </top>
+   <center>
+      <ScrollPane fx:id="pane_scrollPane" fitToWidth="true" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="pane_ChatArea" />
+         </content>
+      </ScrollPane>
+   </center>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</BorderPane>

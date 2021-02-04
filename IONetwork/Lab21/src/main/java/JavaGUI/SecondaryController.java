@@ -34,7 +34,8 @@ public class SecondaryController implements Initializable {
     public void onInputConfirm(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ENTER && tf_Input.getText().length() > 0) {
 //            readTF = true;
-            chatClient.serverWrite(userModel.name + ": " + tf_Input.getText());
+            var msg = new MessageModel(userModel, tf_Input.getText());
+            chatClient.serverWrite(App.serializeToString(msg));
             App.addMessage(pane_ChatArea, new MessageModel(userModel, tf_Input.getText()));
             tf_Input.clear();
         }
@@ -50,20 +51,27 @@ public class SecondaryController implements Initializable {
 
         chatClient = new ChatClient(userModel);
 
-        new Thread(() -> {
+        var serverPooling = new Thread(() -> {
             while (true) {
                 var msg = chatClient.serverWaitRead();
-                var splits = msg.split(": ");
-                Platform.runLater(() -> {
-                    try {
-                        App.addMessage(pane_ChatArea, new MessageModel(new UserModel(splits[0]), splits[1]));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                });
+                if (msg == null) { // rip server
+                    Platform.exit();
+                    break;
+                } else {
+//                var splits = msg.split(": ");
+                    Platform.runLater(() -> {
+                        try {
+                            var msgModel = App.deserializeFromString(msg);
+                            App.addMessage(pane_ChatArea, msgModel);
+                        } catch (IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
             }
-        }).start();
+        });
+        serverPooling.setDaemon(true);
+        serverPooling.start();
 //        Runnable clientTask = () -> {
 //            try (Socket client = new Socket("localhost", 8888);
 //                 BufferedReader serverReader = new BufferedReader(new InputStreamReader(client.getInputStream()));

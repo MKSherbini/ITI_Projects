@@ -10,34 +10,20 @@ import java.net.Socket;
 
 public class ChatClient {
     public static void main(String[] args) {
-        try (Socket client = new Socket("localhost", 8888);
-             BufferedReader serverReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-             PrintWriter serverWriter = new PrintWriter(client.getOutputStream(), true);
-             BufferedReader sysReader = new BufferedReader(new InputStreamReader(System.in));
-        ) {
-            while (true) {
-                if (serverReader.ready())
-                    System.out.println(serverReader.readLine());
 
-                if (sysReader.ready()) {
-                    String msg = sysReader.readLine();
-                    System.out.println("Me: " + msg);
-                    if (msg.equalsIgnoreCase("bye")) {
-                        return;
-                    }
-                    serverWriter.println(msg);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        var chatClient = new ChatClient(null);
+        while (true) {
+            chatClient.serverWrite(
+                    chatClient.serverWaitRead()
+            );
         }
     }
 
-    Socket client = null;
-    BufferedReader serverReader;
-    PrintWriter serverWriter;
-    BufferedReader sysReader;
-    UserModel user;
+    private Socket client = null;
+    private BufferedReader serverReader;
+    private PrintWriter serverWriter;
+    private BufferedReader sysReader;
+    private UserModel user;
 
     public ChatClient(UserModel user) {
         try {
@@ -47,12 +33,14 @@ public class ChatClient {
             sysReader = new BufferedReader(new InputStreamReader(System.in));
             this.user = user;
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 
+    // todo check server dead
     public void serverWrite(String msg) {
-        serverWriter.println(msg);
+        if (!client.isClosed() && client.isConnected())
+            serverWriter.println(msg);
     }
 
     public String serverWaitRead() {
@@ -61,9 +49,17 @@ public class ChatClient {
 //            while (!serverReader.ready()) ;
 //            System.out.println(serverReader.readLine());
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    public void close() throws IOException {
+        sysReader.close();
+        serverWriter.close();
+        serverReader.close();
+        client.close();
     }
 
 }

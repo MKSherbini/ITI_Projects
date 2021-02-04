@@ -1,8 +1,9 @@
 package JavaGUI;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MessageModel {
+public class MessageModel implements Serializable {
 
     enum SendStatus {
         SENDING,
@@ -23,6 +24,7 @@ public class MessageModel {
         m_date = new Date();
         m_sendStatus = SendStatus.SENDING;
     }
+
 
     public MessageModel(UserModel m_from, UserModel m_to, String m_content, SendStatus m_sendStatus) {
         this.m_from = m_from;

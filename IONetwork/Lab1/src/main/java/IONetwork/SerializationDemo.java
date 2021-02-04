@@ -1,6 +1,7 @@
 package IONetwork;
 
 import java.io.*;
+import java.util.Base64;
 
 public class SerializationDemo {
     public static void main(String[] args) {
@@ -8,9 +9,38 @@ public class SerializationDemo {
     }
 
     public SerializationDemo() {
-        serialize();
-        deserialize();
+//        serialize();
+//        deserialize();
+        Dog falco = new Dog("Falco", 4, true);
+
+        try {
+            var s = serializeToString(falco);
+            System.out.println("s = " + s);
+            var d = deserializeFromString(s);
+            System.out.println("d = " + d);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
+
+    private static Dog deserializeFromString(String s) throws IOException,
+            ClassNotFoundException {
+        byte[] data = Base64.getDecoder().decode(s);
+        ObjectInputStream ois = new ObjectInputStream(
+                new ByteArrayInputStream(data));
+        Object o = ois.readObject();
+        ois.close();
+        return (Dog) o;
+    }
+
+    private static String serializeToString(Serializable o) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(o);
+        oos.close();
+        return Base64.getEncoder().encodeToString(baos.toByteArray());
+    }
+
 
     void serialize() {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("serial"))) {

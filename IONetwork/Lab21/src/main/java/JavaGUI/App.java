@@ -7,7 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.Base64;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
@@ -87,6 +88,24 @@ public class App extends Application {
         ctrl.lb_DateTime.setText(message.m_date.toString());
         chatArea.getChildren().add(item);
 //        ctrl.lb_ChatMessage.maxHeightProperty().bind(ctrl.lb_ChatMessage.heightProperty().multiply(0.75));
+    }
+
+    public static MessageModel deserializeFromString(String s) throws IOException,
+            ClassNotFoundException {
+        byte[] data = Base64.getDecoder().decode(s);
+        ObjectInputStream ois = new ObjectInputStream(
+                new ByteArrayInputStream(data));
+        Object o = ois.readObject();
+        ois.close();
+        return (MessageModel) o;
+    }
+
+    public static String serializeToString(MessageModel o) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(o);
+        oos.close();
+        return Base64.getEncoder().encodeToString(baos.toByteArray());
     }
 
     public static void main(String[] args) {

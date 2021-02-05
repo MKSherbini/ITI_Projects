@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Base64;
 
 public class UserModel implements Serializable {
     transient public Image img; //todo curse this
@@ -29,7 +30,7 @@ public class UserModel implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", s);
+        ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", s); // todo generalise
     }
 }
 //

@@ -28,12 +28,10 @@ public class SecondaryController implements Initializable {
     public ScrollPane pane_scrollPane;
 
     public UserModel userModel;
-    //    volatile boolean readTF;
     ChatClient chatClient;
 
     public void onInputConfirm(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ENTER && tf_Input.getText().length() > 0) {
-//            readTF = true;
             var msg = new MessageModel(userModel, tf_Input.getText());
             chatClient.serverWrite(App.serializeToString(msg));
             App.addMessage(pane_ChatArea, new MessageModel(userModel, tf_Input.getText()));

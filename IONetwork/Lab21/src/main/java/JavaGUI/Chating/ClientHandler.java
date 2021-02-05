@@ -26,7 +26,7 @@ public class ClientHandler extends Thread {
 
     public void sendToOtherClients(String msg) {
         System.out.println("Clients count: " + m_clients.size());
-        m_clients.forEach(client -> {
+        m_clients.parallelStream().forEach(client -> {
             if (this != client) {
                 System.out.println("Sending: " + msg + " to " + client.m_name);
                 client.printWriter.println(msg);

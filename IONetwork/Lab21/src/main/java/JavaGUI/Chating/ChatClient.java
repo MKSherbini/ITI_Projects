@@ -10,7 +10,6 @@ import java.net.Socket;
 
 public class ChatClient {
     public static void main(String[] args) {
-
         var chatClient = new ChatClient(null);
         while (true) {
             chatClient.serverWrite(

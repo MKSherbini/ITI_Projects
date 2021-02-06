@@ -17,13 +17,13 @@ public class Client {
             String str = "Hello! How are you?";
             ByteBuffer buffer = ByteBuffer.wrap(str.getBytes());
             Future<Integer> writeval = client.write(buffer);
-            System.out.println("Writing to server: " + str);
             writeval.get();
+            System.out.println("Writing to server: " + str);
             buffer.flip();
             Future<Integer> readval = client.read(buffer);
+            readval.get();
             System.out.println("Received from server:" + new
                     String(buffer.array()).trim());
-            readval.get();
             buffer.clear();
         } catch (ExecutionException | IOException e) {
             e.printStackTrace();

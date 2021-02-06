@@ -18,14 +18,14 @@ public class Server {
             if ((client != null) && (client.isOpen())) {
                 ByteBuffer buffer = ByteBuffer.allocate(1024);
                 Future<Integer> readval = client.read(buffer);
+                readval.get();
                 System.out.println("Received from client: " + new
                         String(buffer.array()).trim());
-                readval.get();
                 buffer.flip();
                 String str = "I'm fine. Thank you!";
                 Future<Integer> writeVal = client.write(ByteBuffer.wrap(str.getBytes()));
-                System.out.println("Writing back to client: " + str);
                 writeVal.get();
+                System.out.println("Writing back to client: " + str);
                 buffer.clear();
             }
             client.close();

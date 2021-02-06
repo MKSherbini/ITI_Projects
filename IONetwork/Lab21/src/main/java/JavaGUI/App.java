@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelFormat;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -106,6 +108,17 @@ public class App extends Application {
         oos.writeObject(o);
         oos.close();
         return Base64.getEncoder().encodeToString(baos.toByteArray());
+    }
+
+    public static byte[] imageToByteArray(Image img) {
+
+        int w = (int) img.getWidth();
+        int h = (int) img.getHeight();
+
+        byte[] bytes = new byte[w * h * 4];
+
+        img.getPixelReader().getPixels(0, 0, w, h, PixelFormat.getByteBgraInstance(), bytes, 0, w * 4);
+        return bytes;
     }
 
     public static void main(String[] args) {

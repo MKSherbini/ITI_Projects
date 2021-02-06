@@ -48,11 +48,33 @@ public class ChatClient {
 //            while (!serverReader.ready()) ;
 //            System.out.println(serverReader.readLine());
         } catch (IOException e) {
-//            e.printStackTrace();
-            System.out.println(e.getMessage());
+            if (e.getMessage().equals("Connection reset")) // todo fk this
+                System.out.println(e.getMessage());
+            else
+                e.printStackTrace();
             return null;
         }
     }
+
+    public String serverSafeWaitRead() { //todo make this safe?
+        boolean connectionDead = false;
+        try {
+            while (!serverReader.ready()) {
+                if (client.isOutputShutdown() || client.isInputShutdown() || client.isClosed()) {
+                    connectionDead = true;
+                    System.out.println("connectionDead = " + connectionDead);
+                    break;
+                }
+            }
+            if (!connectionDead)
+                return serverReader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 
     public void close() throws IOException {
         sysReader.close();

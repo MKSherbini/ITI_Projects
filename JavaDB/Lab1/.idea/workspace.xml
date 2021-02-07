@@ -5,8 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bc1885c-3a2e-44a4-a9e2-21b31856f085" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/code-comments.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/Lab1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/ChatingRMI/ChatClientImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/ChatingRMI/ChatClientInt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/ChatingRMI/ChatServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/ChatingRMI/ChatServerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/ChatingRMI/ChatServerInt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/MessageModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/PrimaryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/SecondaryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/JavaGUI/UserModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/Random-Thoughts.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/Speech_bubble.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/messageItem.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/primary.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/qubodup_16x16px-capable_black_and_white_icons_14.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/secondary.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/test.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/JavaGUI/test.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../IONetwork/Lab421/src/main/resources/sponge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/code-comments.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/resources/XMLProcessing/test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../XMLProcessing/Lab1/src/main/resources/XMLProcessing/test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab1.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +145,7 @@
       <workItem from="1612124563993" duration="937000" />
       <workItem from="1612141797718" duration="973000" />
       <workItem from="1612173482740" duration="1950000" />
+      <workItem from="1612651377235" duration="609000" />
     </task>
     <servers />
   </component>

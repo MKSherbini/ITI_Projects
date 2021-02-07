@@ -1,6 +1,6 @@
-package JavaGUI.ChatingRMI;
+package JavaGUI.ChatingRMI.Common;
 
-import JavaGUI.MessageModel;
+import JavaGUI.Model.MessageModel;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

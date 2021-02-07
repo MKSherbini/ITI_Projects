@@ -1,4 +1,4 @@
-package JavaGUI;
+package JavaGUI.Model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,11 +12,11 @@ public class MessageModel implements Serializable {
         READ
     }
 
-    UserModel m_from;
-    UserModel m_to;
-    String m_content;
-    Date m_date;
-    SendStatus m_sendStatus;
+    public UserModel m_from;
+    public UserModel m_to;
+    public String m_content;
+    public Date m_date;
+    public SendStatus m_sendStatus;
 
     public MessageModel(UserModel m_from, String m_content) {
         this.m_from = m_from;

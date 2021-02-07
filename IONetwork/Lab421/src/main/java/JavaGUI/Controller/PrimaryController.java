@@ -1,14 +1,12 @@
-package JavaGUI;
+package JavaGUI.Controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.ResourceBundle;
 
+import JavaGUI.App;
+import JavaGUI.Model.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

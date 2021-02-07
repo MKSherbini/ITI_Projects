@@ -1,8 +1,5 @@
-package JavaGUI.ChatingRMI;
+package JavaGUI.ChatingRMI.Server;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

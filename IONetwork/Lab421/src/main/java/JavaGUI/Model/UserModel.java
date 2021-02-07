@@ -1,4 +1,4 @@
-package JavaGUI;
+package JavaGUI.Model;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;

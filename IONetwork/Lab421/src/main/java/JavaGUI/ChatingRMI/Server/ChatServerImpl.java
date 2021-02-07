@@ -1,11 +1,11 @@
-package JavaGUI.ChatingRMI;
+package JavaGUI.ChatingRMI.Server;
 
-import JavaGUI.MessageModel;
+import JavaGUI.ChatingRMI.Common.ChatClientInt;
+import JavaGUI.ChatingRMI.Common.ChatServerInt;
+import JavaGUI.Model.MessageModel;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ChatServerImpl extends UnicastRemoteObject implements ChatServerInt {

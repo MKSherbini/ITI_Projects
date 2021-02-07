@@ -27,8 +27,8 @@ public class Server {
                 writeVal.get();
                 System.out.println("Writing back to client: " + str);
                 buffer.clear();
+                client.close();
             }
-            client.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

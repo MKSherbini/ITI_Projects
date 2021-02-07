@@ -4,7 +4,10 @@ module JavaGUI {
     requires javafx.swing;
     requires java.rmi;
 
-    opens JavaGUI to javafx.fxml;
+    opens JavaGUI.Controller to javafx.fxml;
     exports JavaGUI;
-    exports JavaGUI.ChatingRMI;
+    exports JavaGUI.ChatingRMI.Client;
+    exports JavaGUI.ChatingRMI.Server;
+    exports JavaGUI.ChatingRMI.Common;
+    exports JavaGUI.Controller;
 }

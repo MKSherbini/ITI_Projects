@@ -1,16 +1,17 @@
-package JavaGUI;
+package JavaGUI.Controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ResourceBundle;
 
-import JavaGUI.ChatingRMI.ChatClientImpl;
-import JavaGUI.ChatingRMI.ChatClientInt;
-import JavaGUI.ChatingRMI.ChatServerInt;
+import JavaGUI.App;
+import JavaGUI.ChatingRMI.Client.ChatClientImpl;
+import JavaGUI.ChatingRMI.Common.ChatServerInt;
+import JavaGUI.Model.MessageModel;
+import JavaGUI.Model.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -31,7 +32,6 @@ public class SecondaryController implements Initializable {
     public Button btn_connect;
     ChatServerInt chatServerInt;
     ChatClientImpl chatClient;
-
 
     public void onInputConfirm(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ENTER && tf_Input.getText().length() > 0) {
@@ -67,18 +67,12 @@ public class SecondaryController implements Initializable {
         chatServerInt.registerChatClient(chatClient);
     }
 
-    public void displayErrorAlert(String e) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("An error has occurred");
-        alert.setContentText(e);
-        alert.showAndWait();
-    }
-
     private void disconnectFromServer() throws RemoteException {
-        if (chatServerInt != null)
+        if (chatServerInt != null) {
             chatServerInt.unregisterChatClient(chatClient);
-
+            chatServerInt = null;
+            chatClient = null;
+        }
     }
 
     public void onConnectClick(ActionEvent actionEvent) {
@@ -89,7 +83,7 @@ public class SecondaryController implements Initializable {
                 tf_Input.setDisable(false);
             } catch (RemoteException | NotBoundException e) {
 //            e.printStackTrace();
-                displayErrorAlert("Connecting failed try again later");
+                App.displayErrorAlert("Connecting failed try again later");
             }
         } else {
             try {
@@ -98,7 +92,7 @@ public class SecondaryController implements Initializable {
                 tf_Input.setDisable(true);
             } catch (RemoteException e) {
 //            e.printStackTrace();
-                displayErrorAlert("Server down");
+                App.displayErrorAlert("Server down");
 
             }
         }

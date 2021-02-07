@@ -16,9 +16,9 @@ public class DBClient {
             var emps = db.getEmpList();
             emps.forEach(System.out::println);
 
-            db.AddEmp(10, "10");
-            db.DeleteEmp(1);
-            db.UpdateEmp(2, "ali");
+            db.AddEmp(11, "10");
+            db.DeleteEmp(2);
+            db.UpdateEmp(4, "ali");
 
             System.out.println("emp = " + db.getEmp(10));
 

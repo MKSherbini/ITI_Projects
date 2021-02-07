@@ -1,7 +1,8 @@
-package JavaGUI.ChatingRMI;
+package JavaGUI.ChatingRMI.Client;
 
 import JavaGUI.App;
-import JavaGUI.MessageModel;
+import JavaGUI.ChatingRMI.Common.ChatClientInt;
+import JavaGUI.Model.MessageModel;
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var type = prompt("Select a list style:\n1-bullet\n2-numbered\n3-alpha");
+
+        var content = "";
+        if (type != null) {
+            var tag = "";
+            var alpha = "";
+            var listName = "";
+            switch (type) {
+                case "1":
+                    tag = "ul";
+                    listName = "Bullet List"
+                    break;
+                case "2":
+                    tag = "ol";
+                    listName = "Ordered List: Numbers"
+                    break;
+                case "3":
+                    tag = "ol";
+                    alpha = `type = "A"`
+                    listName = "Ordered List: Alphabet"
+                    break;
+            }
+
+            content = `<h1>${listName}</h1>`
+            content += ` <${tag} ${alpha}><li>Coffee</li>
+                          <li>Tea</li>
+                          <li>Milk</li></${tag}> `
+        }
+        content += "Reload to pick again"
+        document.write(content);
+        // document.getElementById("body").innerHTML = content;
+    </script>
+</head>
+<body id="body">
+
+</body>
+</html>

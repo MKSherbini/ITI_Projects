@@ -1,113 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Register</title>
+    <link rel="stylesheet" href="login.css">
+
+    <!--    <script>-->
+    <!--        function load_login() {-->
+    <!--            document.getElementById("forms").innerHTML = '<object type="text/html" data="loginForm.html" ></object>';-->
+    <!--        }-->
+    <!--    </script>-->
 </head>
-<body>
-<input type="button" value="GOTO Welcome" onclick="location.href='welcome.html'">
 
-<form>
-    <p align="center">
+<body id="body">
+<div class="btn-container">
+    <div class="btn-holder">
+        <input type="button" value="GOTO Welcome" onclick="location.href='welcome.html'">
         <input type="button" value="Contact Us"/>
-    </p>
-    <div class="AccountInfo" align="center">
-        <p>
-        <h3>Account Information</h3>
-        <label> <b>Username</b>
-            <input type="text" placeholder="Enter Username" required>
-        </label>
-        <br>
-        <label>
-            <b>Password</b>
-            <input type="password" placeholder="Enter Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*" required>
-        </label>
-        <br>
-        <label>
-            <b>Confirm Password</b>
-            <input type="password" placeholder="Confirm Password" required>
-        </label>
-        <br>
-        <label> <b>Credit Card No*</b>
-            <input type="text" pattern="\d{11}" placeholder="Enter Card No" required>
-        </label>
-        <br>
-        </p>
     </div>
+</div>
 
-    <div class="PersonalInfo" align="center">
-        <p>
-        <h3>Personal Information</h3>
+<h2>Modal Forms</h2>
 
-        <label> <b>Name</b>
-            <input type="text" placeholder="Enter Name" required>
-        </label>
-        <br>
-        <label>
-            <b>Date of Birth</b>
-            <input type="date" required>
-        </label>
-        <br>
-        <label>
-            <b>Favorite Color</b>
-            <input type="color" value="#0000FF" required>
-        </label>
-        <br>
-        <label> <b>Profile Photo</b>
-            <input type="file" required>
-        </label>
-        <br>
-        <label> <b>Favorite Browser</b>
-            <input type="text" placeholder="Enter Firefox" required>
-        </label>
-        <br>
-        </p>
-    </div>
+<button onclick="document.getElementById('registerDiv').style.display='block'"
+        style="width:auto;background-color: #2196F3">
+    Register
+</button>
 
-    <div class="PersonalInfo" align="center">
-        <p>
-        <h3>Company Information</h3>
+<button onclick="document.getElementById('loginDiv').style.display='block'"
+        style="width:auto;background-color: #2196F3">
+    Login
+</button>
 
-        <label> <b>No. of Employees</b>
-            <input type="number" required>
-        </label>
-        <br>
-        <label>
-            <b>Estimated Revenue</b>
-            <input type="range" min="1000" max="2000" required>
-        </label>
-        <br>
-        </p>
-    </div>
+<div id="loginDiv" class="modal">
 
-    <div class="PersonalInfo" align="center">
-        <p>
-        <h3>Contact Information</h3>
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+                <span onclick="document.getElementById('loginDiv').style.display='none'" class="close"
+                      title="Close Modal">&times;</span>
+            <img src="Images/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
 
-        <label> <b>Email Address</b>
-            <input type="email" pattern="^[A-Za-z0-9._-]+@[A-Za-z0-9]+\.[A-Za-z]{2,6}$" required>
-        </label>
-        <br>
+        <div class="container">
+            <label>
+                <b>Username</b>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+            </label>
 
-        <label> <b>Phone Number</b>
-            <input type="tel" pattern="^(\+2)?01\d{9}$" required>
-            <small>Format: 01XXXXXXXXX</small>
-        </label>
-        <br>
+            <label>
+                <b>Password</b>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </label>
 
-        <label> <b>Website URL</b>
-            <input type="url" required>
-        </label>
-        <br>
+            <input type="submit" value="Login"></input>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
 
-        </p>
-    </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <input type="reset" value="Cancel" onclick="document.getElementById('loginDiv').style.display='none'"
+                   class="cancelbtn"/>
+            <span class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+    </form>
+</div>
 
-    <p align="center">
-        <button type="submit">Register</button>
-        <button type="reset">Cancel</button>
-    </p>
-</form>
+
+<div id="registerDiv" class="modal">
+
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+                <span onclick="document.getElementById('registerDiv').style.display='none'" class="close"
+                      title="Close Modal">&times;</span>
+            <img src="Images/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <fieldset class="container">
+            <legend>Account Information</legend>
+            <label> <b>Username</b>
+                <input type="text" placeholder="Enter Username" required>
+            </label>
+            <label>
+                <b>Password</b>
+                <input type="password" placeholder="Enter Password"
+                       pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*" required>
+            </label>
+            <label>
+                <b>Confirm Password</b>
+                <input type="password" placeholder="Confirm Password" required>
+            </label>
+            <label> <b>Credit Card No*</b>
+                <input type="text" pattern="\d{11}" placeholder="Enter Card No" required>
+            </label>
+        </fieldset>
+
+        <fieldset class="container">
+            <legend>Personal Information</legend>
+
+            <label> <b>Name</b>
+                <input type="text" placeholder="Enter Name" required>
+            </label>
+            <label>
+                <b>Date of Birth</b>
+                <input type="date" required>
+            </label>
+            <label>
+                <b>Favorite Color</b>
+                <input type="color" value="#0000FF" required>
+            </label>
+            <label> <b>Profile Photo</b>
+                <input type="file" required>
+            </label>
+            <label> <b>Favorite Browser</b>
+                <input type="text" placeholder="Enter Firefox" required>
+            </label>
+        </fieldset>
+
+        <div class="container">
+            <h3 class="groupname">Company Information</h3>
+
+            <label> <b>No. of Employees</b>
+                <input type="number" required>
+            </label>
+            <label>
+                <b>Estimated Revenue</b>
+                <input type="range" min="1000" max="2000" required>
+            </label>
+        </div>
+
+        <div class="container">
+            <h3 class="groupname">Contact Information</h3>
+
+            <label> <b>Email Address</b>
+                <input type="email" pattern="^[A-Za-z0-9._-]+@[A-Za-z0-9]+\.[A-Za-z]{2,6}$" required>
+            </label>
+
+            <label> <b>Phone Number</b>
+                <input type="tel" pattern="^(\+2)?01\d{9}$" required>
+                <small class="hint">Format: 01XXXXXXXXX</small>
+            </label>
+
+            <label> <b>Website URL</b>
+                <input type="url" required>
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <input type="submit" value="Register"></input>
+            <input type="reset" value="Cancel" onclick="document.getElementById('registerDiv').style.display='none'"
+                   class="cancelbtn"/>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('registerDiv');
+    var modal2 = document.getElementById('loginDiv');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+</script>
 
 </body>
+
 </html>

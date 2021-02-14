@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // var type = prompt("Select a list style:\n1-bullet\n2-numbered\n3-alpha");
+
+        var content = "";
+
+        content += `<input type="button" value="Find Fact"  onclick="findFactUI()"/>`;
+
+        content += `<table border="1" cellspacing="0" cellpadding="0" width="200">
+<thead>
+    <tr>
+        <th>num</th>
+        <th>fact</th>
+    </tr>
+</thead> <tbody>`;
+
+        for (let i = 1; i < 11; i++) {
+            content += `<tr>
+        <td>${i}</td>
+        <td>${findFact(i)}</td>
+    </tr>`;
+        }
+
+        content += "</tbody></table>";
+        document.write(content);
+
+        function findFact(x) {
+            var n = Number(x);
+            if (n <= 1) return 1;
+            return x * findFact(x - 1);
+        }
+
+        function findFactUI() {
+            var x = prompt("Enter number");
+            if (x != null)
+                alert(findFact(x));
+        }
+    </script>
+</head>
+<body id="body">
+
+</body>
+</html>

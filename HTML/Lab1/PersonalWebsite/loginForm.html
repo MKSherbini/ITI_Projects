@@ -1,0 +1,45 @@
+<div id="loginDiv" class="modal">
+
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+                <span onclick="document.getElementById('loginDiv').style.display='none'" class="close"
+                      title="Close Modal">&times;</span>
+            <img src="Images/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label>
+                <b>Username</b>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+            </label>
+
+            <label>
+                <b>Password</b>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </label>
+
+            <input type="submit" value="Login"></input>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <input type="reset" value="Cancel" onclick="document.getElementById('loginDiv').style.display='none'"
+                   class="cancelbtn"/>
+            <span class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('loginDiv');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

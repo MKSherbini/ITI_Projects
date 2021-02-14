@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        var content = "";
+        var arr = new Set();
+        for (let i = 0; i < 3; i++) {
+            var type = prompt(`Enter no.${i + 1}`);
+            if (type == null) break;
+            arr.add(type);
+            let p = document.createElement("p");
+            p.appendChild(document.createTextNode(`Element no${i + 1}= ${type}`))
+            content += p.outerHTML;
+        }
+        let min = 0, max = 0, f = 0;
+        arr.forEach(value => {
+            if (f) {
+                min = max = value;
+            } else {
+                max = Math.max(max, value);
+                min = Math.min(min, value);
+            }
+        })
+        let p = document.createElement("p");
+        p.appendChild(document.createTextNode(`Element ${max} is largest`))
+        content += p.outerHTML;
+        p = document.createElement("p")
+        p.appendChild(document.createTextNode(`Element ${min} is smallest`))
+        content += p.outerHTML;
+
+
+        content += "Reload to pick again"
+        document.write(content);
+        // document.getElementById("body").innerHTML = content;
+    </script>
+</head>
+<body id="body">
+
+</body>
+</html>

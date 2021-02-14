@@ -2,50 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Home | MKSherbini</title>
+    <link rel="stylesheet" href="login2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function toggleCSS() {
+            if (typeof toggleCSS.counter == 'undefined') {
+                toggleCSS.counter = 0;
+            } else {
+                toggleCSS.counter++;
+                toggleCSS.counter %= 2;
+            }
+            var css1 = "login.css";
+            var css2 = "login2.css";
+            var css = "";
+            if (toggleCSS.counter == 0) {
+                css = css1;
+            } else {
+                css = css2;
+            }
+            changeCSS(css, 0);
+        }
+
+        function changeCSS(cssFile, cssLinkIndex) {
+
+            var oldlink = document.getElementsByTagName("head").item(0).getElementsByTagName("link").item(cssLinkIndex);
+
+            var newlink = document.createElement("link");
+            newlink.setAttribute("rel", "stylesheet");
+            newlink.setAttribute("type", "text/css");
+            newlink.setAttribute("href", cssFile);
+
+            document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+        }
+    </script>
 </head>
-<body style="background-color: #183152" text="#E1E6FA">
-<h1>MKSherbini</h1>
-<a href="mailto:MKSherbini@gmail.com"><img
-        src="https://img.shields.io/badge/-%20MKSherbini-05122A?style=flat&logo=gmail"/></a>
-<br>
-<input type="button" value="GOTO Sites Directory" onclick="location.href='sites.html'">
-<br>
-<div>
-    <h3>Personal Data</h3>
-    <p>
-        m23, CSED Graduate
-    </p>
-</div>
-<div>
-    <h3>Interests</h3>
-    <p>
-        I Like Food and Sleeping
-    </p>
-</div>
-<div>
-    <h3>Plans</h3>
-    <p>
-        I plan on becoming a magician
-    </p>
-</div>
+<body text="#E1E6FA">
+<header>
+    <h1>MKSherbini</h1>
+    <a href="mailto:MKSherbini@gmail.com"><img
+            src="https://img.shields.io/badge/-%20MKSherbini-05122A?style=flat&logo=gmail"/></a>
+</header>
 
-<div>
-    <h3>CS experience</h3>
-    <ul>
-        <li>Gamedev</li>
-        <li>Embedded</li>
-        <li>Gaming</li>
-    </ul>
-</div>
+<nav>
+    <a href="welcome.html">Welcome</a> |
+    <a href="register.html">Forms</a> |
+    <a href="sites.html">Sites</a>
+</nav>
+<main>
 
-<img src="Images/spongea.png" width="400" height="400" alt="Can't load image">
+    <section>
+        <h1>Personal Data</h1>
+        <p>
+            m23, CSED Graduate
+        </p>
+    </section>
+    <section>
+        <h1>Interests</h1>
+        <p>
+            I Like Food and Sleeping
+        </p>
+    </section>
+    <section>
+        <h1>Plans</h1>
+        <p>
+            I plan on becoming a magician
+        </p>
+    </section>
 
-<p>
+    <section>
+        <h1>CS experience</h1>
+        <ul>
+            <li>Gamedev</li>
+            <li>Embedded</li>
+            <li>Gaming</li>
+        </ul>
+    </section>
     <mark>
         <strong>Sleep</strong> = <i>mc<sup>2</sup></i>
     </mark>
-</p>
+    <article>
+        <h1>Ugandan knuckles</h1>
+        <p>Ugandan knuckles is my fav troll meme</p>
+        <figure>
+            <img src="Images/Ugandan-Knuckles.png" width="50" height="50" alt="Can't load image">
+            <figcaption>Picture - Ugandan knuckles.</figcaption>
+        </figure>
+    </article>
+
+</main>
+
+<footer>
+    <p>Author: MKSherbini</p>
+    <a href="mailto:MKSherbini@gmail.com"><img
+            src="https://img.shields.io/badge/-%20MKSherbini-05122A?style=flat&logo=gmail"/></a>
+</footer>
+<footer>
+    <input type="button" value="GOTO Sites Directory" onclick="location.href='sites.html'">
+    <input type="button" value="CSS" onclick="toggleCSS()">
+</footer>
+
 
 </body>
 </html>

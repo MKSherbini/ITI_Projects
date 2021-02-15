@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Speed Guess Game</h1>
+</header>
+
+<main>
+    <label id="num">Pick a number</label>
+
+    <br/>
+    <br/>
+    <br/>
+    <button onclick="gameInit()">Start Game</button>
+    <button onclick="gameEnd()">End Game</button>
+</main>
+
+<script>
+    var el = function (element) {
+        if (element.charAt(0) === "#") { // If passed an ID...
+            return document.querySelector(element); // ... returns single element
+        }
+        return document.querySelectorAll(element); // Otherwise, returns a nodelist
+    };
+
+    let num = el("#num");
+
+    let gameInit = function () {
+        guess = -1;
+        score = 0;
+        total = 0;
+        gameTimer = setInterval(function () {
+            guess = Math.floor(Math.random() * 10);
+            let temp = guess;
+            total++;
+            setTimeout(() => num.innerHTML = temp, 2000);
+        }, 2000);
+    };
+    let gameEnd = function () {
+        alert(`Score is ${score} out of ${total}`);
+        clearInterval(gameTimer);
+    };
+
+    let guess = -1;
+    let score = 0;
+    let total = 0;
+    let gameTimer;
+
+    document.onkeypress = function (e) {
+        e = e || window.event;
+        if ((e.keyCode - 48) == guess) {
+            // alert("score");
+            score++;
+        }
+    };
+
+</script>
+</body>
+</html>

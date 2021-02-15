@@ -17,13 +17,14 @@
         }
         let min = 0, max = 0, f = 0;
         arr.forEach(value => {
-            if (f) {
+            if (f==0) {
+                f=1;
                 min = max = value;
             } else {
                 max = Math.max(max, value);
                 min = Math.min(min, value);
             }
-        })
+        });
         let p = document.createElement("p");
         p.appendChild(document.createTextNode(`Element ${max} is largest`))
         content += p.outerHTML;

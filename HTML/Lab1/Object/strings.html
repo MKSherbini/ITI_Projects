@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        label {
+            display: block;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<header>
+    <h1>String searching</h1>
+</header>
+
+<main>
+
+    <article style="border: black;border-width: 1px;border-style:solid;">
+        <p>Hi all this is the second day in java script course</p>
+    </article>
+    <section>
+        <h1>String searching info</h1>
+        <label>
+            <b>Enter substring to search for</b>
+            <input id="sub" type="text" value="">
+        </label>
+        <label>
+            <b>Start at index</b>
+            <input id="idx" type="text">
+            <input type="button" value="Search" onclick="setAll()">
+        </label>
+
+        <label>
+            <b>First occurrence located at index</b>
+            <input class="outs" type="text" value="" disabled="true">
+        </label>
+
+        <label>
+            <b>Last occurrence located at index</b>
+            <input class="outs" type="text" value="" disabled="true">
+        </label>
+
+        <label>
+            <b>First occurrence from your index located at index</b>
+            <input class="outs" type="text" value="" disabled="true">
+        </label>
+
+        <label>
+            <b>Last occurrence from your index located at index</b>
+            <input class="outs" type="text" value="" disabled="true">
+        </label>
+
+    </section>
+
+</main>
+
+<script>
+    var el = function (element) {
+        if (element.charAt(0) === "#") { // If passed an ID...
+            return document.querySelector(element); // ... returns single element
+        }
+        return document.querySelectorAll(element); // Otherwise, returns a nodelist
+    };
+    let str = "Hi all this is the second day in java script course";
+
+    let outs = el(".outs");
+    let sub = el("#sub");
+    let idx = el("#idx");
+    var setAll = function () {
+        set0();
+        set1();
+        if (idx.value != "" && !isNaN(Number(idx.value)) && isFinite(Number(idx.value))) {
+            set2();
+            set3();
+        }
+    }
+    var set0 = function () {
+        outs[0].setAttribute("value", str.indexOf(sub.value));
+    }
+    var set1 = function () {
+        outs[1].setAttribute("value", str.lastIndexOf(sub.value));
+    }
+    var set2 = function () {
+        outs[2].setAttribute("value", str.indexOf(sub.value, Number(idx.value)));
+    }
+    var set3 = function () {
+        outs[3].setAttribute("value", str.lastIndexOf(sub.value, Number(idx.value)));
+    }
+
+</script>
+</body>
+</html>

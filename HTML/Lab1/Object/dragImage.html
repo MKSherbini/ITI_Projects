@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #dragme {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Image Drag</h1>
+</header>
+
+<main>
+    <article class="target" style="border: black;border-width: 1px;border-style:solid;">
+        <p>Drag here</p>
+    </article>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <article class="target" style="border: black;border-width: 1px;border-style:solid;">
+        <p>Drag here too</p>
+    </article>
+    <img id="dragme" src="Ugandan-Knuckles.png" draggable="true" width="100">
+    <!--    <p>I never am really satisfied that I understand anything; because, understand it well as I may, my comprehension can only be an infinitesimal fraction of all I want to understand about the many connections and relations which occur to me, how the matter in question was first thought of or arrived at, etc., etc.</p>-->
+    <!--    <p>In almost every computation a great variety of arrangements for the succession of the processes is possible, and various considerations must influence the selections amongst them for the purposes of a calculating engine. One essential object is to choose that arrangement which shall tend to reduce to a minimum the time necessary for completing the calculation.</p>-->
+    <!--    <p>Many persons who are not conversant with mathematical studies imagine that because the business of [Babbage’s Analytical Engine] is to give its results in numerical notation, the nature of its processes must consequently be arithmetical and numerical, rather than algebraical and analytical. This is an error. The engine can arrange and combine its numerical quantities exactly as if they were letters or any other general symbols; and in fact it might bring out its results in algebraical notation, were provisions made accordingly.</p>-->
+    <!--    <p>The Analytical Engine has no pretensions whatever to originate anything. It can do whatever we know how to order it to perform. It can follow analysis, but it has no power of anticipating any analytical revelations or truths. Its province is to assist us in making available what we are already acquainted with.</p>-->
+</main>
+
+<script>
+    function drag_start(event) {
+        var style = window.getComputedStyle(event.target, null);
+        event.dataTransfer.setData("text/plain",
+            (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
+    }
+
+    function drag_over(event) {
+        var offset = event.dataTransfer.getData("text/plain").split(',');
+        var dm = document.getElementById('dragme');
+        dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+        dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+        event.preventDefault();
+        return false;
+    }
+
+    function drop(event) {
+        var offset = event.dataTransfer.getData("text/plain").split(',');
+        var dm = document.getElementById('dragme');
+        dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+        dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+        event.preventDefault();
+        return false;
+    }
+
+    var el = function (element) {
+        if (element.charAt(0) === "#") { // If passed an ID...
+            return document.querySelector(element); // ... returns single element
+        }
+        return document.querySelectorAll(element); // Otherwise, returns a nodelist
+    };
+    var dm = el('#dragme');
+    dm.addEventListener('dragstart', drag_start, false);
+    var tar = el(".target");
+    tar.forEach(target => {
+        target.addEventListener('dragover', drag_over, false);
+        target.addEventListener('drop', drop, false);
+    })
+
+
+</script>
+</body>
+</html>

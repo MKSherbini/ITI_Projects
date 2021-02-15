@@ -25,12 +25,14 @@
                     alpha = `type = "A"`
                     listName = "Ordered List: Alphabet"
                     break;
-            }
 
-            content = `<h1>${listName}</h1>`
-            content += ` <${tag} ${alpha}><li>Coffee</li>
+            }
+            if (tag != "") {
+                content = `<h1>${listName}</h1>`
+                content += ` <${tag} ${alpha}><li>Coffee</li>
                           <li>Tea</li>
                           <li>Milk</li></${tag}> `
+            }
         }
         content += "Reload to pick again"
         document.write(content);

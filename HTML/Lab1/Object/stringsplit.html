@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        label {
+            display: block;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<header>
+    <h1>String Splitting</h1>
+</header>
+
+<main>
+
+    <section>
+        <h1>String Splitting info</h1>
+        <label>
+            <b>Enter string to split</b>
+            <input id="sub" type="text" value="">
+        </label>
+        <label>
+            <b>delimiter</b>
+            <input id="idx" type="">
+            <input type="button" value="split" onclick="setAll()">
+        </label>
+
+        <label>
+            <b>Splits are</b>
+            <textarea class="outs" rows="4" cols="30" disabled="true"></textarea>
+        </label>
+
+        <label>
+            <b>First 10 chars are</b>
+            <input class="outs" type="text" value="" disabled="true">
+        </label>
+
+    </section>
+
+</main>
+
+<script>
+    var el = function (element) {
+        if (element.charAt(0) === "#") { // If passed an ID...
+            return document.querySelector(element); // ... returns single element
+        }
+        return document.querySelectorAll(element); // Otherwise, returns a nodelist
+    };
+
+    let outs = el(".outs");
+    let str = el("#sub");
+    let idx = el("#idx");
+    var setAll = function () {
+        set0();
+        set1();
+    }
+    var set0 = function () {
+        let s = "";
+        str.value.split(idx.value).forEach(value => s += value.trim() + "\n");
+        outs[0].value = s;
+    }
+    var set1 = function () {
+        outs[1].setAttribute("value", str.value.substr(0, 10));
+    }
+
+</script>
+</body>
+</html>

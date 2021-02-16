@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<form class="row g-3 needs-validation" novalidate>
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Email</label>
+        <input type="text" class="form-control" id="validationCustom01"
+               pattern="^[A-Za-z0-9._-]+@[A-Za-z0-9]+\.[A-Za-z]{2,6}$"
+               value="asd@asd.com" required>
+        <div class="valid-feedback">
+            Good stuff!
+        </div>
+        <div class="invalid-feedback">
+            Please choose a valid email.
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Mobile</label>
+        <input type="text" class="form-control" id="validationCustom02" pattern="^(\+2)?01\d{9}$" value="01234567897"
+               required>
+        <div class="valid-feedback">
+            Good stuff!
+        </div>
+        <div class="invalid-feedback">
+            Please choose a valid phone.
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="validationCustom03" class="form-label">Credit Card</label>
+        <input type="text" class="form-control" id="validationCustom03" pattern="^(\d{4}-){3}(\d{4})$"
+               value="5555-5555-5555-5555" onchange="setTextArea()" required>
+        <div class="valid-feedback">
+            Good stuff!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a valid Credit Card.
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label for="validationCustom04" class="form-label">Credit Cards</label>
+        <textarea type="text" rows="4" id="validationCustom04" disabled="true"
+                  required></textarea>
+
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" onclick="validate()" type="submit">Submit form</button>
+    </div>
+</form>
+
+<script>
+    var el = function (element) {
+        if (element.charAt(0) === "#") { // If passed an ID...
+            return document.querySelector(element); // ... returns single element
+        }
+        return document.querySelectorAll(element); // Otherwise, returns a nodelist
+    };
+
+    var setTextArea = function () {
+        let card = el("#validationCustom03");
+        const regex = /(\d{4})/gm;
+        const str = card.value;
+        console.log(`card: ${card.value}`);
+        let m;
+        let t = "";
+        while ((m = regex.exec(str)) !== null) {
+            // This is necessary to avoid infinite loops with zero-width matches
+            if (m.index === regex.lastIndex) {
+                regex.lastIndex++;
+            }
+
+            t += m[0] + '\n';
+            // The result can be accessed through the `m`-variable.
+            // m.forEach((match, groupIndex) => {
+            //     // console.log(`Found match, group ${groupIndex}: ${match}`);
+            // });
+        }
+        el("#validationCustom04").innerHTML = t;
+    };
+    // $(document).ready(function () {
+    //     var errorMessage = "Please match the requested format.";
+    //     var validate = function () {
+    //         var pattern = $(this).attr("pattern");
+    //
+    //         if (typeof pattern !== typeof undefined && pattern !== false) {
+    //             var patternRegex = new RegExp("^" + pattern.replace(/^\^|\$$/g, '') + "$", "g");
+    //
+    //             hasError = !$(this).val().match(patternRegex);
+    //
+    //             if (typeof this.setCustomValidity === "function") {
+    //                 this.setCustomValidity(hasError ? errorMessage : "");
+    //             }
+    //             // else {
+    //             //     $(this).toggleClass("error", !!hasError);
+    //             //     $(this).toggleClass("ok", !hasError);
+    //             //
+    //             //     if (hasError) {
+    //             //         $(this).attr("title", errorMessage);
+    //             //     } else {
+    //             //         $(this).removeAttr("title");
+    //             //     }
+    //             // }
+    //         }
+    //     };
+    // var validateEl = function (el) {
+    //     var pattern = $(el).attr("pattern");
+    //
+    //     if (typeof pattern !== typeof undefined && pattern !== false) {
+    //         var patternRegex = new RegExp("^" + pattern.replace(/^\^|\$$/g, '') + "$", "g");
+    //
+    //         hasError = !$(el).val().match(patternRegex);
+    //
+    //         if (typeof el.setCustomValidity === "function") {
+    //             el.setCustomValidity(hasError ? errorMessage : "");
+    //             alert("d")
+    //         } else {
+    //             $(el).toggleClass("error", !!hasError);
+    //             $(el).toggleClass("ok", !hasError);
+    //
+    //             if (hasError) {
+    //                 $(el).attr("title", errorMessage);
+    //             } else {
+    //                 $(el).removeAttr("title");
+    //             }
+    //         }
+    //     }
+    // };
+    //
+    // $(document).on('submit', function () {
+    //     validateEl($(this).find("textarea"));
+    // });
+
+
+    // $(this).find("textarea").on("input change propertychange", validate);
+    // });
+
+    // (function () {
+    //     'use strict'
+    //
+    //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //     var forms = document.querySelectorAll('.needs-validation')
+    //
+    //     // Loop over them and prevent submission
+    //     Array.prototype.slice.call(forms)
+    //         .forEach(function (form) {
+    //             form.addEventListener('submit', function (event) {
+    //                 if (!form.checkValidity()) {
+    //                     event.preventDefault()
+    //                     event.stopPropagation()
+    //                 }
+    //
+    //                 form.classList.add('was-validated')
+    //             }, false)
+    //         })
+    // })();
+</script>
+</body>
+</html>

@@ -21,7 +21,7 @@
 <main>
 
     <article style="border: black;border-width: 1px;border-style:solid;">
-        <p>Hi all this is the second day in java script course</p>
+        <textarea id="text">Hi all this is the second day in java script course</textarea>
     </article>
     <section>
         <h1>String searching info</h1>
@@ -66,12 +66,13 @@
         }
         return document.querySelectorAll(element); // Otherwise, returns a nodelist
     };
-    let str = "Hi all this is the second day in java script course";
-
+    // let str = "Hi all this is the second day in java script course";
+    let str = el('#text');
     let outs = el(".outs");
     let sub = el("#sub");
     let idx = el("#idx");
     var setAll = function () {
+        // alert(str.value);
         set0();
         set1();
         if (idx.value != "" && !isNaN(Number(idx.value)) && isFinite(Number(idx.value))) {
@@ -80,16 +81,16 @@
         }
     }
     var set0 = function () {
-        outs[0].setAttribute("value", str.indexOf(sub.value));
+        outs[0].setAttribute("value", str.value.indexOf(sub.value));
     }
     var set1 = function () {
-        outs[1].setAttribute("value", str.lastIndexOf(sub.value));
+        outs[1].setAttribute("value", str.value.lastIndexOf(sub.value));
     }
     var set2 = function () {
-        outs[2].setAttribute("value", str.indexOf(sub.value, Number(idx.value)));
+        outs[2].setAttribute("value", str.value.indexOf(sub.value, Number(idx.value)));
     }
     var set3 = function () {
-        outs[3].setAttribute("value", str.lastIndexOf(sub.value, Number(idx.value)));
+        outs[3].setAttribute("value", str.value.lastIndexOf(sub.value, Number(idx.value)));
     }
 
 </script>

@@ -62,7 +62,12 @@
         set1();
     }
     var set0 = function () {
+        if (idx.value == "") {
+            alert("delimiter is empty, using default");
+            return;
+        }
         let s = "";
+
         str.value.split(idx.value).forEach(value => s += value.trim() + "\n");
         outs[0].value = s;
     }

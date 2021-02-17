@@ -10,7 +10,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="cookiesLibrary.js"></script>
     <!--    <script>-->
     <!--        function load_login() {-->
     <!--            document.getElementById("forms").innerHTML = '<object type="text/html" data="loginForm.html" ></object>';-->
@@ -36,7 +36,7 @@
     This is a primary alert—check it out!
 </div>
 
-<div id="loginDiv" class="modalc m-auto">
+<div onsubmit="handleLoginSubmit()" id="loginDiv" class="modalc m-auto">
 
     <form class="needs-validation modal-contentc animate row g-3 m-auto" novalidate>
         <div class="imgcontainer col-md-12 ml-auto mr-auto mt-5">
@@ -89,7 +89,7 @@
 </div>
 
 <div id="registerDiv" class="modalc">
-    <form onsubmit="return reviewSubmit();" class="needs-validation modal-contentc animate row g-3 m-auto" novalidate>
+    <form onsubmit="reviewSubmit(); return false;" class="needs-validation modal-contentc animate row g-3 m-auto" novalidate>
         <div class="imgcontainer col-md-12 ml-auto mr-auto mt-5">
                 <span onclick="document.getElementById('loginDiv').style.display='none'" class="close"
                       title="Close Modal">&times;</span>
@@ -297,6 +297,21 @@
         }, 2000);
     }
 
+    function handleLoginSubmit() {
+        let shouldSave = document.getElementById("rememberMe").checked;
+        if (shouldSave) {
+            cookiesManager.setCookie("username", document.forms[0].username.value);
+            alertIt("saving...");
+        } else {
+            alertIt("deleting old save...");
+            cookiesManager.deleteCookie("username");
+        }
+    }
+
+    (function fetchLogin() {
+        document.forms[0].username.value = cookiesManager.getCookie("username");
+    })();
+
     var reviewSubmit = async function () {
         let slave = window.open("review.html", "_blank", 'location=no,height=570,width=520,scrollbars=no,status=no,toolbar=no,menubar=no,resizable=no');
         let str = "";
@@ -346,7 +361,7 @@
         modal2.style.display = "none";
     }
 
-    document.getElementById('registerDiv').style.display = 'block';
+    // document.getElementById('registerDiv').style.display = 'block';
 
     (function () {
         'use strict'

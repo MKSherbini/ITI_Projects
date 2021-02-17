@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body style="background-color: #183152">
+
+<div id="myAlert" hidden class="alert alert-primary" role="alert">
+    This is a primary alert—check it out!
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4 mt-5 ml-2">
+        <label style="color: #fefefe" for="browser" class="form-label">You fav browser is: </label>
+        <input type="text" id="browser" placeholder="Enter browser">
+    </div>
+    <div class="col-md-4 mt-2 ml-2">
+        <label style="color: #fefefe" for="drop" class="form-label">You fav browser is: </label>
+        <select onchange="syncEm()" id="drop">
+            <option>Browser1</option>
+            <option>Browser2</option>
+            <option>Browser3</option>
+        </select>
+    </div>
+    <div class="col-md-4 mt-5 ml-2">
+
+        <button onclick="btnAdd()" class="btn btn-primary" type="button">Add</button>
+        <button onclick="btnRemove()" class="btn btn-danger" type="button">Delete</button>
+
+    </div>
+</div>
+
+<script>
+    var alertIt = function (str) {
+        let myAlert = document.getElementById("myAlert");
+        myAlert.innerHTML = str;
+        myAlert.hidden = false;
+        setTimeout(function () {
+            myAlert.hidden = true;
+        }, 2000);
+    }
+
+    let sel = document.getElementById("drop");
+    let browser = document.getElementById("browser");
+
+    function btnAdd() {
+        if (browser.value == "") {
+            alertIt("Can't add, empty field")
+            return;
+        }
+
+        let options = sel.getElementsByTagName("option");
+        // console.log(options.length);
+        let found = false;
+        for (let i = 0; i < options.length; i++) {
+            if (options.item(i).text == browser.value) {
+                found = true;
+            }
+        }
+        if (!found) {
+            let option = document.createElement("option");
+            option.text = browser.value;
+            sel.appendChild(option);
+            sel.selectedIndex = options.length - 1;
+        } else {
+            alertIt("Can't add, already there")
+        }
+        // console.log(options.length); options dynamically updates???????
+    }
+
+    function btnRemove() {
+        let options = sel.getElementsByTagName("option")
+        if (options.length > 0) {
+            sel.removeChild(options[sel.selectedIndex]);
+            sel.selectedIndex = 0;
+        } else {
+            alertIt("Can't delete, already empty ")
+        }
+        if (options.length == 0)
+            browser.value = "";
+
+        syncEm();
+    }
+
+    function syncEm() {
+        let options = sel.getElementsByTagName("option")
+        if (options.length > 0)
+            browser.value = options[sel.selectedIndex].text;
+    }
+
+
+</script>
+</body>
+</html>

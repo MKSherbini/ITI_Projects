@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="reviewContent"><p>asd</p></div>
+<button class="btn btn-primary" onclick="gtfo(true)" type="button">Confirm</button>
+<button class="btn btn-danger" onclick="gtfo(false)" type="button">Cancel</button>
+<script>
+    function gtfo(b) {
+        if (window.opener) {
+            const customEvent = new CustomEvent('custom', {detail: b});
+            window.opener.dispatchEvent(customEvent);
+            window.close();
+        }
+    }
+
+</script>
+</body>
+</html>

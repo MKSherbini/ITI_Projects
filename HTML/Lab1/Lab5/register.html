@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--    <script>-->
+    <!--        function load_login() {-->
+    <!--            document.getElementById("forms").innerHTML = '<object type="text/html" data="loginForm.html" ></object>';-->
+    <!--        }-->
+    <!--    </script>-->
+</head>
+
+<body id="body">
+
+<h2>Modal Forms</h2>
+
+<button onclick="document.getElementById('registerDiv').style.display='block'"
+        style="width:auto;background-color: #2196F3">
+    Register
+</button>
+
+<button onclick="document.getElementById('loginDiv').style.display='block'"
+        style="width:auto;background-color: #2196F3">
+    Login
+</button>
+
+<div id="myAlert" hidden class="alert alert-primary" role="alert">
+    This is a primary alert—check it out!
+</div>
+
+<div id="loginDiv" class="modalc m-auto">
+
+    <form class="needs-validation modal-contentc animate row g-3 m-auto" novalidate>
+        <div class="imgcontainer col-md-12 ml-auto mr-auto mt-5">
+                <span onclick="document.getElementById('loginDiv').style.display='none'" class="close"
+                      title="Close Modal">&times;</span>
+            <img src="Images/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="col-md-12  m-auto">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username"
+                   placeholder="Enter Username" required>
+            <div class="valid-feedback">
+                Good stuff!
+            </div>
+            <div class="invalid-feedback">
+                Please choose a valid username.
+            </div>
+        </div>
+
+        <div class="col-md-12  m-auto">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password"
+                   placeholder="Enter Password" required>
+            <div class="valid-feedback">
+                Good stuff!
+            </div>
+            <div class="invalid-feedback">
+                Please choose a valid password.
+            </div>
+        </div>
+
+        <div class="col-md-12  m-auto">
+            <div class="checkbox">
+                <input class="checkbox" type="checkbox" id="rememberMe">
+                <label class="checkbox" for="rememberMe">
+                    Remember me
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6  m-auto">
+            <button class="btn btn-primary" type="submit">login</button>
+        </div>
+        <div class="col-md-6  m-auto">
+            <button class="btn btn-danger" type="reset">Cancel</button>
+        </div>
+        <div class="col-md-12  m-auto">
+            <span class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+    </form>
+</div>
+
+<div id="registerDiv" class="modalc">
+    <form onsubmit="return reviewSubmit();" class="needs-validation modal-contentc animate row g-3 m-auto" novalidate>
+        <div class="imgcontainer col-md-12 ml-auto mr-auto mt-5">
+                <span onclick="document.getElementById('loginDiv').style.display='none'" class="close"
+                      title="Close Modal">&times;</span>
+            <img src="Images/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <h3 class="groupname">Account Information</h3>
+            <div class="col-md-12  m-auto">
+                <label for="usernameR" class="form-label">Username</label>
+                <input type="text" class="form-control" id="usernameR"
+                       placeholder="Enter Username" value="ali" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid username.
+                </div>
+            </div>
+
+            <div class="col-md-12  m-auto">
+                <label for="passwordR" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passwordR"
+                       placeholder="Enter Password" value="ali" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid password.
+                </div>
+            </div>
+
+            <div class="col-md-12  m-auto">
+                <label for="passwordRConfirm" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="passwordRConfirm"
+                       placeholder="Confirm Password" value="ali" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid password.
+                </div>
+            </div>
+
+            <div class="col-md-12  m-auto">
+                <label for="creditCard" class="form-label">Credit Card No</label>
+                <input type="text" class="form-control" id="creditCard"
+                       placeholder="Enter Card No" pattern="\d{11}" value="11111111111" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid card.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h3 class="groupname">Personal Information</h3>
+
+            <div class="col-md-12  m-auto">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name"
+                       placeholder="Enter Name" value="ali" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid name.
+                </div>
+            </div>
+
+            <div class="col-md-12  m-auto">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob">
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid Date of Birth.
+                </div>
+            </div>
+            <div class="col-md-12  m-auto">
+                <label for="color" class="form-label">Favorite Color</label>
+                <input type="color" class="form-control" id="color" value="#0000FF" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid color.
+                </div>
+            </div>
+            <div class="col-md-12  m-auto">
+                <label for="photo" class="form-label">Profile Photo</label>
+                <input type="file" class="form-control" id="photo">
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid photo.
+                </div>
+            </div>
+            <div class="col-md-12  m-auto">
+                <label for="favBrowser" class="form-label">Favorite Browser</label>
+                <input type="text" class="form-control" id="favBrowser"
+                       placeholder="Enter Firefox" value="ali" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid browser.
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h3 class="groupname">Company Information</h3>
+
+            <div class="col-md-12  m-auto">
+                <label for="noEmps" class="form-label">No. of Employees</label>
+                <input type="number" class="form-control" value="10" id="noEmps"
+                       required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid number.
+                </div>
+            </div>
+
+            <div class="col-md-12  m-auto">
+                <label for="revenue" class="form-label">Estimated Revenue</label>
+                <input type="range" min="1000" max="2000" class="form-control" id="revenue"
+                       required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid revenue.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container">
+            <h3 class="groupname">Contact Information</h3>
+
+            <div class="col-md-12  m-auto">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email"
+                       pattern="^[A-Za-z0-9._-]+@[A-Za-z0-9]+\.[A-Za-z]{2,6}$"
+                       value="ali@ali.ali" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid email.
+                </div>
+            </div>
+
+            <div class="col-md-12  m-auto">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" pattern="^(\+2)?01\d{9}$"
+                       value="01234567899" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid phone.
+                </div>
+            </div>
+
+            <div class="col-md-12  m-auto">
+                <label for="website" class="form-label">Website URL</label>
+                <input type="url" class="form-control" id="website"
+                       placeholder="Enter Website" value="https://www.w3schools.com" required>
+                <div class="valid-feedback">
+                    Good stuff!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a valid website.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-12  m-auto">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+        <div class="col-md-6  m-auto">
+            <button class="btn btn-danger" type="reset">Cancel</button>
+        </div>
+
+    </form>
+</div>
+
+
+<script>
+    var alertIt = function (str) {
+        let myAlert = document.getElementById("myAlert");
+        myAlert.innerHTML = str;
+        myAlert.hidden = false;
+        setTimeout(function () {
+            myAlert.hidden = true;
+        }, 2000);
+    }
+
+    var reviewSubmit = async function () {
+        let slave = window.open("review.html", "_blank", 'location=no,height=570,width=520,scrollbars=no,status=no,toolbar=no,menubar=no,resizable=no');
+        let str = "";
+        let inputs = document.getElementById("registerDiv").getElementsByTagName('input');
+        for (let index = 0; index < inputs.length; ++index) {
+            let lb = document.querySelector(`label[for='${inputs[index].id}']`).innerHTML;
+            str += `<p>${lb}: ${inputs[index].value}</p>`;
+        }
+        setTimeout(function () {
+            slave.document.getElementById("reviewContent").innerHTML = (str);
+        }, 500);
+        let lifeCheck = setInterval(function () {
+            if (!slave.closed) return;
+            closeModals();
+            alertIt("How dare you just close it like that, use the button next time");
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+        }, 500);
+        let ret = false;
+        await new Promise(resolve => window.addEventListener('custom', resolve)).then(value => ret = value.detail);
+        clearInterval(lifeCheck);
+        if (ret === true) {
+            alertIt("You confirmed");
+        } else {
+            alertIt("You rejected");
+        }
+        closeModals();
+        return ret;
+    }
+    // Get the modal
+    var modal = document.getElementById('registerDiv');
+    var modal2 = document.getElementById('loginDiv');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+
+    function closeModals() {
+        modal.style.display = "none";
+        modal2.style.display = "none";
+    }
+
+    document.getElementById('registerDiv').style.display = 'block';
+
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })();
+</script>
+
+</body>
+
+</html>

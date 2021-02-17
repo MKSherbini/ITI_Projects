@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Strings</title>
@@ -7,21 +8,36 @@
     <style>
 
     </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
-<body>
+
+<body
+        style="background-color: #183152;align-self: center;align-content: center;align-items: center;text-align: center;height: 100%">
+
+<div id="myAlert" hidden class="alert alert-primary" role="alert">
+    This is a primary alert—check it out!
+</div>
 
 <header>
-    <h1>Speed Guess Game</h1>
+    <h1 style="color: aliceblue;">Speed Guess Game</h1>
 </header>
-<!--result + btns + center num-->
 <main>
-    <label id="num" style="display: block;background-color: blue;width: 400px;color: aliceblue;font-size: 400px;align-content: center;text-align: center">0</label>
-    <br/>
-    <br/>
-    <br/>
-    <button onclick="gameInit()">Start Game</button>
-    <button onclick="gameEnd()">End Game</button>
+    <label id="num"
+           style="display: block;background-color: blue;width: 400px;color: aliceblue;font-size: 400px;align-content: center;text-align: center;left: 50%;margin-left: -200px;position: fixed;">0</label>
+
+    <div class="container">
+        <div class="row align-items-end">
+            <div style="bottom: 5%;left: 50%;margin-left: -100px; position: fixed;">
+                <button class="btn btn btn-success" onclick="gameInit()">Start Game</button>
+                <button class="btn btn btn-danger" onclick="gameEnd()">End Game</button>
+            </div>
+        </div>
+    </div>
 </main>
+
 
 <script>
     var el = function (element) {
@@ -30,7 +46,14 @@
         }
         return document.querySelectorAll(element); // Otherwise, returns a nodelist
     };
-
+    var alertIt = function (str) {
+        let myAlert = document.getElementById("myAlert");
+        myAlert.innerHTML = str;
+        myAlert.hidden = false;
+        setTimeout(function () {
+            myAlert.hidden = true;
+        }, 2000);
+    }
     let num = el("#num");
 
     let gameInit = function () {
@@ -45,7 +68,7 @@
         }, 2000);
     };
     let gameEnd = function () {
-        alert(`Score is ${score} out of ${total}`);
+        alertIt(`Score is ${score} out of ${total}`);
         clearInterval(gameTimer);
     };
 
@@ -64,4 +87,5 @@
 
 </script>
 </body>
+
 </html>

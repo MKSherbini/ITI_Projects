@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let alertIt = function (str) {
+            let myAlert = document.getElementById("myAlert");
+            myAlert.innerHTML = str;
+            myAlert.hidden = false;
+            setTimeout(function () {
+                myAlert.hidden = true;
+            }, 2000);
+        }
+    </script>
+</head>
+<body>
+<div id="myAlert" hidden class="alert alert-primary" role="alert">
+    This is a primary alert—check it out!
+</div>
+
+</body>
+</html>

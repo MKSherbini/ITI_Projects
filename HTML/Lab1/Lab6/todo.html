@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let alertIt = function (str) {
+            if (typeof (alertIt.myAlert) === 'undefined') {
+                alertIt.myAlert = document.getElementById("myAlert");
+            }
+            alertIt.myAlert.innerHTML = str;
+            alertIt.myAlert.hidden = false;
+            window.scrollTo(0, 0);
+            setTimeout(function () {
+                alertIt.myAlert.hidden = true;
+            }, 2000);
+        }
+        let el = function (element) {
+            if (element.charAt(0) === "#") { // If passed an ID...
+                return document.querySelector(element); // ... returns single element
+            }
+            return document.querySelectorAll(element); // Otherwise, returns a nodelist
+        };
+    </script>
+</head>
+<body style="background-color: #183152">
+<div id="myAlert" hidden class="alert alert-danger" role="alert">
+    This is a primary alert—check it out!
+</div>
+
+<div class="row mb-3 mt-5 ml-2">
+    <label style="color: #fefefe" for="note" class="form-label col-md-1">Note Text: </label>
+    <textarea id="note">test</textarea>
+</div>
+
+<div class="row mb-3 ml-2">
+    <label style="color: #fefefe" for="color" class="form-label col-md-1">Note Color: </label>
+    <input id="color" type="color"/>
+</div>
+<div class="col-md-12 mt-5 ml-2">
+    <button onclick="btnAdd()" class="btn btn-primary" type="button">Add note</button>
+</div>
+<div class="row">
+    <div id="notesBody" class="col ml-5 mt-5 col-md-6"
+         style="border-width: 2px;border-color: brown;border-style:solid;">
+
+    </div>
+    <div class="ml-5 mt-5 col-md-4">
+        <img class="target" src="images/trash.png" style="border-width: 2px;border-color: brown;border-style:solid;"
+             width="400"
+             alt="trash">
+    </div>
+</div>
+
+<script>
+    let noteArrayObj = {
+        notes: {},
+        maxIdx: 0,
+        storeName: "noteArrayObj"
+    };
+    let noteObj = {
+        date: "",
+        color: {},
+        note: "",
+        id: 0
+    };
+
+    function btnAdd() {
+        if (typeof (btnAdd.note) === 'undefined') {
+            btnAdd.note = el('#note');
+        }
+        if (typeof (btnAdd.color) === 'undefined') {
+            btnAdd.color = el('#color');
+        }
+
+        if (btnAdd.note.value.length === 0) {
+            alertIt("Can't add, empty note");
+            return;
+        }
+        let newNote = {
+            ...noteObj
+        };
+        newNote.color = btnAdd.color.value;
+        newNote.note = btnAdd.note.value;
+        newNote.date = new Date().toDateString();
+        newNote.id = noteArrayObj.maxIdx++;
+        noteArrayObj.notes[newNote.id] = newNote;
+
+        addObjHtml(newNote);
+
+        window.localStorage.setItem(noteArrayObj.storeName, JSON.stringify(noteArrayObj));
+        console.log(window.localStorage.getItem(noteArrayObj.storeName));
+    }
+
+    function btnRemove(elem) {
+        let note = elem.parentElement.parentElement;
+        note.remove();
+        delete noteArrayObj.notes[elem.id];
+        window.localStorage.setItem(noteArrayObj.storeName, JSON.stringify(noteArrayObj));
+    }
+
+    function addObjHtml(newNote) {
+        if (typeof (addObjHtml.notesBody) === 'undefined') {
+            addObjHtml.notesBody = el('#notesBody');
+        }
+
+        addObjHtml.notesBody.innerHTML +=
+            ` <div class="col-md-12 mt-2 mb-2" draggable="true" ondragstart="drag_start(event)"
+                 style="z-index: 1;border-width: 1px;border-color: brown;background-color: ${newNote.color};border-style:solid;color: #fefefe">
+                <div class="col-md-12 mt-2">${newNote.date}</div>
+                <div class="col-md-12 mt-2">${newNote.note}</div>
+                <div class="col-md-12 mt-2 mb-2 card">
+                    <button id="${newNote.id}" onClick="btnRemove(this)" class="btn-danger" type="button">Remove</button>
+                </div>
+            </div>`;
+    }
+
+
+    (function onLoad() {
+        noteArrayObj = JSON.parse(window.localStorage.getItem(noteArrayObj.storeName));
+        Object.keys(noteArrayObj.notes).forEach(function (key) {
+            let obj = noteArrayObj.notes[key];
+            addObjHtml(obj);
+        });
+    })();
+
+
+    function drag_start(event) {
+        setupDrag(event.target);
+        var style = window.getComputedStyle(event.target, null);
+        event.dataTransfer.setData("text/plain",
+            (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
+    }
+
+    function drag_over(event) {
+        // var offset = event.dataTransfer.getData("text/plain").split(',');
+        // var dm = document.getElementById('dragme');
+        // dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+        // dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+        event.preventDefault();
+        return false;
+    }
+
+    function drop(event) {
+        var offset = event.dataTransfer.getData("text/plain").split(',');
+        var dm = document.getElementById('dragme');
+        dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+        dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+        event.preventDefault();
+        dm.removeAttribute("id");
+        btnRemove(dm.querySelector("button"));
+        return false;
+    }
+
+    function setupDrag(elem) {
+        let otherDrag = el('#dragme');
+        if (otherDrag)
+            otherDrag.removeAttribute("id");
+        elem.id = "dragme";
+        // elem.addEventListener('dragstart', drag_start, false);
+    }
+
+    var tar = el(".target");
+    tar.forEach(target => {
+        target.addEventListener('dragover', drag_over, false);
+        target.addEventListener('drop', drop, false);
+    })
+
+</script>
+</body>
+</html>

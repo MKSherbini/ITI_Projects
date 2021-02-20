@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Menus>
+    <Menu value="File">
+        <MenuItem>new</MenuItem>
+        <MenuItem>save</MenuItem>
+        <MenuItem>delete</MenuItem>
+    </Menu>
+    <Menu value="Edit">
+        <MenuItem>copy</MenuItem>
+        <MenuItem>cut</MenuItem>
+        <MenuItem>delete</MenuItem>
+    </Menu>
+    <Menu value="Help">
+        <MenuItem>About</MenuItem>
+        <MenuItem>Tips</MenuItem>
+    </Menu>
+</Menus>

@@ -19,7 +19,7 @@
         <label style="color: #fefefe" for="browser" class="form-label">You fav browser is: </label>
         <input type="text" id="browser" placeholder="Enter browser">
     </div>
-    <div class="col-md-4 mt-2 ml-2">
+    <div class="col-md-12 mt-2 ml-2">
         <label style="color: #fefefe" for="drop" class="form-label">You fav browser is: </label>
         <select onchange="syncEm()" id="drop">
             <option>Browser1</option>
@@ -55,7 +55,12 @@
         }
 
         let options = sel.getElementsByTagName("option");
-        // console.log(options.length);
+
+        console.log("before");
+        for (let i = 0; i < options.length; i++) {
+            console.log(i + " => " + options.item(i).text)
+        }
+
         let found = false;
         for (let i = 0; i < options.length; i++) {
             if (options.item(i).text == browser.value) {
@@ -70,7 +75,12 @@
         } else {
             alertIt("Can't add, already there")
         }
-        // console.log(options.length); options dynamically updates???????
+        console.log("after");
+        for (let i = 0; i < options.length; i++) {
+            console.log(i + " => " + options.item(i).text)
+        }
+
+        // console.log(options.length); //options dynamically updates???????
     }
 
     function btnRemove() {

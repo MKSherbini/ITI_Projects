@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div data-role="page">
+    <form>
+        <label for="text-3">Name</label>
+        <input type="text" data-clear-btn="true" name=" text-3" id="text-3" value="">
+        <label for="text-2">Phone</label>
+        <input type="tel" data-clear-btn="true" name=" text-3" id="text-2" value="">
+        <label for="text-1">Email</label>
+        <input type="email" data-clear-btn="true" name=" text-3" id="text-1" value="">
+        <label for="text-0">Gender</label>
+        <input type="text" data-clear-btn="true" name=" text-3" id="text-0" value="">
+        <label for="file-2">Photo</label>
+        <input type="file" data-clear-btn="true" name="file-2" id="file-2" value="">
+        <div data-role="controlgroup" data-type="horizontal" data-mini="true" >
+            <input data-icon="edit" type="button" value="Edit">
+            <input data-icon="delete" type="button" value="Delete">
+            <input data-icon="phone" type="button" value="Delete">
+        </div>
+        <input data-icon="plus" type="submit" value="Submit">
+    </form>
+</div>
+
+<div data-role="page" data-theme="a" data-inset="true">
+    <h2>Contacts</h2>
+    <ul data-icon="delete"
+        data-role="listview" data-autodividers="true" data-filter="true" data-filter-placeholder="Search contacts..."
+        data-inset="true">
+        <li><a href="#">aUserContact</a></li>
+        <li><a href="#">bUserContact</a></li>
+        <li><a href="#">bUserContact</a></li>
+        <li><a href="#">cUserContact</a></li>
+        <li><a href="#">dUserContact</a></li>
+        <li><a href="#">dUserContact</a></li>
+    </ul>
+</div>
+
+
+</body>
+</html>

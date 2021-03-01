@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+
+<div data-role="page" id="main">
+
+    <div data-role="header">
+        <heading>
+            <h1>Phone Book</h1>
+        </heading>
+    </div>
+
+    <div data-role="content">
+        <ul id="list" data-role="listview" data-filter="true" data-autodividers="true">
+            <!-- Contacts to appear here -->
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <nav>
+            <a href="#entry" data-role="button"
+               data-inline="true" data-mini="true"
+               data-icon="plus" id="add">Add Item</a>
+        </nav>
+    </div>
+</div>
+
+
+<div data-role="page" id="entry">
+
+    <div data-role="header">
+        <h1 id="name">Contact Details</h1>
+        <a href="#" data-rel="back" data-icon="back">Back</a>
+    </div>
+
+    <div data-role="content">
+        <form>
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname"/>
+
+            <label for="mobile">Mobile number:</label>
+            <input type="tel" id="mobile"/>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email"/>
+
+            <label for="bday">Birthday:</label>
+            <input type="date" id="bday"/>
+
+            <label for="img">Image:</label>
+            <input type="file" id="img"/>
+
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>Gender:</legend>
+                    <label for="m-choice">Male</label>
+                    <input type="radio" name="gender-choice" id="m-choice" value="male" checked="checked"/>
+
+                    <label for="f-choice">Female</label>
+                    <input type="radio" name="gender-choice" id="f-choice" value="female"/>
+                </fieldset>
+            </div>
+
+        </form>
+    </div>
+
+    <div data-role="footer" data-position="fixed" id="updateFooter">
+        <nav>
+            <a href="#main" id="update" data-role="button" data-inline="true"
+               data-mini="true" data-icon="refresh">Update</a>
+            <a href="#main" id="del" data-role="button" data-inline="true"
+               data-mini="true" data-icon="minus">Delete</a>
+            <div style="float:right">
+                <a href="" data-role="button" id="mobilebutton" data-inline="true"
+                   data-mini="true" data-icon="phone">Call</a>
+                <a href="" data-role="button" id="mailbutton" data-inline="true"
+                   data-mini="true" data-icon="mail">email</a>
+            </div>
+        </nav>
+    </div>
+    <!--for adding user-->
+    <div data-role="footer" data-position="fixed" id="addFooter" hidden>
+        <div>
+            <a href="#main" id="addContact" data-role="button" data-inline="true"
+               data-icon="plus">Add Contact</a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

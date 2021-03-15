@@ -11,21 +11,20 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 
-@WebFilter(urlPatterns = { "/*" })
-public class IPLogger implements Filter {
+@WebFilter(urlPatterns = { "/signin" })
+public class CheckUserInput implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("IPLogger.doFilter()");
-		var writer = new BufferedWriter(new FileWriter("D:\\iplogger.txt", true));
+		System.out.println("CheckUserInput.doFilter()");
+		String userName = request.getParameter("userName");
+		if (userName != null && userName.startsWith("ali")) {
 
-		writer.write(request.getRemoteAddr());
-		writer.newLine();
-		writer.close();
-
-		chain.doFilter(request, response);
-		System.out.println("IPLogger.doFilter() return");
+		} else {
+			chain.doFilter(request, response);
+		}
+		System.out.println("CheckUserInput.doFilter() return");
 	}
 
 }

@@ -1,0 +1,16 @@
+<hibernate-mapping package="com.project">
+    <class name="Person" discriminator-value="person" table="person" >
+        <id name="id" column="id">
+            <generator class="increment"/>
+        </id>
+        <discriminator column="person_type" type="string"/>
+        <property name="firstName" column="first_name"/>
+        <property name="lastName" column="last_name"/>
+    </class>
+    <subclass name="Student" extends="Person" >
+        <property name="department" column="department"/>
+    </subclass>
+    <subclass name="Teacher" extends="Person">
+        <property name="hireDate" column="hire_date" type="date"/>
+</subclass>
+</hibernate-mapping>

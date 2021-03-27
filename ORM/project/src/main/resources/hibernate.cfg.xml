@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration.dtd">
+
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/chatapp
+        </property>
+        <property name="hibernate.connection.username">
+            mks
+        </property>
+        <property name="hibernate.connection.password">
+            jets
+        </property>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQL8Dialect
+        </property>
+        <mapping resource="dao/account.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
+
+
+        <!--<persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">-->
+        <!--<description>Hibernate EntityManager Demo</description>-->
+        <!--<class>com.company.project.Account</class>-->
+        <!--<exclude-unlisted-classes>true</exclude-unlisted-classes>-->
+        <!--<properties>-->
+        <!--    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>-->
+        <!--    <property name="hibernate.hbm2ddl.auto" value="create"/>-->
+        <!--    <property name="hibernate.show_sql" value="true"/>-->
+        <!--    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/chatapp"/>-->
+        <!--    <property name="javax.persistence.jdbc.user" value="mks"/>-->
+        <!--    <property name="javax.persistence.jdbc.password" value="jets"/>-->
+        <!--    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>-->
+        <!--</properties>-->
+        <!--</persistence-unit>-->

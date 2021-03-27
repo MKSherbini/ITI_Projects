@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="daoxml2.ProductEntity" table="product" schema="biddingschema">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(45)" length="45"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="varchar(150)" length="150" not-null="true"/>
+        </property>
+        <property name="manufacturingName">
+            <column name="manufacturing_name" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="manufacturingDate">
+            <column name="manufacturing_date" sql-type="date"/>
+        </property>
+        <property name="expirationDate">
+            <column name="expiration_date" sql-type="date" not-null="true"/>
+        </property>
+        <property name="sellerId">
+            <column name="seller_id" sql-type="int" not-null="true"/>
+        </property>
+        <property name="quantity">
+            <column name="quantity" sql-type="int"/>
+        </property>
+        <property name="offeredDate">
+            <column name="offered_date" sql-type="date"/>
+        </property>
+        <property name="finishDate">
+            <column name="finish_date" sql-type="date"/>
+        </property>
+        <many-to-one name="sellerBySellerId" class="daoxml2.SellerEntity">
+            <column name="seller_id" not-null="true"/>
+        </many-to-one>
+        <set name="buyerBidProductsById" inverse="true">
+            <key>
+                <column name="product_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="daoxml2.BuyerBidProductEntity"/>
+        </set>
+        <set name="buyerBuyProductsById" inverse="true">
+            <key>
+                <column name="product_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="daoxml2.BuyerBuyProductEntity"/>
+        </set>
+        <set name="productHasCategoriesById" inverse="true">
+            <key>
+                <column name="product_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="daoxml2.ProductHasCategoryEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

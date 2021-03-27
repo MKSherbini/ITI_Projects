@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="daoxml2.ProductHasCategoryEntity" table="product_has_category" schema="biddingschema">
+        <composite-id mapped="true" class="daoxml2.ProductHasCategoryEntityPK">
+            <key-property name="productId">
+                <column name="product_id" sql-type="int"/>
+            </key-property>
+            <key-property name="categoryId">
+                <column name="category_id" sql-type="int"/>
+            </key-property>
+        </composite-id>
+        <many-to-one name="productByProductId" class="daoxml2.ProductEntity">
+            <column name="product_id"/>
+        </many-to-one>
+        <many-to-one name="categoryByCategoryId" class="daoxml2.CategoryEntity">
+            <column name="category_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

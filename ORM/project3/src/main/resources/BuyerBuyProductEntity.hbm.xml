@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="daoxml2.BuyerBuyProductEntity" table="buyer_buy_product" schema="biddingschema">
+        <composite-id mapped="true" class="daoxml2.BuyerBuyProductEntityPK">
+            <key-property name="buyerId">
+                <column name="buyer_id" sql-type="int"/>
+            </key-property>
+            <key-property name="productId">
+                <column name="product_id" sql-type="int"/>
+            </key-property>
+        </composite-id>
+        <property name="paymentDate">
+            <column name="payment_date" sql-type="date"/>
+        </property>
+        <property name="amount">
+            <column name="amount" sql-type="float" precision="-1"/>
+        </property>
+        <property name="quantity">
+            <column name="quantity" sql-type="int"/>
+        </property>
+        <many-to-one name="buyerByBuyerId" class="daoxml2.BuyerEntity">
+            <column name="buyer_id"/>
+        </many-to-one>
+        <many-to-one name="productByProductId" class="daoxml2.ProductEntity">
+            <column name="product_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

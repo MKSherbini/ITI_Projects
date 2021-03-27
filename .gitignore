@@ -162,4 +162,5 @@ local.properties
 # Mine
 MEM
 **/target/*
+.idea
 

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="daoxml2.SellerEntity" table="seller" schema="biddingschema">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="value">
+            <column name="value" sql-type="varchar(100)" length="100"/>
+        </property>
+        <one-to-one name="userById" class="daoxml2.UserEntity"/>
+        <set name="productsById" inverse="true">
+            <key>
+                <column name="seller_id" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="daoxml2.ProductEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

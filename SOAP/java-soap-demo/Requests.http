@@ -1,0 +1,121 @@
+POST http://localhost:9090/SOAP-D1/ws/EmployeeService HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:jets="http://jets.iti.gov.eg/">
+    
+    <soap:Body>
+        <jets:addEmployee>
+            <name>test1</name>
+        </jets:addEmployee>
+    </soap:Body>
+
+</soap:Envelope>
+
+###
+
+POST http://localhost:9090/SOAP-D1/ws/EmployeeService HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:jets="http://jets.iti.gov.eg/">
+    
+    <soap:Body>
+        <jets:getEmployee>
+            <id>3</id>
+        </jets:getEmployee>
+    </soap:Body>
+
+</soap:Envelope>
+
+###
+
+POST http://localhost:9090/SOAP-D1/ws/EmployeeService HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:jets="http://jets.iti.gov.eg/">
+    
+    <soap:Body>
+        <jets:updateEmployee>
+            <id>3</id>
+            <name>test1</name>
+        </jets:updateEmployee>
+    </soap:Body>
+
+</soap:Envelope>
+
+###
+
+POST http://localhost:9090/SOAP-D1/ws/EmployeeService HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:jets="http://jets.iti.gov.eg/">
+    
+    <soap:Body>
+        <jets:deleteEmployee>
+            <id>2</id>
+        </jets:deleteEmployee>
+    </soap:Body>
+
+</soap:Envelope>
+
+###
+
+# ERROR -> what is even "jets" prefix mean !?
+POST http://localhost:9595/SOAP-D1/ws/calculator HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    
+    <soap:Body>
+        <jets:add>
+            <arg0>33</arg0>
+            <arg1>33</arg1>
+        </jets:add>
+    </soap:Body>
+
+</soap:Envelope>
+
+###
+# ERROR -> No way to find out where is this add method
+POST http://localhost:9595/SOAP-D1/ws/calculator HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    
+    <soap:Body>
+        <add>
+            <arg0>33</arg0>
+            <arg1>33</arg1>
+        </add>
+    </soap:Body>
+
+</soap:Envelope>
+
+
+
+
+
+###
+# SOAP Fault - Division by zero (Runtime Exception)
+POST http://localhost:9595/SOAP-D1/ws/calculator HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:jets="http://jets.iti.gov.eg/">
+    
+    <soap:Body>
+        <jets:div>
+            <arg0>12</arg0>
+            <arg1>0</arg1>
+        </jets:div>
+    </soap:Body>
+
+</soap:Envelope>

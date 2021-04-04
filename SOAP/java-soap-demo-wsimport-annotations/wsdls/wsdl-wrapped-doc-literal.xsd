@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Published by JAX-WS RI (https://github.com/eclipse-ee4j/metro-jax-ws). RI's version is JAX-WS RI 3.0.0 git-revision#af8101a. -->
+<xs:schema xmlns:tns="WebServiceNS" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="WebServiceNS">
+
+    <xs:element name="OperationAdd" type="tns:OperationAdd" />
+
+    <xs:element name="OperationAddResponse" type="tns:OperationAddResponse" />
+
+    <xs:element name="OperationDelete" type="tns:OperationDelete" />
+
+    <xs:element name="OperationDeleteResponse" type="tns:OperationDeleteResponse" />
+
+    <xs:element name="OperationGet" type="tns:OperationGet" />
+
+    <xs:element name="OperationGetResponse" type="tns:OperationGetResponse" />
+
+    <xs:element name="employee" type="tns:employee" />
+
+    <xs:complexType name="OperationDelete">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OperationDeleteResponse">
+        <xs:sequence>
+            <xs:element name="return" type="xs:boolean" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OperationAdd">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OperationAddResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:employee" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="employee">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="firstName" type="xs:string" minOccurs="0" />
+            <xs:element name="boss" type="tns:boss" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="boss">
+        <xs:sequence>
+            <xs:element name="employees" type="tns:employee" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="firstName" type="xs:string" minOccurs="0" />
+            <xs:element name="id" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OperationGet">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OperationGetResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:employee" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

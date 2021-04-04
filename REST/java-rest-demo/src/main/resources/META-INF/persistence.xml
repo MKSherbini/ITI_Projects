@@ -1,0 +1,21 @@
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd" version="2.2">
+    <persistence-unit name="persistenceTest" transaction-type="RESOURCE_LOCAL">
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+        <class>eg.gov.iti.jets.Employee</class>
+        <class>eg.gov.iti.jets.Boss</class>
+        <!-- <validation-mode>CALLBACK</validation-mode> -->
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test" />
+            <property name="javax.persistence.jdbc.user" value="admin" />
+            <property name="javax.persistence.jdbc.password" value="admin" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.use_sql_comments" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <!--            <property name="javax.persistence.schema-generation.database.action" value="create"/>-->
+            <!--            <property name="javax.persistence.schema-generation.scripts.action" value="create"/>-->
+        </properties>
+    </persistence-unit>
+
+</persistence>

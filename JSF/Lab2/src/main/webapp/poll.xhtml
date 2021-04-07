@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Poll !</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+        body {
+            margin-top: 20px;
+        }
+
+        .panel-body:not(.two-col) {
+            padding: 0px
+        }
+
+        .glyphicon {
+            margin-right: 5px;
+        }
+
+        .glyphicon-new-window {
+            margin-left: 5px;
+        }
+
+        .panel-body .radio,
+        .panel-body .checkbox {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .panel-body .list-group {
+            margin-bottom: 0;
+        }
+
+        .margin-bottom-none {
+            margin-bottom: 0;
+        }
+
+        .panel-body .radio label,
+        .panel-body .checkbox label {
+            display: block;
+        }
+    </style>
+</h:head>
+
+<h:body id="body">
+    <h:form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-arrow-right"></span>What's your favorite category?
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <h:selectOneRadio value="#{user.voteCategory}">
+                                    <f:selectItems value="#{voteSystem.categories.entrySet()}" var="entry"
+                                                   itemValue="#{entry.key}" itemLabel="#{entry.key}"/>
+                                    <!--                                    <f:selectItems value="#{voteSystem.categories}" var="i" itemValue="#{i.key}"-->
+                                    <!--                                                   itemLabel="#{i.key}"/>-->
+                                    <!--                                    <ui:repeat value="#{voteSystem.categories}" var="category">-->
+                                    <!--                                        <f:selectItem itemValue="#{category.key}" itemLabel="#{category.key}"/>-->
+                                    <!--                                    </ui:repeat>-->
+                                    <!--                                    <f:selectItem itemValue="category2" itemLabel="category2"/>-->
+                                    <!--                                    <f:selectItem itemValue="category3" itemLabel="category3"/>-->
+                                    <!--                                    <f:selectItem itemValue="category4" itemLabel="category4"/>-->
+                                    <!--                                    <f:selectItems value="#{voteSystem.categories}"/>-->
+                                    <!--                            <ui:repeat value="#{voteSystem.categories}" var="category">-->
+                                    <!--                                &lt;!&ndash;                            <li class="list-group-item">&ndash;&gt;-->
+                                    <!--                                &lt;!&ndash;                                <div class="radio">&ndash;&gt;-->
+                                    <!--                                &lt;!&ndash;                                    <h:outputText>&ndash;&gt;-->
+                                    <!--                                &lt;!&ndash;                                        <h:inputText type="radio" name="optionsRadios"/>&ndash;&gt;-->
+                                    <!--                                &lt;!&ndash;                                        #{category}&ndash;&gt;-->
+                                    <!--                                &lt;!&ndash;                                    </h:outputText>&ndash;&gt;-->
+                                    <!--                                &lt;!&ndash;                                </div>&ndash;&gt;-->
+                                    <!--                                &lt;!&ndash;                            </li>&ndash;&gt;-->
+                                    <!--                            </ui:repeat>-->
+                                </h:selectOneRadio>
+
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <h:commandButton id="vote" styleClass="btn btn-primary btn-sm" value="Vote"
+                                             action="#{user.vote}"
+                                             disabled="#{user.hasVoted}"
+                            >
+                                <f:ajax execute="@form" render="@form"/>
+                            </h:commandButton>
+                            <a href="pollResults.xhtml">View Result</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>

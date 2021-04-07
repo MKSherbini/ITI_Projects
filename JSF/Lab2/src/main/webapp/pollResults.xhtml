@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <title>Poll Results !</title>
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+          id="bootstrap-css"/>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="span6">
+    <h5>Results: What's your favorite category?</h5>
+    <ui:repeat value="#{voteSystem.categories}" var="category">
+        <strong>#{category.key} : #{category.value}</strong><span class="pull-right">#{100.0*category.value/voteSystem.total} %</span>
+        <div class="progress progress-danger active">
+            <div class="bar" style="width: #{100.0*category.value/voteSystem.total} %;"></div>
+        </div>
+    </ui:repeat>
+
+    <p>
+        <a onclick="window.location.reload(true)" class="btn btn-large btn-success">Refresh</a>
+    </p>
+</div>
+</body>
+</html>

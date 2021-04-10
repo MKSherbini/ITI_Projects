@@ -1,0 +1,79 @@
+<!-- <p>employee works!</p> -->
+<!-- <input type="text" (change)="setFirstName($event.target.value)" /> <br> -->
+<!-- <input #inputFirstName (keydown)="setFirstName(inputFirstName.value)" /> -->
+<!-- <input #inputFirstName [value]="emp.firstName" (keydown)="setFirstName(inputFirstName.value)" /> -->
+<!-- <input #inputFirstName value="{{emp.firstName}}" (keydown)="setFirstName(inputFirstName.value)" /> -->
+<!-- <input [(ngModel)]="emp.firstName" /><br> -->
+<!-- <input (click)="setFirstName('as')" type="button" value="SetFirstName" /><br> -->
+<!-- <input type="number" [(ngModel)]="emp.age" /><br> -->
+<!-- <h1 [class.blue-color]="emp.age>=18" [class.red-color]="emp.age<18"> Your age is {{emp.age}}</h1> -->
+<!-- <h1 [ngClass]="{'red-color':emp.age>=18}"> Your age is {{emp.age}}</h1> -->
+<!-- <h1 [hidden]="emp.age>=18" class="red-color">invalid age</h1> -->
+<!-- <h1 *ngIf="emp.age>=18" class="blue-color">valid age</h1> -->
+<!-- <h1 class="blue-color"> {{getFullName()}}</h1> -->
+<!-- <br> -->
+<!-- <h1 class="blue-color"> number of employees less than 18</h1> -->
+
+<h1> Number of underage Employees is {{getCountUnderAge()}}</h1>
+<div class="row">
+  <form [formGroup]="form" class="col-md-3 ml-1">
+
+
+    <div class="form-group">
+      <label for="inputFirstName">First name</label>
+      <input type="email" class="form-control" formControlName="inputFirstName" aria-describedby="emailHelp"
+        placeholder="Enter first name">
+      <div
+        *ngIf="form.controls.inputFirstName.invalid && (form.controls.inputFirstName.dirty || form.controls.inputFirstName.touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls.inputFirstName.hasError('required')">
+          firstName is required.
+        </div>
+        <div *ngIf="form.controls.inputFirstName.hasError('minlength')">
+          firstName must be at least 5 characters long.
+        </div>
+        <div *ngIf="form.controls.inputFirstName.hasError('maxlength')">
+          firstName can not exceed 10 characters long.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputLastName">Last name</label>
+      <input type="text" class="form-control" formControlName="inputLastName" placeholder="enter last name">
+    </div>
+
+    <div class="form-group">
+      <label for="inputAge">Age</label>
+      <input type="number" class="form-control" formControlName="inputAge" placeholder="enter age">
+    </div>
+
+    <button [disabled]="form.invalid"
+      (click)="addEmployee({FirstName:form.controls.inputFirstName.value,LastName:form.controls.inputLastName.value,Age:form.controls.inputAge.value})"
+      type="reset" class="btn btn-primary">Add</button>
+  </form>
+  <br>
+  <table *ngIf="students.length>0" class="table table-striped col-md-8 table-row">
+    <thead>
+      <td>id</td>
+      <td>Fullname</td>
+      <td>Age</td>
+      <td>Email</td>
+      <td>Mobile</td>
+      <td>Action</td>
+    </thead>
+
+    <tr *ngFor="let item of students;let index=index" [class.table-danger]="item.Age<18">
+      <!-- <app-student-item item={{item}}></app-student-item> -->
+      <td>{{item.ID}}</td>
+      <td> <a href="/details/{{item.ID}}">{{item.getFullName()}}</a></td>
+      <td><input type="number" [(ngModel)]="item.Age"></td>
+      <td>{{item.Email}}</td>
+      <td>{{item.Mobile}}</td>
+      <td>
+        <input (click)="deleteEmployee(index,item.ID)" type="button" value="Delete" class="btn btn-danger"
+          [disabled]="item.IsDeleting">
+      </td>
+    </tr>
+  </table>
+</div>

@@ -3,13 +3,15 @@ package de.rieckpil.quickstarts.bbeans;
 import de.rieckpil.quickstarts.models.Book;
 import jakarta.ejb.Remote;
 
-import java.util.Set;
+import java.util.List;
 
 @Remote
 public interface LibrarySessionBeanRemote {
-    Book addBook(String bookName);
+//    Book addBook(String bookName);
+//
+//    void removeBook(int id);
+//
+//    Book findBook(int id);
 
-    void removeBook(int id);
-
-    Set getBooks();
+    List<Book> getBooks();
 }

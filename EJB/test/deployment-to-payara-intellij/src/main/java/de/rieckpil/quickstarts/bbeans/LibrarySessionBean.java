@@ -17,10 +17,10 @@ import jakarta.enterprise.context.SessionScoped;
 //todo ask here
 
 //@ApplicationScoped
-//@Stateless
-//@Dependent
-@Stateful
-@SessionScoped
+@Stateless
+@Dependent
+//@Stateful
+//@SessionScoped
 public class LibrarySessionBean
         implements
 //        LibrarySessionBeanRemote,

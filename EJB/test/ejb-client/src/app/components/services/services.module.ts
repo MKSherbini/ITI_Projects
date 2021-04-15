@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConverterComponent } from './converter/converter.component';
 import { HitsComponent } from './hits/hits.component';
 import { LibraryComponent } from './library/library.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HelloEjbComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
   ]
 })
 export class ServicesModule { }

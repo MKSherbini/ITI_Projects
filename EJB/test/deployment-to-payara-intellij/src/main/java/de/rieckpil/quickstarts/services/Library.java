@@ -23,7 +23,7 @@ public class Library {
     @GET
     public Response getAll(@Context UriInfo uriInfo) {
         Result result = new Result();
-        result.setData(librarySessionBean);
+        result.setData(librarySessionBean.getBooks());
         result.setStatus(200);
         result.getLinks().put("self", uriInfo.getAbsolutePath().toString());
         return Response.ok(result).build();

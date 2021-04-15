@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-hits',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HitsComponent implements OnInit {
 
-  constructor() { }
+  numberOfHits: number = 0;
+
+  constructor(private _apiService: ApiService) { }
 
   ngOnInit(): void {
+    this._apiService.get("http://localhost:8080/resources/hits").subscribe(
+      response => {
+        this.numberOfHits = response.data;
+      })
+  }
+
+  hitIt(): void {
+    this._apiService.post("http://localhost:8080/resources/hits", null).subscribe(
+      response => {
+        this.numberOfHits++;
+      })
   }
 
 }

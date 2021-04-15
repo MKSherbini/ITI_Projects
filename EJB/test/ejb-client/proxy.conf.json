@@ -1,0 +1,8 @@
+{
+  "/library/*": {
+ "target": "http://localhost:8080/resources/library",
+ "secure": false,
+ "logLevel": "debug",
+ "changeOrigin": true
+  }
+ }

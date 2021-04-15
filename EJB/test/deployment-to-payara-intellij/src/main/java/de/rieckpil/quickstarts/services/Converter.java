@@ -26,12 +26,12 @@ public class Converter {
     public Response convert(@PathParam("num") int num, @QueryParam("method") String method, @Context UriInfo uriInfo) {
         Result result = new Result();
         result.setStatus(200);
-        if (method.equals("dollarToYen")) {
+        if (method != null && method.equals("dollarToYen")) {
             result.setData(converterBean.dollarToYen(new BigDecimal(num)));
-        } else if (method.equals("yenToEuro")) {
+        } else if (method != null && method.equals("yenToEuro")) {
             result.setData(converterBean.yenToEuro(new BigDecimal(num)));
         } else {
-            result.setData(method + " is not supported");
+            result.setData(method + " method is not supported");
             result.setStatus(400);
         }
         result.getLinks().put("self", uriInfo.getAbsolutePath().toString());

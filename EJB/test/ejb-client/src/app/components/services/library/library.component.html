@@ -1,1 +1,22 @@
-<p>library works!</p>
+<div class="row ml-1">
+  <input class="form-control col-md-4" #bookName type="text" placeholder="Enter book name">
+  <input class="btn btn-primary " type="button" value="AddBook" (click)="addBook(bookName.value)">
+</div>
+<br>
+<table *ngIf="books.length>0" class="table table-striped col-md-8 table-row">
+  <thead>
+    <td>id</td>
+    <td>Name</td>
+    <td>Action</td>
+  </thead>
+
+  <tr *ngFor="let item of books;let index=index">
+    <!-- <app-student-item item={{item}}></app-student-item> -->
+    <td>{{item.id}}</td>
+    <td>{{item.name}}</td>
+    <td>
+      <input (click)="deleteBook(index,item.id)" type="button" value="Delete" class="btn btn-danger"
+        [disabled]="item.isDeleting">
+    </td>
+  </tr>
+</table>

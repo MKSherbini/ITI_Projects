@@ -1,0 +1,27 @@
+<div [formGroup]="form">
+    <!-- <div class="form-group">
+        <label for="exampleInputEmail1">FirstName</label>
+        <input formControlName="FirstName" type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email">
+       
+        <div *ngIf="form.controls['FirstName'].invalid && (form.controls['FirstName'].touched || form.controls['FirstName'].dirty)">
+          <small *ngIf="form.controls['FirstName'].hasError('required')" class="form-text text-danger">required email</small>
+          <small  *ngIf="form.controls['FirstName'].hasError('maxlength')" class="form-text text-danger">max length</small>
+          <small  *ngIf="form.controls['FirstName'].hasError('minlength')"  class="form-text text-danger">min length</small>
+  
+        </div> -->
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input formControlName="Email" type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email">
+      <div *ngIf="form.controls['Email'].invalid">
+        <small *ngIf="form.controls['Email'].hasError('required')" class="form-text text-danger">required email</small>
+        <small  *ngIf="form.controls['Email'].hasError('maxlength')" class="form-text text-danger">max length</small>
+        <small  *ngIf="form.controls['Email'].hasError('minlength')"  class="form-text text-danger">min length</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input formControlName="Password" type="password" class="form-control" placeholder="Password">
+    </div>
+   
+    <button (click)="login()" [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
+  </div>

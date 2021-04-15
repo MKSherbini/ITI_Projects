@@ -1,0 +1,10 @@
+<input type="text" appAllowCharOnly  class="form-control">
+
+Inst Rate is : {{instRate}}
+<br>
+<app-rating (change)="onIntRatingChanged($event)" [stars]="instRate"></app-rating>
+
+<br>
+Course Rate is : {{courseRate}}
+<br>
+<app-rating (change)="onCourseChanged($event)" [stars]="courseRate"></app-rating>

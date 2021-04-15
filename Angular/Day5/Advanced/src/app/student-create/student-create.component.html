@@ -1,0 +1,62 @@
+<div class="row">
+  <form [formGroup]="form" class="col-md-3 ml-1">
+
+    <div class="form-group">
+      <label for="inputFirstName">First name</label>
+      <input type="email" class="form-control" formControlName="inputFirstName" aria-describedby="emailHelp"
+        placeholder="Enter first name">
+      <div
+        *ngIf="form.controls.inputFirstName.invalid && (form.controls.inputFirstName.dirty || form.controls.inputFirstName.touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls.inputFirstName.hasError('required')">
+          firstName is required.
+        </div>
+        <div *ngIf="form.controls.inputFirstName.hasError('minlength')">
+          firstName must be at least 5 characters long.
+        </div>
+        <div *ngIf="form.controls.inputFirstName.hasError('maxlength')">
+          firstName can not exceed 10 characters long.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputLastName">Last name</label>
+      <input (keyup)="logIt(form)" type="text" class="form-control" formControlName="inputLastName" placeholder="enter last name">
+      <div
+        *ngIf="form.controls.inputLastName.invalid && (form.controls.inputLastName.dirty || form.controls.inputLastName.touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls.inputLastName.hasError('required')">
+          lastName is required.
+        </div>
+        <div *ngIf="form.controls.inputLastName.hasError('minlength')">
+          lastName must be at least 5 characters long.
+        </div>
+        <div *ngIf="form.controls.inputLastName.hasError('maxlength')">
+          lastName can not exceed 10 characters long.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputAge">Age</label>
+      <input type="number" class="form-control" formControlName="inputAge" placeholder="enter age">
+      <div *ngIf="form.controls.inputAge.invalid && (form.controls.inputAge.dirty || form.controls.inputAge.touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls.inputAge.hasError('required')">
+          age is required.
+        </div>
+        <div *ngIf="form.controls.inputAge.hasError('min')">
+          age must be at least 1.
+        </div>
+        <div *ngIf="form.controls.inputAge.hasError('max')">
+          age can not exceed 20.
+        </div>
+      </div>
+    </div>
+
+    <button [disabled]="form.invalid"
+      (click)="addEmployee({FirstName:form.controls.inputFirstName.value,LastName:form.controls.inputLastName.value,Age:form.controls.inputAge.value})"
+      type="reset" class="btn btn-primary">Add</button>
+  </form>
+</div>

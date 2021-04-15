@@ -14,7 +14,7 @@ export class LibraryComponent implements OnInit {
   constructor(private _apiService: ApiService) { }
 
   ngOnInit(): void {
-    this._apiService.get("http://localhost:8080/resources/library").subscribe(
+    this._apiService.get("/resources/library").subscribe(
       response => {
         this.books = (response.data as Book[])
       }
@@ -23,13 +23,13 @@ export class LibraryComponent implements OnInit {
 
   deleteBook(index: number, id: number): void {
     this.books[index].isDeleting = true;
-    this._apiService.delete(`http://localhost:8080/resources/library/${id}`).subscribe(
+    this._apiService.delete(`/resources/library/${id}`).subscribe(
       response => {
         this.books.splice(index, 1);
       })
   }
   addBook(name: string) {
-    this._apiService.post("http://localhost:8080/resources/library", name).subscribe(
+    this._apiService.post("/resources/library", name).subscribe(
       response => {
         this.books.push(response.data as Book)
       }

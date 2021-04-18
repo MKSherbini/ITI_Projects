@@ -10,11 +10,11 @@ import jakarta.ejb.*;
 @Singleton
 @DependsOn("StatusBean")
 public class AutoTimer {
-    @Schedule(hour = "*", minute = "*", second = "*/4")
-    @PostConstruct
-    public void postConstruct() {
-        System.out.println("AutoTimer.postConstruct");
-    }
+//    @Schedule(hour = "*", minute = "*", second = "*/4")
+//    @PostConstruct
+//    public void postConstruct() {
+//        System.out.println("AutoTimer.postConstruct");
+//    }
 
     @PreDestroy
     public void preDestroy() {

@@ -10,11 +10,11 @@ import jakarta.ejb.*;
 @Singleton
 @DependsOn("StatusBean")
 public class ProgTimer {
-    @PostConstruct
-    public void postConstruct() {
-        init();
-        System.out.println("ProgTimer.postConstruct");
-    }
+//    @PostConstruct
+//    public void postConstruct() {
+//        init();
+//        System.out.println("ProgTimer.postConstruct");
+//    }
 
     @PreDestroy
     public void preDestroy() {

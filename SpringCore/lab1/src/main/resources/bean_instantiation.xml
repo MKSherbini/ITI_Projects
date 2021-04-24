@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="service1" lazy-init="true" class="spring.core.lab1.implementations.Service1Impl"></bean>
+    <bean id="service2" lazy-init="true" class="spring.core.lab1.implementations.Service1Impl">
+        <constructor-arg type="int" value="66"></constructor-arg>
+    </bean>
+    <bean id="service3" lazy-init="true" class="spring.core.lab1.implementations.Service1Impl">
+        <constructor-arg value="spongebob"></constructor-arg>
+    </bean>
+    <!-- depends-on="service10" = cyclic dependency -->
+    <bean id="service4" lazy-init="true" class="spring.core.lab1.implementations.Service1Impl">
+        <constructor-arg value="66"></constructor-arg>
+        <constructor-arg value="spongebob"></constructor-arg>
+    </bean>
+    <bean id="service5" lazy-init="true" class="spring.core.lab1.implementations.Service1Impl" factory-method="createService1"></bean>
+    <bean id="service6" lazy-init="true" class="spring.core.lab1.implementations.Service1Impl" factory-method="createService1">
+        <constructor-arg value="66"></constructor-arg>
+    </bean>
+    <bean id="factory" lazy-init="true" class="spring.core.lab1.factories.ServiceFactory"></bean>
+    <bean id="service7" lazy-init="true" factory-bean="factory" factory-method="createService1"></bean>
+    <bean id="service8" lazy-init="true" factory-bean="factory" factory-method="createService1">
+        <constructor-arg value="66"></constructor-arg>
+    </bean>
+    <bean id="service9" lazy-init="true" class="spring.core.lab1.implementations.Service2Impl"></bean>
+    <!-- 2 m3 b3d -->
+    <bean id="service10" lazy-init="true" class="spring.core.lab1.implementations.Service2Impl">
+        <constructor-arg ref="service9"></constructor-arg>
+    </bean>
+    <bean id="service11" lazy-init="true" class="spring.core.lab1.implementations.Service2Impl">
+        <constructor-arg>
+            <bean class="spring.core.lab1.implementations.Service1Impl">
+                <constructor-arg value="66"></constructor-arg>
+                <constructor-arg value="spongebob"></constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <bean id="service12" lazy-init="true" class="spring.core.lab1.implementations.Service2Impl">
+        <property name="service2impl" ref="service4"></property>
+    </bean>
+    <bean id="service13" lazy-init="true" class="spring.core.lab1.implementations.Service2Impl">
+        <constructor-arg>
+            <ref bean="service4" />
+        </constructor-arg>
+    </bean>
+
+</beans>

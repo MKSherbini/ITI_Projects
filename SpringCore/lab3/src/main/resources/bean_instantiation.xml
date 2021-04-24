@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd" default-init-method="onInit" default-destroy-method="onDestroy" default-lazy-init="true" default-autowire-candidates="service3*,service2">
+    <context:annotation-config />
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    <context:component-scan base-package="spring.core.lab3"/>
+    
+    <context:property-placeholder location="application.properties" />
+    <bean id="service2impl" class="spring.core.lab3.implementations.Service1Impl" autowire-candidate="true">
+        <constructor-arg value="66"></constructor-arg>
+        <constructor-arg value="spongebob autowire"></constructor-arg>
+        <qualifier type="spring.core.lab3.interfaces.CustomQualifier" />
+    </bean>
+    <!-- <qualifier value="sponge1"></qualifier> -->
+    <!-- custom qualifier not working ????????? -->
+    <bean id="service2impl2" class="spring.core.lab3.implementations.Service1Impl" autowire-candidate="true">
+        <constructor-arg value="66"></constructor-arg>
+        <constructor-arg value="spongebob admin"></constructor-arg>
+        <qualifier type="spring.core.lab3.interfaces.CustomQualifier">
+            <attribute key="name" value="admin" />
+            <attribute key="user" value="ADMIN" />
+        </qualifier>
+        <!-- <qualifier value="sponge1"></qualifier> -->
+
+    </bean>
+    <bean id="service2impl3" class="spring.core.lab3.implementations.Service1Impl" autowire-candidate="true">
+        <constructor-arg value="66"></constructor-arg>
+        <constructor-arg value="spongebob user"></constructor-arg>
+        <!-- <qualifier type="CustomQualifier">
+            <attribute key="user" value="USER" />
+        </qualifier> -->
+    </bean>
+    <!-- <bean id="service1" class="spring.core.lab3.implementations.Service3Impl" autowire="byType"></bean> -->
+
+    <bean id="parent" abstract="true" class="spring.core.lab3.implementations.Service3Impl">
+        <!-- <property name="service2impls">
+            <map>
+                <entry key="1" value-ref="service2impl" />
+            </map>
+        </property> -->
+    </bean>
+    <bean id="service1" parent="parent" autowire="byType">
+        <property name="service2impls">
+            <map merge="true">
+                <entry key="2" value-ref="service2impl" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="parent2" abstract="true">
+        <property name="name" value="spongebob parent"></property>
+    </bean>
+    <bean id="service2" parent="parent2" class="spring.core.lab3.implementations.Service1Impl"></bean>
+    <bean id="service3" parent="parent2" class="spring.core.lab3.implementations.Service1Impl">
+        <property name="name" value="spongebob child"></property>
+        <property name="age" value="66"></property>
+    </bean>
+
+    <bean id="parent4" abstract="true" class="spring.core.lab3.implementations.Service3Impl">
+        <property name="service2impls">
+            <map>
+                <entry key="1" value-ref="service2impl" />
+            </map>
+        </property>
+    </bean>
+    <bean id="service4" parent="parent4">
+        <property name="service2impls">
+            <map merge="true">
+                <entry key="1" value-ref="service2impl2" />
+                <entry key="2" value-ref="service2impl" />
+            </map>
+        </property>
+    </bean>
+    <bean id="service5" class="spring.core.lab3.implementations.Service1Impl">
+        <!-- <property name="name" value="${test.value1}"></property> -->
+    </bean>
+    <bean id="service6" class="spring.core.lab3.implementations.Service2Impl"></bean>
+
+
+</beans>

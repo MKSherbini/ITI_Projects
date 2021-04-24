@@ -1,0 +1,1 @@
+package de.rieckpil.quickstarts.dao;

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd 
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd"
+       default-init-method="onInit"
+       default-destroy-method="onDestroy" default-lazy-init="true" default-autowire-candidates="service3*,service2">
+    <mvc:annotation-driven/>
+    <!--    <context:annotation-config/>-->
+    <aop:aspectj-autoproxy/>
+    <!--    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />-->
+    <context:component-scan base-package="spring.mvc" use-default-filters="true"/>
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <!-- typical style -->
+    <bean id="helloController0" class="spring.mvc.controllers.HelloWorldController"/>
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="2"/>
+        <property name="mappings">
+            <props>
+                <prop key="/welcome">helloController0</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- on the fly controller -->
+    <bean name="hello2Controller" class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="HelloWorld2" p:statusCode="ACCEPTED"
+    />
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="2"/>
+        <property name="mappings">
+            <props>
+                <prop key="/welcome2">hello2Controller</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- AbstractUrlViewController (multi-purpose)-->
+    <bean name="hello2Controller2" class="spring.mvc.controllers.HelloWorldController2"/>
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="2"/>
+        <property name="mappings">
+            <props>
+                <prop key="/welcome22">hello2Controller2</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- auto controller view mapping -->
+    <bean id="fileNameView" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="2"/>
+        <property name="mappings">
+            <props>
+                <prop key="/HelloWorld">fileNameView</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="servletForward" class="org.springframework.web.servlet.mvc.ServletForwardingController">
+        <property name="servletName" value="HelloWorld3"/>
+    </bean>
+    <bean id="urlMapping2" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="2"/>
+        <property name="mappings">
+            <props>
+                <prop key="/welcome3">servletForward</prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="2"/>
+        <property name="mappings">
+            <props>
+                <prop key="/forward">myServletForwardingController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="myServletForwardingController" class="org.springframework.web.servlet.mvc.ServletForwardingController">
+        <property name="servletName" value="ServletForward"/>
+    </bean>
+
+    <bean id="servletWrapping" class="org.springframework.web.servlet.mvc.ServletWrappingController">
+        <property name="servletClass" value="spring.mvc.controllers.HelloWorldController4"/>
+        <!--        <property name="servletName" value="HelloWorld4"/>-->
+        <!--        <property name="initParameters">-->
+        <!--            <props>-->
+        <!--                <prop key="name">Skull</prop>-->
+        <!--            </props>-->
+        <!--        </property>-->
+    </bean>
+
+    <bean id="urlMapping3" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="4"/>
+        <property name="mappings">
+            <props>
+                <prop key="/app/welcome4">servletWrapping</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="myViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="order" value="1"/>
+    </bean>
+
+
+    <bean id="/app/hello" class="spring.mvc.controllers.HelloWorldController"/>
+    <!--    <bean id="/app/pdf" class="spring.mvc.controllers.PdfCustomView"/>-->
+    <bean id="/app/pdf" class="spring.mvc.controllers.PdfController"/>
+
+    <mvc:view-controller path="/app/viewcon" view-name="HelloWorld"/>
+    <!--    <mvc:view-controller path="/app/register" view-name="Form"/>-->
+
+
+    <bean id="messagingSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages"/>
+    </bean>
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    <!--    <bean id="xmlViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver"></bean>-->
+    <!--    <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>-->
+</beans>

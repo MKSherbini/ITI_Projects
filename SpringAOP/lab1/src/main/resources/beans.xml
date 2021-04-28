@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd 
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd" default-init-method="onInit" default-destroy-method="onDestroy" default-lazy-init="true" default-autowire-candidates="service3*,service2">
+    <context:annotation-config />
+    <aop:aspectj-autoproxy />
+
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+    <context:component-scan base-package="spring.aop" use-default-filters="true"></context:component-scan>
+
+    <context:property-placeholder location="application.properties" />
+
+    <bean id="calc" class="spring.aop.implementations.CalculatorImpl"></bean>
+    <bean id="calcAspect" class="spring.aop.implementations.CalculatorAspect"></bean>
+    <bean id="log" class="spring.aop.proxy.spring.CalculatorAdvice"></bean>
+    <bean id="log2" class="spring.aop.proxy.spring.CalculatorAdvice2"></bean>
+    <!-- mappedNames is prio -->
+    <bean id="pointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="div"></property>
+        <property name="mappedNames">
+            <list>
+                <value>add</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="regexAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <!-- <property name="pattern" value=".*div"></property> -->
+        <property name="advice" ref="log"></property>
+        <property name="patterns">
+            <list>
+                <value>.*mul</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="methodNameAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="pointcut"></property>
+        <property name="advice" ref="log"></property>
+    </bean>
+
+    <bean id="calcProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <list>
+                <value>spring.aop.interfaces.Calculator</value>
+            </list>
+        </property>
+        <property name="target" ref="calc"></property>
+        <property name="interceptorNames">
+            <list>
+                <value>methodNameAdvisor</value>
+                <value>regexAdvisor</value>
+            </list>
+        </property>
+    </bean>
+    
+    <aop:config>
+        <aop:aspect id="log" ref="log2">
+            <aop:pointcut id="pointCutBefore" expression="execution(* spring.aop..*())" />
+            <aop:after method="after" pointcut-ref="pointCutBefore" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>

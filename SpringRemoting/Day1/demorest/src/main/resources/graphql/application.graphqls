@@ -1,0 +1,18 @@
+
+type SystemUser{
+    username : String!
+    password : String!
+    enabled : Int!
+}
+
+type Query {
+    findAll: [SystemUser]!
+    count: Int!
+}
+
+type Mutation {
+    addUser(username : String!,
+        password : String!,
+        enabled : Int!) : [SystemUser]!
+    deleteUser(username: String!) : [SystemUser]!
+}

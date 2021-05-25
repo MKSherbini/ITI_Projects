@@ -1,0 +1,71 @@
+
+###
+GET http://localhost:8080 HTTP/1.1
+###
+GET http://localhost:8080/products HTTP/1.1
+###
+GET http://localhost:8080/customers HTTP/1.1
+###
+GET http://localhost:8080/orders HTTP/1.1
+
+### ------------------------------------------------------------
+
+POST http://localhost:8080/products HTTP/1.1
+
+{
+    "name": "Ebrahiem",
+    "quantity": 10,
+    "price": 99.99
+}
+###
+POST http://localhost:8080/customers HTTP/1.1
+
+{
+    "firstName": "Mohamed",
+    "lastName": "Sherbieny"
+}
+###
+POST http://localhost:8080/orders HTTP/1.1
+
+{
+    "customer": "http://localhost:8080/customers/7",
+    "products": [
+        "http://localhost:8080/products/6"
+    ]
+}
+###
+GET http://localhost:8080/customers/7/orders HTTP/1.1
+###
+POST http://localhost:8080/orders HTTP/1.1
+
+{
+    "submitTimestamp": "2007-12-03T10:15:30"
+}
+
+### ------------------------------------------------------------
+GET http://localhost:8080/products/search HTTP/1.1
+###
+GET http://localhost:8080/products/search/findByNameContaining?name=cola HTTP/1.1
+###
+GET http://localhost:8080/products/search/findByQuantityBetween?min=5&max=100 HTTP/1.1
+###
+GET http://localhost:8080/products/search/findByPriceBetween?min=10.0&max=300.0 HTTP/1.1
+
+
+### ------------------------------------------------------------
+
+GET http://localhost:8080/profile HTTP/1.1
+###
+GET http://localhost:8080/profile/products HTTP/1.1
+###
+GET http://localhost:8080/profile/orders HTTP/1.1
+###
+GET http://localhost:8080/profile/customers HTTP/1.1
+###
+
+### ------------------------------------------------------------
+
+GET http://localhost:8080/profile/products HTTP/1.1
+Accept: application/schema+json
+
+###
